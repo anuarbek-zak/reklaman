@@ -1,9 +1,27 @@
-.company .my_banners .line-1{
+.company  .line-1{
 	justify-content: space-between;
 	-ms-align-items: center;
 	align-items: center;
-	padding: 20px;
 	border-bottom: 1px solid #eaeaea;
+}
+
+.company .invisible{
+	opacity: 0;
+}
+
+.company .my_banners{
+	height: 450px;
+	width: 420px;
+	min-width: 380px
+}
+
+.company .my_banners .line-1{
+	padding: 15px;
+}
+
+.company .my_banners td:not(:first-child){
+	text-align: center;
+	padding-right: 15px;
 }
 
 .company table{
@@ -17,7 +35,6 @@
 .company tr{
 	border-bottom: 0;
 	height: 50px;
-
 }
 
 .company thead tr{
@@ -31,19 +48,28 @@
 
 .company td{
 	position: relative;
+	padding: 0px;
 }
 
-.company td:hover .my-tooltip{
+.company td:first-child{
+	padding-left: 10px;
+}
+
+.company .my_banners td:hover .my-tooltip{
 	display: block;
 }
 
-.company  .line-1 .title-div{
-	margin-right: 80px;
+.company .my_banners td:first-child{
+	max-width: 150px;
 }
 
-.company .my_banners td:first-child{
-	max-width: 180px;
+.company .my_banners .status-image div{
+	width: 23px;
+	height: 23px;
+	margin-right: 0;
+	margin-left: 15px;
 }
+
 
 .company .my_banners td img{
 	width: 23px;
@@ -78,7 +104,7 @@
 }
 
 .company .my_banners .show-more{
-	padding: 20px;
+	padding: 15px;
 }
 
 .company .my_banners .show-more .flex{
@@ -93,8 +119,8 @@
 }
 
 .company .my-tooltip.right{
-  left: 45%;
-  bottom: 22%;
+  left: 60%;
+  bottom: 20%;
   width: 120px;
   text-align: center;
 }
@@ -104,8 +130,22 @@
   bottom: 40%;
 }
 
-.company .my-balance{
-	padding: 20px;
+.company .my-balance,.company .video{
+	padding: 15px;
+	margin-left: 0;
+	justify-content: space-between;
+}
+
+.company .video{
+	margin-right: 0;
+}
+
+.company .my-balance .line-1{
+	border-bottom: 0;
+}
+
+.company .my-balance .bolder{
+	margin-right: 10px;
 }
 
 .company .my-balance .arrow-right{
@@ -124,4 +164,56 @@
 	padding: 14px 15px;
 	font-size: 15px;
 	margin-top: 10px;
+}
+
+.company .video{
+	margin-right: 10px;
+}
+
+.company iframe{
+	width: 80%;
+	height: 130px;
+	border: 2px dashed #00aed0;
+	margin: 0 auto;
+	margin-top: 15px;
+	display: block;
+	border-radius: 5px;
+}
+
+.company .support{
+	margin: 0;
+	margin-right: 10px;
+	font-family: 'OpenSans';
+}
+
+.company .support .title-icon{
+	width: 24px;
+	height: 16px;
+}
+
+.company .support .line-1{
+	padding: 15px;
+	justify-content: space-between;
+}
+
+.company .support .line-1 a{
+	color: #3b9e1d;
+	border-bottom: 1px dashed #3b9e1d;
+}
+
+.company .support .operations .btn-gray{
+	width: 25px;
+	height: 25px;
+}
+
+.company .support td{
+	max-width: 180px;
+}
+
+.company .support  .ask{
+	width: 95%;
+	margin: 0 auto;
+	border-top: 1px solid #eaeaea;
+	padding: 15px;
+	padding-left: 0;
 }

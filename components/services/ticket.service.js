@@ -25,6 +25,18 @@ angular.module('app')
                 console.log(err);
             })
     }
+
+    service.getCompanyTickets = function(user_id,cb){
+        //method - (get)
+        //api - /api/ticket/:user_id
+        $http.get('jsons/company_tickets.json')
+            .success(function(data){
+                cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
         
     service.update = function(ticket){
         //method - (put)
@@ -39,16 +51,29 @@ angular.module('app')
     }
 
     service.createMessage = function(ticket_id,message){
-    	//method - (post)
-    	//api - /api/ticket/message
+        //method - (post)
+        //api - /api/ticket/message
         //data - {ticket_id:ticket_id,message:message}
-    	$http.post('/api/ticket/message',{ticket_id:ticket_id,message:message})
+        $http.post('/api/ticket/message',{ticket_id:ticket_id,message:message})
+            .success(function(data){
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
+    service.close = function(ticket_id){
+    	//method - (post)
+    	//api - /api/ticket/close/:ticket_id
+        //params - ticket id
+    	$http.post('/api/ticket/close/'+ticket_id)
 			.success(function(data){
 				})
 			.error(function(err){
 				console.log(err);
 			})
     }
-		
+
+
     return service;
   })    

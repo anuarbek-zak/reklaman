@@ -5,3 +5,9 @@
 	margin-left: 20px;
 	margin-right: 60px;
 }
+
+.lk_reklamodatel .sidebar .item img{
+  width: 18px; 
+  height: 20px;
+  margin-left: 5px;
+}

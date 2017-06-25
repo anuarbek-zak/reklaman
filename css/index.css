@@ -682,18 +682,6 @@ td{
   left: -100px;
 }
 
-.my-tooltip.right{
-  left: 40%;
-  bottom: 25%;
-  width: 120px;
-  text-align: center;
-}
-
-.my-tooltip.right::after, .my-tooltip.right::before {
-  left:-3px;
-  bottom: 40%;
-}
-
 .divider-line{
   margin: 0 15px
 }

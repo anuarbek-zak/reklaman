@@ -21,13 +21,11 @@ angular.module('admin_panel').controller('ticketCtrl',function($localStorage,use
 		var message = {admin:$localStorage.admin,user:$stateParams.id,text:vm.messageText};
 		message.from = $localStorage.admin;
 		message.from.role = "Админ";
-		message.created_at = new Date();
+		message.created_at = Date.now();
 		vm.ticket.messages.unshift(message);
 		vm.messageText = "";
 		ticketService.createMessage(vm.ticket.id,message);
 	}
-	var a = new Date()
-	console.log(Date.parse(a));
 
 	vm.back = function() {
 		window.history.back()

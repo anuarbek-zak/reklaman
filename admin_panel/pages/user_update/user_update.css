@@ -1,0 +1,87 @@
+.user_update{
+  font-size: 16px;
+   padding:20px;
+   width: 730px;
+}
+
+.user_update .label-input{
+  width: 100%;
+  margin-right: 10px;
+}
+
+.user_update label{
+  color: #303030;
+  display: block;
+  margin-top: 18px;
+}
+
+.user_update .input{
+  background-color: #f6f6f6;
+  margin-top: 10px;
+  background-image: none;
+  width: 100%;
+  text-align: left;
+}
+
+.user_update .dropdown .input{
+  background-image: url('../../assets/images/angle-bottom.png') ;
+  background-position: 95% center;
+  text-align: left;
+}
+
+.user_update .line-1{
+  height: 70px;
+}
+
+.user_update  .main-photo{
+  margin: 15px;
+  margin-left: 0;
+  width: 170px;
+  height: 170px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.user_update .line-2 .flex-column{
+  width: 100%;
+  margin-top: 15px;
+}
+
+.user_update .line-3,
+.user_update .line-4,
+.user_update .line-5,
+.user_update .line-6{
+  justify-content: space-between;
+}
+
+.user_update datepicker .input{
+  background-image: url('../../assets/images/calendar.png');
+}
+
+.user_update .line-7{
+  margin-top: 40px;
+}
+
+.user_update .btn-gray{
+  background: #cdcdcd;
+  color: #fff;
+  margin-left: 10px;
+  padding: 12px 25px
+}
+
+.user_update .btn-gray img{
+  width: 15px;
+}
+
+.user_update .line-7 .btn-gray:hover{
+  background-color: #008eaa;
+}
+
+.user_update .btn-green{
+  padding: 12px 40px
+}
+
+.user_update .btn-green img{
+   width: 11px;
+   height: 9px;
+}

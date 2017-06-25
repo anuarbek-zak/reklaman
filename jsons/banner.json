@@ -1,0 +1,33 @@
+{"id":1,
+	"name":"Лонгер сырный",
+	"photo":"assets/images/kfc.png",
+	"link":"https://vk.com/im?sel=173982646",
+	"cost":0.7,
+	"gender":{"id":2,"name":"Женский"},
+	"age_from":35,
+	"age_to":45,
+	"dispalays_limit_all":3022,
+	"dispalays_limit_one":20,
+	"display_from":"13 декабря 2018",
+	"display_to":"13 декабря 2018",
+	"display_days":
+					[
+						{"id":0,"name":"Понедельник","checked":true,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":1,"name":"Вторник","checked":true,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":2,"name":"Среда","checked":true,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":3,"name":"Четверг","checked":true,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":4,"name":"Пятница","checked":false,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":5,"name":"Суббота","checked":true,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"},
+						{"id":6,"name":"Воскресенье","checked":false,"from":"1970-01-01T04:30:40.000Z","to":"1970-01-01T04:30:40.000Z"}
+					],
+	"status":{"id":2,"name":"Активен"},
+	"timeTargetCity":{
+		"id":"5311234d23fdd501e71fa11",
+		"name":"Москва"					 	
+	},
+	"zones":{
+		"countries":["11c3e9a494d23fdd50qew1fa1","33c3e9a494d23fdd501e71fa2","22c3eq2394d23fdd501e71fa2"],
+		"regions":["12c3e9a49qwedd501e71fa2","23c3e9a494d23fdd501e71fa11"],
+		"cities":["xxc3ar23f23fdd501e71fa2","yyc3e9a494d23fdd501e71fa2","5711234d23fdd501e71fa11"]
+	}
+}

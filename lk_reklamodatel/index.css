@@ -11,3 +11,20 @@
   height: 20px;
   margin-left: 5px;
 }
+
+.lk_reklamodatel .sidebar .item{
+	position: relative;
+}
+
+.lk_reklamodatel .sidebar .messages_count{
+  padding:3px 5px;
+  background: #3b9e1d;
+  color: #fff;
+  padding-top: 2px;
+  font-size: 12px;
+  border-radius: 100%;
+  position: absolute;
+  top:12px;
+  left: 11px;
+}
+

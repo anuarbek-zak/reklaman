@@ -23,14 +23,14 @@
 		"age_to":45,
 		"cost":0.7,
 		"consumption":31.99,
-		"displays":35454,
+		"displays":35455,
 		"saved":7548,
 		"transition":4545,
 		"status":{"id":1,"name":"Отказано","reason":"Не соответсвует правилам сервиса и еще еще много чего короче длинный текст"}
 		},
 		{"id":1,
-		"name":"Лонгер сырный",
-		"photo":"assets/images/image.png",
+		"name":"Лонгер сырный еще лонгер с беконом и майонезом и кетчупом и еще много чем",
+		"photo":"assets/images/kfc.png",
 		"link":"https://vk.com/im?sel=173982646",
 		"cities":
 			[	

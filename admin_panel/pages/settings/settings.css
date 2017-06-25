@@ -93,43 +93,12 @@
 	padding-right: 10px;
 }
 
-.my-modal{
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 120vh;
-	background: rgba(0,0,0,.5);
-	justify-content: center;
-	-ms-align-items: center;
-	align-items: center;
-}
-
-.my-modal-content{
-	margin-top: -100px;
-	height: 460px;
-	width: 600px;
-	background: #fff;
-
-}
-
-.my-modal-content .title-text{
-	text-transform: none;
-}
-
-.my-modal-header{
-	justify-content: space-between;
-	padding: 20px;
-
-}
-
-.my-modal-content button{
+.settings .my-modal-content button{
 	padding: 5px 8px;
 }
 
 
-.my-modal-body .input{
+.settings .my-modal-body .input{
 	width: 95%;
 	margin-left: 2.5%;
 	background-position: 97% center;
@@ -153,33 +122,33 @@
 	resize: none;
 }
 
-.my-modal-body label{
+.settings .my-modal-body label{
 	margin-left: 2.5%;
 }
 
-.my-modal-body .btn-blue{
+.settings .my-modal-body .btn-blue{
 	padding: 10px 24px;
 	margin-left: 2.5%;	
 	
 }
 
-.my-modal-body .table-container{
+.settings .my-modal-body .table-container{
 	overflow: auto;
 	margin-bottom: 20px;
 	height: 280px;
 }
 
-.my-modal-body table .add:hover{
+.settings .my-modal-body table .add:hover{
 	background: #37951b;
 	color: #fff;
 }
 
-.my-modal-body table .added{
+.settings .my-modal-body table .added{
 	font-size: 12px;
 	margin-right: 10px;
 }
 
-.my-modal-body .show-more{
+.settings .my-modal-body .show-more{
 	width: 250px;
 	margin: 0 auto;
 }

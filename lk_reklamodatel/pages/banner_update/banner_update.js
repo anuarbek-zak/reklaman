@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bannerService,countriesService,myService,userService,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('lkBannerUpdateCtrl',function(bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
 	vm.countries = [];
@@ -72,6 +72,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 	}
 
 	vm.saveBanner = function(){
+		vm.banner.countries=vm.countries;
 		bannerService.saveBanner(vm.banner);
 		$state.go('reklamodatel_banners');
 	}	
@@ -125,12 +126,12 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 
 	vm.sendToModeration = function() {
 		bannerService.sendToModeration(vm.file,vm.banner);
-		$state.go('reklamodatel_banners')
+		$state.go('company')
 	}
 
 	vm.saveAsDraft = function(){
 		bannerService.saveAsDraft(vm.banner);
-		$state.go('reklamodatel_banners')
+		$state.go('company')
 	}
 
 })

@@ -13,6 +13,7 @@
   width: 100%;
 }
 
+
 .banner_update .banner .input,
 .banner_update .audience .input{
     background-image: none;
@@ -48,6 +49,7 @@
 .banner_update .cost input[type="number"]{
   width: 100% ;
 }
+
 
 .banner_update .line-1{
   height: 70px;

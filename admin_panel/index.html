@@ -1,6 +1,6 @@
-<div class="admin_panel">
+<div class="admin_panel" ng-controller="mainAdminCtrl as vm">
 
-  <header ng-controller="headerAdminCtrl as vm">
+  <header>
     <img class="logo" src="assets/images/logo.png" alt="reklaman">
     <div class="right-div flex">
       <a ui-sref="reklamodateli_questions" >Впоросы рекламодателей</a>
@@ -15,7 +15,7 @@
     </div>
   </header>
   <div class="content flex">
-    <div class="sidebar flex" ng-class="{'sidebar-compressed':vm.compressed}" ng-controller="sidebarCtrl as vm">
+    <div class="sidebar flex" ng-class="{'sidebar-compressed':vm.compressed}">
       <div class="top flex">
         <div class="arrow" ng-click="vm.compressed=!vm.compressed">
           <img src="assets/images/double-angle-pointing-to-right.png" alt="">

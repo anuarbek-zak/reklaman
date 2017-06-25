@@ -1,13 +1,24 @@
-angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bannerService,countriesService,myService,userService,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
 	vm.countries = [];
 	vm.lists=[];
 	vm.gender={};
+	vm.banner = {"display_days":
+					[
+						{"id":0,"name":"Понедельник","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":1,"name":"Вторник","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":2,"name":"Среда","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":3,"name":"Четверг","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":4,"name":"Пятница","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":5,"name":"Суббота","checked":true,"from":Date.now(),"to":Date.now()},
+						{"id":6,"name":"Воскресенье","checked":true,"from":Date.now(),"to":Date.now()}
+					]};
 	vm.showCountries=false;
 	vm.selectedCountryCount=0;
 	vm.filters = {zones:{countries:[],regions:[],cities:[]}};
 	vm.audienceCount=0;
+	vm.company = $localStorage.company;
 
 	myService.getListOptions(function(data){
 		vm.gender = data.gender;
@@ -21,8 +32,6 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 		vm.statuses = data;
 	});	
 
-	getBanner();
-
 
 	function getAudience() {
 		userService.getUsers(vm.filters,0,0,function(data){
@@ -30,46 +39,22 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 		});			
 	}	
 	
-	function getBanner(){
-		bannerService.getBanner($stateParams.id,function(data){
-			vm.banner=data;
-			vm.filters = {zones:vm.banner.zones,
-							gender:vm.banner.gender,
-							age_from:vm.banner.age_from,
-							age_to:vm.banner.age_to
-			};
-			getAudience();
+	countriesService.getCountries(function(data){
+		vm.countries = data;
+		vm.countries.forEach(function(country) {
+			country.checked = false;
+			if(!country.retions)  return;
+			country.regions.forEach(function(region){
+				region.checked=false
+				if(!region.citites) return;
+				region.cities.forEach(function(city) {
+					city.checked = false;
+				})							
+			})
+		})	
+	})
 
-			countriesService.getCountries(function(data){
-				vm.countries = data;
-				vm.countries.forEach(function(country) {
-					if(vm.banner.zones.countries.indexOf(country.id)>-1) {
-						country.checked=true;
-						vm.selectedCountryCount++;
-						if(!country.regions) return;
-						country.regions.forEach(function(region){
-							if(vm.banner.zones.regions.indexOf(region.id)>-1){
-								region.checked=true;
-								vm.selectedCountryCount++;
-								if(!region.cities) return;
-								region.cities.forEach(function(city) {
-									if(vm.banner.zones.cities.indexOf(city.id)>-1) {
-										city.checked = true;
-										vm.selectedCountryCount++;
-									}else city.checked = false
-								})	
-							}else {
-								region.checked = false;
-							}
-						})
-					}else {
-						country.cheked=false;
-					}
-				})	
-			})			
-		});	
 
-	}
 
 	vm.saveBanner = function(){
 		bannerService.saveBanner(vm.banner);
@@ -98,7 +83,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 		vm.selectedCountryCount=0;
 		getAudience();
 	}
-	
+
 	vm.addCountry = function(place) {
 		place.checked=!place.checked;
 		vm.selectedCountryCount=0;
@@ -125,12 +110,12 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 
 	vm.sendToModeration = function() {
 		bannerService.sendToModeration(vm.file,vm.banner);
-		$state.go('reklamodatel_banners')
+		$state.go('company')
 	}
 
 	vm.saveAsDraft = function(){
 		bannerService.saveAsDraft(vm.banner);
-		$state.go('reklamodatel_banners')
+		$state.go('company')
 	}
 
 })

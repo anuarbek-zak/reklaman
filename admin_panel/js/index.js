@@ -1,8 +1,10 @@
 angular.module('admin_panel')
-.controller('headerAdminCtrl',function(myService,$rootScope,$localStorage) {
+.controller('mainAdminCtrl',function(myService,$rootScope,$localStorage) {
 	
 	var vm = this;
-	console.log('ap h')
+	vm.compressed=false;
+ 	vm.activeItem=1;
+
 	myService.getQuestionsCounter(function(data){
 		vm.questionsCounter = data;
 	});
@@ -11,11 +13,5 @@ angular.module('admin_panel')
 		vm.admin = data;
 		$localStorage.admin = vm.admin;
 	})	
-
-})
-.controller('sidebarCtrl',function($http) {
-	var vm = this;
-  vm.compressed=false;
- vm.activeItem=1;
 
 })

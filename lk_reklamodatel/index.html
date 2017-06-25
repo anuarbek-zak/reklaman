@@ -1,5 +1,5 @@
- <div class="lk_reklamodatel">
-    <header ng-controller="headerLkCtrl as vm">
+ <div class="lk_reklamodatel" ng-controller="mainLkCtrl as vm">
+    <header>
     <img class="logo" src="assets/images/logo.png" alt="reklaman">
     <div class="right-div flex">
       <span class="green bolder">Баланс: {{vm.company.balance}} <i class="fa fa-rub"></i></span>
@@ -11,19 +11,19 @@
     </div>
   </header>
   <div class="content flex">
-    <div class="sidebar flex" ng-class="{'sidebar-compressed':vm.compressed}" ng-controller="sidebarCtrl as vm">
+    <div class="sidebar flex" ng-class="{'sidebar-compressed':vm.compressed}" >
       <div class="top flex">
         <div class="arrow" ng-click="vm.compressed=!vm.compressed">
           <img src="assets/images/double-angle-pointing-to-right.png" alt="">
         </div>
-        <div ng-click="vm.activeItem=1" ng-class="{'active-item':vm.activeItem==1}" ui-sref="reklamodateli" class="item flex">
+        <div ng-click="vm.activeItem=1" ng-class="{'active-item':vm.activeItem==1}" ui-sref="company" class="item flex">
           <img src="assets/images/home.png" alt="megaphone">
           <div class="item-name" >
             <span >Главная</span>
 
           </div>
         </div>
-        <div ng-click="vm.activeItem=2" ng-class="{'active-item':vm.activeItem==2}" class="item flex" ui-sref="users" >
+        <div ng-click="vm.activeItem=2" ng-class="{'active-item':vm.activeItem==2}" class="item flex" ui-sref="my_banners" >
           <img src="assets/images/smartphone-white.png" alt="megaphone">
           <div class="item-name">
             <span>Мои баннеры</span>
@@ -38,7 +38,8 @@
 
           </div>
         </div>
-        <div ng-click="vm.activeItem=4" ng-class="{'active-item':vm.activeItem==4}" ui-sref="settings" class="item flex">
+        <div ng-click="vm.activeItem=4" ng-class="{'active-item':vm.activeItem==4||vm.newMessages>0}" ui-sref="lk_support" class="item flex">
+          <span ng-if="vm.newMessages>0" class="messages_count">{{vm.newMessages}}</span>
           <img src="assets/images/message-white.png" alt="megaphone">
           <div class="item-name">
             <span>Тикеты</span>

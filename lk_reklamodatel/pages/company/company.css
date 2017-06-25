@@ -1,3 +1,26 @@
+.company .my-notification{
+	color: #fff;
+	background: #3b9e1d;
+	padding: 20px;
+	width: 97%;
+	border-radius: 2px;
+	margin: 20px;
+	position: relative;
+}
+
+.company .my-notification .bold{
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.company .my-notification span{
+	position: absolute;
+	right: 25px;
+	top: 30%;
+	font-size: 35px;
+	cursor: pointer;
+}
+
 .company  .line-1{
 	justify-content: space-between;
 	-ms-align-items: center;
@@ -5,14 +28,19 @@
 	border-bottom: 1px solid #eaeaea;
 }
 
-.company .invisible{
-	opacity: 0;
-}
-
 .company .my_banners{
-	height: 450px;
+	display: table;
 	width: 420px;
 	min-width: 380px
+}
+
+.company .my_banners .title-icon{
+	width: 24px;
+}
+
+.company .my_banners td:first-child{
+	padding-top: 0;
+	vertical-align: middle;
 }
 
 .company .my_banners .line-1{
@@ -89,7 +117,8 @@
 	background: #3b9e1d
 }
 
-.company .my_banners tr:hover .bolder{
+.company .my_banners tr:hover .bolder,
+.company .my_banners tr:hover .fa{
 	color: #fff;
 }
 
@@ -142,6 +171,15 @@
 
 .company .my-balance .line-1{
 	border-bottom: 0;
+}
+
+.company .my-balance .title-div{
+	min-width: 170px;
+	
+}
+
+.company .my-balance .title-text{
+	vertical-align: middle;
 }
 
 .company .my-balance .bolder{
@@ -199,11 +237,17 @@
 .company .support .line-1 a{
 	color: #3b9e1d;
 	border-bottom: 1px dashed #3b9e1d;
+	cursor: pointer;
 }
 
 .company .support .operations .btn-gray{
 	width: 25px;
 	height: 25px;
+}
+
+.company .support .operations .btn-gray:first-child .fa{
+	font-family: inherit;
+	font-weight: bold;
 }
 
 .company .support td{

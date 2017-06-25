@@ -62,6 +62,18 @@ angular.module('app')
             })
     }
 
+    service.create = function(ticket,creator){
+        //method - (post)
+        //api - /api/ticket
+        //data - {ticket:ticket,creator:creator}
+        $http.post('/api/ticket',{ticket:ticket,creator:creator})
+            .success(function(data){
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.close = function(ticket_id){
     	//method - (post)
     	//api - /api/ticket/close/:ticket_id

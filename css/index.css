@@ -187,9 +187,7 @@ src: url('../assets/fonts/OpenSans/OpenSans-Bold_0.ttf');
 font-weight: bold;
 
 font-style: normal;
-
 }
-
 
 
 .flex{
@@ -216,6 +214,10 @@ font-style: normal;
 .bolder{
   font-weight: 800;
   color: #303030;
+}
+
+.invisible{
+  opacity: 0;
 }
 
 .bold{
@@ -853,6 +855,39 @@ td{
 }
 
 /*--------------------- CHECKBOX END ---------------------------------------------------*/
+
+
+
+/*--------------------- MODAL ---------------------------------------------------*/
+.my-modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120vh;
+  background: rgba(0,0,0,.5);
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.my-modal-content{
+  margin-top: -100px;
+  height: 460px;
+  width: 600px;
+  background: #fff;
+}
+
+.my-modal-content .title-text{
+  text-transform: none;
+}
+
+.my-modal-header{
+  justify-content: space-between;
+  padding: 20px;
+}
+/*--------------------- MODAL END ---------------------------------------------------*/
 
 
 

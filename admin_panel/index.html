@@ -20,14 +20,14 @@
         <div class="arrow" ng-click="vm.compressed=!vm.compressed">
           <img src="assets/images/double-angle-pointing-to-right.png" alt="">
         </div>
-        <div ui-sref="reklamodateli" class="item flex">
+        <div ng-click="vm.activeItem=1" ng-class="{'active-item':vm.activeItem==1}" ui-sref="reklamodateli" class="item flex">
           <img src="assets/images/megaphone-(1).png" alt="megaphone">
           <div class="item-name" >
             <span >Рекламодатели</span>
 
           </div>
         </div>
-        <div class="item flex" ui-sref="users" >
+        <div ng-click="vm.activeItem=2" ng-class="{'active-item':vm.activeItem==2}" class="item flex" ui-sref="users" >
           <img src="assets/images/user.png" alt="megaphone">
           <div class="item-name">
             <span>Пользователи</span>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="divider"><p>| | |</p></div>
-        <div ui-sref="settings" class="item flex">
+        <div ng-click="vm.activeItem=3" ng-class="{'active-item':vm.activeItem==3}"  ui-sref="settings" class="item flex">
           <img src="assets/images/settings2.png" alt="megaphone">
           <div class="item-name">
             <span>Настройки</span>
@@ -56,7 +56,7 @@
       </div>  
     </div>
 
-    <div>
+    <div class="main-content-footer">
       <div class="main-content" ui-view>    </div>  
 
       <footer>

@@ -16,5 +16,6 @@ angular.module('admin_panel')
 .controller('sidebarCtrl',function($http) {
 	var vm = this;
   vm.compressed=false;
+ vm.activeItem=1;
 
 })

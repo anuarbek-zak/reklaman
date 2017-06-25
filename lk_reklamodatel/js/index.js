@@ -11,5 +11,5 @@ angular.module('lk_reklamodatel')
 .controller('sidebarCtrl',function($http) {
 	var vm = this;
   	vm.compressed=false;
-
+  	vm.activeItem=1;
 })

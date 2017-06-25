@@ -309,6 +309,11 @@ header .logout:hover{
   padding-right: 0 !important;
 }
 
+ .sidebar .active-item{
+    color:#fbfbfb;
+    opacity: 1 !important
+ }
+
 
 .sidebar{
   width: 190px;
@@ -390,7 +395,7 @@ header .logout:hover{
   align-items: center;
   border-bottom: 1px solid  #353749;
   transition: 0s;
-  opacity: .8;
+  opacity: .7;
   text-align: center;
 }
 
@@ -858,8 +863,15 @@ td{
 
 
  /* -------------------    FOOTER ----------------------------*/
+.main-content-footer{
+  padding-bottom: 70px;
+  position: relative;
+}
+
 footer{
-  margin: 40px 20px 20px 20px; 
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 
 footer a{

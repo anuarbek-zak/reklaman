@@ -8,6 +8,10 @@
 	position: relative;
 }
 
+.company .title-text{
+	font-size: 17px;
+}
+
 .company .white-div{
 	margin: 10px;
 }
@@ -39,6 +43,11 @@
 
 .company .my_banners .line-1{
 	padding: 15px;
+}
+
+.company .my_banners .line-1 .btn-blue{
+	padding: 8px 12px;
+	font-size: 11px;
 }
 
 .company .my_banners td:not(:first-child){

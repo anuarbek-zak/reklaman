@@ -63,13 +63,13 @@
   width: 100%;
 }
 
-.my_banners  td{
+.my_banners  td.check{
   vertical-align: top;
   padding-top: 20px;
   text-align: center;
 }
 
-.my_banners td:first-child{
+.my_banners tdfirst{
   padding: 0;
   padding-top: 30px;
 }

@@ -34,7 +34,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="banner in vm.banners | filter:search">
-				<td ng-click="vm.check(banner)">
+				<td class="check" ng-click="vm.check(banner)">
 					<input id="{{$index}}" ng-class="{'active':banner.checked}" ng-model="banner.checked" class="checkbox-custom" type="checkbox">
 					<label  for="{{$index}}"></label>
 				</td>

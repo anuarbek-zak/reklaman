@@ -2,10 +2,14 @@
 	color: #fff;
 	background: #3b9e1d;
 	padding: 20px;
-	width: 97%;
+	width: 98%;
 	border-radius: 2px;
-	margin: 20px;
+	margin: 10px;
 	position: relative;
+}
+
+.company .white-div{
+	margin: 10px;
 }
 
 .company .my-notification .bold{
@@ -30,17 +34,7 @@
 
 .company .my_banners{
 	display: table;
-	width: 420px;
-	min-width: 380px
-}
-
-.company .my_banners .title-icon{
-	width: 24px;
-}
-
-.company .my_banners td:first-child{
-	padding-top: 0;
-	vertical-align: middle;
+	min-width: 380px;
 }
 
 .company .my_banners .line-1{
@@ -52,12 +46,21 @@
 	padding-right: 15px;
 }
 
+.company .my_banners td{
+	text-align: left;
+	vertical-align: middle;
+}
+
 .company table{
 	width: 100%;
 }
 
+.company  th{
+	padding-right: 0;
+}
+
 .company .table{
-	padding:0 15px;
+	padding:0 5px;
 }
 
 .company tr{
@@ -88,7 +91,7 @@
 }
 
 .company .my_banners td:first-child{
-	max-width: 150px;
+	max-width: 170px;
 }
 
 .company .my_banners .status-image div{
@@ -149,7 +152,7 @@
 
 .company .my-tooltip.right{
   left: 60%;
-  bottom: 20%;
+  bottom: 5%;
   width: 120px;
   text-align: center;
 }
@@ -160,13 +163,13 @@
 }
 
 .company .my-balance,.company .video{
-	padding: 15px;
+	padding: 10px;
 	margin-left: 0;
 	justify-content: space-between;
 }
 
 .company .video{
-	margin-right: 0;
+	margin-right: 10px;
 }
 
 .company .my-balance .line-1{
@@ -202,10 +205,6 @@
 	padding: 14px 15px;
 	font-size: 15px;
 	margin-top: 10px;
-}
-
-.company .video{
-	margin-right: 10px;
 }
 
 .company iframe{

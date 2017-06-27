@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('userUpdateCtrl',function(userService,countriesService,$state,$stateParams) {
+angular.module('admin_panel').controller('userUpdateCtrl',function(myService,userService,countriesService,$state,$stateParams) {
 	
 	var vm = this;
 	vm.countries = [];

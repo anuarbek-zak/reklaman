@@ -1,4 +1,4 @@
-.company .my-notification{
+.lk_company .my-notification{
 	color: #fff;
 	background: #3b9e1d;
 	padding: 20px;
@@ -8,20 +8,20 @@
 	position: relative;
 }
 
-.company .title-text{
+.lk_company .title-text{
 	font-size: 17px;
 }
 
-.company .white-div{
+.lk_company .white-div{
 	margin: 10px;
 }
 
-.company .my-notification .bold{
+.lk_company .my-notification .bold{
 	color: #fff;
 	margin-bottom: 10px;
 }
 
-.company .my-notification span{
+.lk_company .my-notification span{
 	position: absolute;
 	right: 25px;
 	top: 30%;
@@ -29,81 +29,81 @@
 	cursor: pointer;
 }
 
-.company  .line-1{
+.lk_company  .line-1{
 	justify-content: space-between;
 	-ms-align-items: center;
 	align-items: center;
 	border-bottom: 1px solid #eaeaea;
 }
 
-.company .my_banners{
+.lk_company .my_banners{
 	display: table;
 	min-width: 380px;
 }
 
-.company .my_banners .line-1{
+.lk_company .my_banners .line-1{
 	padding: 15px;
 }
 
-.company .my_banners .line-1 .btn-blue{
+.lk_company .my_banners .line-1 .btn-blue{
 	padding: 8px 12px;
 	font-size: 11px;
 }
 
-.company .my_banners td:not(:first-child){
+.lk_company .my_banners td:not(:first-child){
 	text-align: center;
 	padding-right: 15px;
 }
 
-.company .my_banners td{
+.lk_company .my_banners td{
 	text-align: left;
 	vertical-align: middle;
 }
 
-.company table{
+.lk_company table{
 	width: 100%;
 }
 
-.company  th{
+.lk_company  th{
 	padding-right: 0;
 }
 
-.company .table{
+.lk_company .table{
 	padding:0 5px;
 }
 
-.company tr{
+.lk_company tr{
 	border-bottom: 0;
 	height: 50px;
 }
 
-.company thead tr{
+.lk_company thead tr{
 	height: 20px;
 }
 
-.company th{
+.lk_company th{
 	color: #999999;
 	font-size: 12px;
 }
 
-.company td{
+.lk_company td{
 	position: relative;
 	padding: 0px;
 }
 
-.company td:first-child{
+.lk_company td:first-child{
 	padding-left: 10px;
 }
 
-.company .my_banners td:hover .my-tooltip{
+.lk_company .my_banners td:hover .my-tooltip{
 	display: block;
 }
 
-.company .my_banners td:first-child{
+.lk_company .my_banners td:first-child{
 	max-width: 170px;
 }
 
-.company .my_banners .status-image div{
+.lk_company .my_banners .status-image div{
 	width: 23px;
 	height: 23px;
 	margin-right: 0;
@@ -111,112 +111,112 @@
 }
 
 
-.company .my_banners td img{
+.lk_company .my_banners td img{
 	width: 23px;
 	height: 23px;
 }
 
-.company .img-hover{
+.lk_company .img-hover{
 	display: none;
 }
 
-.company .my_banners thead tr:hover{
+.lk_company .my_banners thead tr:hover{
 	background: #fff
 }
 
-.company .my_banners tr:hover{
+.lk_company .my_banners tr:hover{
 	color: #fff;
 	background: #3b9e1d
 }
 
-.company .my_banners tr:hover .bolder,
-.company .my_banners tr:hover .fa{
+.lk_company .my_banners tr:hover .bolder,
+.lk_company .my_banners tr:hover .fa{
 	color: #fff;
 }
 
-.company .my_banners tr:hover .img-hover{
+.lk_company .my_banners tr:hover .img-hover{
 	display: block;
 	width: 23px;
 	height: 23px;
 }
 
-.company .my_banners tr:hover .img-default{
+.lk_company .my_banners tr:hover .img-default{
 	display: none;
 }
 
-.company .my_banners .show-more{
+.lk_company .my_banners .show-more{
 	padding: 15px;
 }
 
-.company .my_banners .show-more .flex{
+.lk_company .my_banners .show-more .flex{
 	justify-content: center;
 	border-top: 2px solid #eaeaea;
 	padding-top: 15px;
 }
 
-.company .my_banners .show-more .flex:hover span{
+.lk_company .my_banners .show-more .flex:hover span{
 	color: #999;
 	cursor: pointer;
 }
 
-.company .my-tooltip.right{
-  left: 60%;
-  bottom: 5%;
+.lk_company .my-tooltip.right{
+  left: 80%;
+  bottom: 15%;
   width: 120px;
   text-align: center;
 }
 
-.company .my-tooltip.right::after,.company .my-tooltip.right::before {
+.lk_company .my-tooltip.right::after,.lk_company .my-tooltip.right::before {
   left:-3px;
   bottom: 40%;
 }
 
-.company .my-balance,.company .video{
+.lk_company .my-balance,.lk_company .video{
 	padding: 10px;
 	margin-left: 0;
 	justify-content: space-between;
 }
 
-.company .video{
+.lk_company .video{
 	margin-right: 10px;
 }
 
-.company .my-balance .line-1{
+.lk_company .my-balance .line-1{
 	border-bottom: 0;
 }
 
-.company .my-balance .title-div{
+.lk_company .my-balance .title-div{
 	min-width: 170px;
 	
 }
 
-.company .my-balance .title-text{
+.lk_company .my-balance .title-text{
 	vertical-align: middle;
 }
 
-.company .my-balance .bolder{
+.lk_company .my-balance .bolder{
 	margin-right: 10px;
 }
 
-.company .my-balance .arrow-right{
+.lk_company .my-balance .arrow-right{
 	cursor: pointer;
 	height: 15px;
 }
 
-.company .my-balance p{
+.lk_company .my-balance p{
 	font-size: 30px;
 	margin: 20px 0;
 	color: #303030;		
 }
 
-.company .my-balance .btn-green{
+.lk_company .my-balance .btn-green{
 	width: 100%;
 	padding: 14px 15px;
 	font-size: 15px;
 	margin-top: 10px;
 }
 
-.company iframe{
+.lk_company iframe{
 	width: 80%;
 	height: 130px;
 	border: 2px dashed #00aed0;
@@ -226,43 +226,43 @@
 	border-radius: 5px;
 }
 
-.company .support{
+.lk_company .support{
 	margin: 0;
 	margin-right: 10px;
 	font-family: 'OpenSans';
 }
 
-.company .support .title-icon{
+.lk_company .support .title-icon{
 	width: 24px;
 	height: 16px;
 }
 
-.company .support .line-1{
+.lk_company .support .line-1{
 	padding: 15px;
 	justify-content: space-between;
 }
 
-.company .support .line-1 a{
+.lk_company .support .line-1 a{
 	color: #3b9e1d;
 	border-bottom: 1px dashed #3b9e1d;
 	cursor: pointer;
 }
 
-.company .support .operations .btn-gray{
+.lk_company .support .operations .btn-gray{
 	width: 25px;
 	height: 25px;
 }
 
-.company .support .operations .btn-gray:first-child .fa{
+.lk_company .support .operations .btn-gray:first-child .fa{
 	font-family: inherit;
 	font-weight: bold;
 }
 
-.company .support td{
+.lk_company .support td{
 	max-width: 180px;
 }
 
-.company .support  .ask{
+.lk_company .support  .ask{
 	width: 95%;
 	margin: 0 auto;
 	border-top: 1px solid #eaeaea;

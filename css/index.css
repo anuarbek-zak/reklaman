@@ -602,17 +602,44 @@ td{
   vertical-align: middle;
 }
 
+.background-img{
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  z-index: 10;
+  background: #f8f8f8;
+  background-size: contain;
+   background-repeat: no-repeat;
+  background-position: center center;  
+}
+
 .input{
   padding: 10px 20px;
   border-radius: 3px;
   color: #7c7c7c;
   border: 1px solid #e1e1e1;
   padding-right: 90px;
-  background: #efefef url('../assets/images/magnifying-glass.png') no-repeat;
+  background: #efefef ;
+  background-repeat: no-repeat;
   background-position: 90% center;
   outline: none;
   cursor: pointer;
   font-size: 14px;
+}
+
+.input.input-select{
+    background-image: url('../assets/images/angle-bottom.png') ;
+}
+
+.input.input-search{
+    background-image: url('../assets/images/magnifying-glass.pn') ;
+}
+
+.hint-text{
+  font-size: 12px;
+  color:#7c7c7c;
 }
 
 .operations{

@@ -1,15 +1,15 @@
-angular.module('admin_panel').controller('reklamodateliCtrl',function(myService,$state,$stateParams) {
+angular.module('admin_panel').controller('reklamodateliCtrl',function(reklamodatelService,myService,$state,$stateParams) {
 	
 	var vm = this;
 
-	vm.limit = $stateParams.limit?parseInt($stateParams.limit):25;
-	vm.beginIndex =$stateParams.from?parseInt($stateParams.from):0;
+	vm.limit =25;
+	vm.beginIndex =0;
 	vm.companies=[];
 
 	getCompanies();
 
 	function getCompanies(){
-		myService.getCompanies(function(data){
+		reklamodatelService.getCompanies(vm.beginIndex,vm.limit,function(data){
 			vm.companies =vm.companies.length==0?data.companies:vm.companies.concat(data.companies);
 			vm.amount = data.amount;
 			vm.total_amount = data.total_amount;
@@ -22,8 +22,8 @@ angular.module('admin_panel').controller('reklamodateliCtrl',function(myService,
 	})	
 
 	vm.getNewData = function(){
-		if(vm.beginIndex+vm.limit>vm.amount) return;
-		vm.beginIndex+=vm.limit;				
+		if(vm.companies.length>=vm.amount) return;
+		vm.beginIndex=vm.companies.length+1;				
 		getCompanies();
 	}
 	

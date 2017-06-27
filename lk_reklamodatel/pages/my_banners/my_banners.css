@@ -1,14 +1,14 @@
-.my_banners{
+.lk_my_banners{
   font-size: 14px;
   min-width: 900px;
 }
 
-.my_banners .title-icon{
+.lk_my_banners .title-icon{
   width: 16px;
   height: 24px;
 }
 
-.my_banners .line-1{
+.lk_my_banners .line-1{
   height: 70px;
   padding:20px;
    -ms-align-items: center;
@@ -16,9 +16,9 @@
    justify-content: space-between; 
 }
 
-.my_banners .line-1 .instruction{
+.lk_my_banners .line-1 .instruction{
   border: 2px dashed #008eaa;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 11px;
   background: #fff;
   color: #008eaa; 
@@ -26,60 +26,64 @@
   font-size: 17px;
 }
 
-.my_banners .line-1 .flex{
+.lk_my_banners .line-1 .instruction .fa-play{
+  margin-right: 10px;
+}
+
+.lk_my_banners .line-1 .flex{
   -ms-align-items: center;
   align-items: center; 
 }
 
-.my_banners .line-1 .btn-blue{
+.lk_my_banners .line-1 .btn-blue{
   margin-left: 50px;
   padding: 10px 20px   
 }
 
-.my_banners .line-1 .btn-blue span{
+.lk_my_banners .line-1 .btn-blue span{
   font-size: 18px;
   vertical-align: middle;
   margin-right: 10px;
 }
  
-.my_banners .line-2{
+.lk_my_banners .line-2{
   padding:20px;
   -ms-align-items: center;
   align-items: center;
   justify-content: space-between;
 }
 
-.my_banners .line-2 .btn-gray{
+.lk_my_banners .line-2 .btn-gray{
   padding: 9px 18px;
   margin-right: 15px;
 }
 
-.my_banners .line-2 .input{
+.lk_my_banners .line-2 .input{
  border: none;
  padding: 9px 24px;
 }
 
-.my_banners table{
+.lk_my_banners table{
   width: 100%;
 }
 
-.my_banners  td.check{
+.lk_my_banners  td.check{
   vertical-align: top;
   padding-top: 20px;
   text-align: center;
 }
 
-.my_banners tdfirst{
+.lk_my_banners tdfirst{
   padding: 0;
   padding-top: 30px;
 }
 
-.my_banners table td>.flex{
+.lk_my_banners table td>.flex{
   -ms-align-items: center;
   align-items: center;
 }
 
-.my_banners table .photo{
+.lk_my_banners table .photo{
   min-width: 55px;
   height: 100px;
   background-repeat: no-repeat;
@@ -87,7 +91,7 @@
   background-position: center;
 }
 
-.my_banners .banner-info{
+.lk_my_banners .banner-info{
   justify-content: space-between;
   padding: 10px;
   padding-top: 0;
@@ -95,39 +99,39 @@
   text-align: left;
 }
 
-.my_banners .banner-info .green{
+.lk_my_banners .banner-info .green{
   margin: 10px 0;
 }
 
-.my_banners table .fa-rub{
+.lk_my_banners table .fa-rub{
   color: #595959;
   font-size: 13px;
 }
-.my_banners .banner-info .people{
+.lk_my_banners .banner-info .people{
   font-size: 12px;
   color: #646464;
 }
 
-.my_banners table .status button{
+.lk_my_banners table .status button{
   width: 120px;
   padding: 9px 15px;
 }
 
-.my_banners .status{
+.lk_my_banners .status{
   max-width: 130px;
     font-size: 12px;
 }
 
-.my_banners .status .btn-blue:hover{
+.lk_my_banners .status .btn-blue:hover{
   max-width: 130px;
     font-size: 12px;
 }
 
-.my_banners .status .reason p:first-child{
+.lk_my_banners .status .reason p:first-child{
   color: #7c7c7c;
   margin-top: 15px;
 }
 
-.my_banners .operations{
+.lk_my_banners .operations{
   padding-right: 5px;
 } 

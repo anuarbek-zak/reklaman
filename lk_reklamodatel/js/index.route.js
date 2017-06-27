@@ -35,6 +35,13 @@ angular.module('lk_reklamodatel')
                 controller:'lkSupportCtrl',
                 controllerAs:'vm',
                 parent:'lk_reklamodatel'
+            })
+            .state('account_settings', {
+                url: '/account_setting',
+                templateUrl: 'lk_reklamodatel/pages/account_settings/account_settings.html',
+                controller:'accountSettingsCtrl',
+                controllerAs:'vm',
+                parent:'lk_reklamodatel'
             });
         $urlRouterProvider.otherwise('/company');
     });

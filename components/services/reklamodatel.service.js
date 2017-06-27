@@ -15,7 +15,7 @@ angular.module('app')
             })
     }
 
-    service.getCompanies = function(cb){
+    service.getCompanies = function(from,limit,cb){
         //method - (post)
         //api - /api/companies
         //data - {from:from,limit:limit}
@@ -28,7 +28,7 @@ angular.module('app')
                 })
     }
 
-    service.getCompany = function(cb){
+    service.getCompany = function(id,cb){
         //method - (get)
         //api - /api/company/:id
         //params - compamy id
@@ -86,44 +86,6 @@ angular.module('app')
             })
     }
 
-    service.update = function(bannersToUpdate){
-       //method - (put)
-        //api - /api/banners/
-        //data -   {(bannersToUpdate:(bannersToUpdate}
-        $http.put('/api/banners/',{bannersToUpdate:bannersToUpdate})
-            .success(function(data){
-                cb(data);
-                })
-            .error(function(err){
-                console.log(err);
-            })
-        }
-
-    service.delete = function(bannersToRemove){
-        //method - (delete)
-        //api - '/api/banners/
-        //data -   {bannersToRemove:bannersToRemove}
-        $http.delete('/api/banners/',{bannersToRemove:bannersToRemove})
-            .success(function(data){
-                cb(data);
-                })
-            .error(function(err){
-                console.log(err);
-            })
-    }
-
-    service.copy = function(company_id,bannersToCopy,cb){
-        //method - (post)
-        //api - '/api/banners/copy
-        //data -   {company_id:company_id,bannersToCopy:bannersToCopy}
-        $http.post('/api/banners/copy',{company_id:company_id,bannersToCopy:bannersToCopy})
-            .success(function(newBanners){
-                cb(newBanners);
-                })
-            .error(function(err){
-                console.log(err);
-            })
-    }
 
     service.deleteFromRequests = function(company_id,addToCompaniesList){
         //method - (post)
@@ -136,6 +98,20 @@ angular.module('app')
             .error(function(err){
                 console.log(err);
             })
+    }
+
+    service.update = function(file,company) {
+        //api - '/api/reklamodatel
+        //data -   {file:file,banner:banner}
+       Upload.upload({
+            url: '/api/reklamodatel/update',
+            data: {file:file,company:company}
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+        });
     }
 		
     return service;

@@ -1,104 +1,104 @@
-.settings table{
+.ap_settings table{
 	width: 100%;
 }
 
-.settings .request-testing .title-div{
+.ap_settings .request-testing .title-div{
 	margin-bottom: 30px;
 }
 
-.settings .request-testing{
+.ap_settings .request-testing{
 	padding: 20px;
 	padding-right: 60px;
 }
 
-.settings .request-testing label{
+.ap_settings .request-testing label{
 	display: block;
 	margin-bottom: 10px;
 }
 
-.settings .request-testing .input{
+.ap_settings .request-testing .input{
 	width: 100%;
 	margin-bottom: 15px;
 }
 
-.settings .request-testing .data-length{
+.ap_settings .request-testing .data-length{
 	margin-top: 25px;
 	margin-bottom: 10px;
 }
 
-.settings .request-testing pre{
+.ap_settings .request-testing pre{
 	width: 100%;
 	max-width: 250px;
 	height: 40px;
 	overflow: auto;
 }
 
-.settings .countries_managing .title-div{
+.ap_settings .countries_managing .title-div{
 	padding: 20px;
 }
 
-.settings .countries_managing .buttons{
+.ap_settings .countries_managing .buttons{
 	padding: 20px;
 }
 
-.settings .countries_managing .buttons button{
+.ap_settings .countries_managing .buttons button{
 	padding: 8px 14px
 }
 
-.settings .countries_managing .buttons button .fa{
+.ap_settings .countries_managing .buttons button .fa{
 	padding-right: 10px;
 	font-size: 10px;
 }
 
-.settings .countries_managing .btn-blue:hover{
+.ap_settings .countries_managing .btn-blue:hover{
 	background: #008eaa
 }
 
-.settings .countries_managing td:last-child{
+.ap_settings .countries_managing td:last-child{
 	padding-right: 10px;
 }
 
-.settings .countries_managing td .btn-gray{
+.ap_settings .countries_managing td .btn-gray{
 	padding: 7px 14px
 }
 
-.settings .countries_managing td .btn-gray:hover{
+.ap_settings .countries_managing td .btn-gray:hover{
 	background: #37951b;
 	color: #fff;
 }
 
 
-.settings .line-2 .row-1{
+.ap_settings .line-2 .row-1{
 	justify-content: space-between;
 	padding:25px 20px;
 }
 
 
-.settings .line-2 .row-1 .input{
+.ap_settings .line-2 .row-1 .input{
 	border: none
 }
 
-.settings .line-2 table td{
+.ap_settings .line-2 table td{
 	max-width: 200px;
 	padding-left: 10px;
 }
 
-.settings .line-2 table td:first-child{
+.ap_settings .line-2 table td:first-child{
 	max-width: 350px;
 	padding-left: 10px;
 }
 
-.settings .line-2 table .operations{
+.ap_settings .line-2 table .operations{
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-.settings .my-modal-content button{
+.ap_settings .my-modal-content button{
 	padding: 5px 8px;
 }
 
 
-.settings .my-modal-body .input{
+.ap_settings .my-modal-body .input{
 	width: 95%;
 	margin-left: 2.5%;
 	background-position: 97% center;
@@ -106,49 +106,49 @@
 	border: none;
 }
 
-.settings-modal{
+.ap_settings-modal{
 	width: 500px;
 }
 
-.settings-modal .my-modal-body .input{
+.ap_settings-modal .my-modal-body .input{
 	margin-top: 10px;
 	margin-bottom: 20px;
 	background-image: none;
 	border: 1px solid #e1e1e1
 }
 
-.settings-modal .my-modal-body textarea{
+.ap_settings-modal .my-modal-body textarea{
 	height: 120px;
 	resize: none;
 }
 
-.settings .my-modal-body label{
+.ap_settings .my-modal-body label{
 	margin-left: 2.5%;
 }
 
-.settings .my-modal-body .btn-blue{
+.ap_settings .my-modal-body .btn-blue{
 	padding: 10px 24px;
 	margin-left: 2.5%;	
 	
 }
 
-.settings .my-modal-body .table-container{
+.ap_settings .my-modal-body .table-container{
 	overflow: auto;
 	margin-bottom: 20px;
 	height: 280px;
 }
 
-.settings .my-modal-body table .add:hover{
+.ap_settings .my-modal-body table .add:hover{
 	background: #37951b;
 	color: #fff;
 }
 
-.settings .my-modal-body table .added{
+.ap_settings .my-modal-body table .added{
 	font-size: 12px;
 	margin-right: 10px;
 }
 
-.settings .my-modal-body .show-more{
+.ap_settings .my-modal-body .show-more{
 	width: 250px;
 	margin: 0 auto;
 }

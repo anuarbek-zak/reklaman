@@ -1,4 +1,4 @@
-.payments .line-1{
+.ap_payments .line-1{
   justify-content: space-between;
   -ms-align-items: center;
   align-items: center;
@@ -7,7 +7,7 @@
 
 }
 
-.payments .line-2{
+.ap_payments .line-2{
   justify-content: space-between;
   -ms-align-items: center;
   align-items: center;
@@ -15,56 +15,56 @@
   font-weight: normal;
 }
 
-.payments .line-2 span{
+.ap_payments .line-2 span{
   font-weight: 500;
   color: #404040;
 }
 
-.payments .line-3{
+.ap_payments .line-3{
   -ms-align-items: center;
   align-items: center;
   padding: 20px;
   color: #303030;
 }
 
-.payments .line-3 .input{
+.ap_payments .line-3 .input{
   padding: 11px 17px;
   border: 1px solid #e1e1e1;
   padding-right: 50px;
   cursor: pointer;
 }
 
-.payments datepicker{
+.ap_payments datepicker{
   width: 240px;
 }
 
-.payments .line-3 p{
+.ap_payments .line-3 p{
   margin: 0 20px; 
 }
 
-.payments .line-3 p:first-child{
+.ap_payments .line-3 p:first-child{
   margin-left: 0;
 }
 
-.payments td.summ{
+.ap_payments td.summ{
   font-weight: bold;
 }
 
-.payments .with-photo .user-photo{
+.ap_payments .with-photo .user-photo{
   margin-right: 10px;
   background: url('../assets/images/kfc.png');
   background-size: cover;
   background-position: center center;
 }
 
-.payments .status{
+.ap_payments .status{
   color: #008eaa;
 }
 
-.payments td.green{
+.ap_payments td.green{
   color: #3b9e1d;
 }
 
-.payments td:last-child .btn-green{
+.ap_payments td:last-child .btn-green{
    padding: 7px 16px;
 }

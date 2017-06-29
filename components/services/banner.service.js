@@ -30,9 +30,10 @@ angular.module('app')
             })
     }
 
-    service.getBannerGraph = function(id,cb){
+    service.getBannerGraph = function(id,from,to,cb){
         //method - (get)
         //api - '/api/banner/:id/graph
+        //data - {from:from,to:to}
         $http.get('jsons/banner_graph.json')
             .success(function(data){
                 cb(data);

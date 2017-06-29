@@ -3,7 +3,7 @@
 	"graphs":{
 				"transitions":{
 					"label":"Переходы",
-					"values":[100, 150, 230, 370,480,610]	
+					"values":[100, 150, 230, 370,480,210]	
 					},
 				"impressions":	{
 					"label":"Показы",

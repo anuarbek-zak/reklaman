@@ -1,46 +1,49 @@
 angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($stateParams,$localStorage,bannerService) {
 	
 	var vm = this,
-	colors = ['rgb(0, 142, 170)','#37951b','#f7d61c','#c95c36','#d8d8d8'];
+	colors = ['#008eaa','#37951b','#f7d61c','#c95c36','#d8d8d8'];
 
 	vm.company  = $localStorage.company;
 
 	bannerService.getBanner($stateParams.id,function(data) {
 		vm.banner = data;
 		vm.date_from = vm.banner.created_at;
-		vm.date_to = vm.banner.current_time; // current time from server		
+		vm.date_to = vm.banner.current_time; // current time from server
+		vm.getBannerGraph();		
 	})
 
 
 	
 	
 	vm.getBannerGraph = function(){
-		bannerService.getBannerGraph($stateParams.id,function (data) {
+		console.log(vm.date_from,vm.date_to);
+		bannerService.getBannerGraph($stateParams.id,vm.date_from,vm.date_to,function (data) {
 			vm.graphs = data;
 			vm.drawnGraphs=[];
 			data.graphs.ctr={values:[],label:''};
 			data.graphs.ctr.label = 'CTR';
 			for(var i=0;i<data.graphs.transitions.values.length;i++){
-				data.graphs.ctr.values.push(data.graphs.transitions.values[i]/data.graphs.impressions.values[i]);
+				data.graphs.ctr.values.push((data.graphs.transitions.values[i]/data.graphs.impressions.values[i])*100);
 			}
 			
-			vm.drawGraph("transitions")
+			vm.drawGraph("transitions",'#37951b')
+			vm.drawGraph("impressions",'#008eaa')
 		})
 	}
 
-	vm.getBannerGraph();	
 
-	vm.drawGraph = function(graphName) {
-		var addToDrawnGraphsh = true;
+
+	vm.drawGraph = function(graphName,color) {
+		var addToDrawnGraphs = true;
 		vm.drawnGraphs.forEach(function(graph,i) {
 			if(graph.custom_name==graphName) {
 				vm.drawnGraphs.splice(i,1);
-				addToDrawnGraphsh = false;
+				addToDrawnGraphs = false;
 				Plotly.newPlot('lk_line_graph', vm.drawnGraphs, layout,{displayModeBar: false});
 			}
 		})
 		
-		if(!addToDrawnGraphsh) return;
+		if(!addToDrawnGraphs) return;
 
 		var trace = {
 				custom_name:graphName,
@@ -50,7 +53,7 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 				mode: 'lines',
 				name: vm.graphs.graphs[graphName].label,
 				line: {
-					color: colors[vm.drawnGraphs.length],
+					color: color,
 					width: 3
 				}
 			};
@@ -65,10 +68,10 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 	}
 
 
-		drawDonut('lk_likes_donut', ['Понарвилось','Не ответили' ,'Ewe chec to'], [62.5,30,7.5]);	
+	drawDonut('lk_likes_donut', ['Понарвилось','Не ответили' ,'Ewe chec to'], [62.5,30,7.5]);	
 
 
-	function drawDonut(id,labels,values) {
+	function drawDonut(	id,labels,values) {
 		var data = [{
 			values:values,
 			labels:labels,

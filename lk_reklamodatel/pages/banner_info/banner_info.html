@@ -89,20 +89,20 @@
 		</div>
 		<div class="line-2 flex">
 			<div class="flex">
-				<button ng-click="vm.drawGraph('transitions')" class="btn-blue">Переходы</button>
-				<button ng-click="vm.drawGraph('impressions')" class="btn-green">Показы</button>
+				<button ng-click="vm.drawGraph('transitions','#37951b')" class="btn-green">Переходы</button>
+				<button ng-click="vm.drawGraph('impressions','#008eaa')" class="btn-blue">Показы</button>
 			</div>
 			<div class="flex toggler">
-				<p ng-click="vm.drawGraph('ctr')">CTR</p>
-				<p ng-click="vm.drawGraph('spent')">Потрачено, <i class="fa fa-rub"></i> </p>
+				<p ng-click="vm.drawGraph('ctr','#f7d61c')">CTR</p>
+				<p ng-click="vm.drawGraph('spent','#c95c36')">Потрачено, <i class="fa fa-rub"></i> </p>
 			</div>
 			<div class="flex date">
 				<datepicker   date-week-start-day="1"  datepicker-mobile="true"  date-format="dd-MM-yyyy" >
-					<input placeholder="13 ноября 2017" ng-model="vm.date_from"   type="text" class="input">
+					<input ng-change="vm.getBannerGraph()" placeholder="13 ноября 2017" ng-model="vm.date_from"   type="text" class="input">
 				</datepicker>
 				<span class="divider-line">-</span>
-				<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
-					<input placeholder="13 декабря 2017" ng-model="vm.date_to"   type="text" class="input">
+				<datepicker  date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+					<input ng-change="vm.getBannerGraph()"    placeholder="13 декабря 2017" ng-model="vm.date_to"   type="text" class="input">
 				</datepicker>
 			</div>	
 		</div>
@@ -164,7 +164,7 @@
 					<p><i class="fa fa-circle"></i> Понравилось - <span class="bolder">37,5%</span></p>
 					<p><i class="fa fa-circle"></i> Не ответили - <span class="bolder">50,5%</span></p>
 				</div>	
-				<div  id="lk_likes_donut"></div>
+				<div  id="lk_age_donut"></div>
 			</div>
 		</div>
 		<div class="genders white-div">
@@ -181,7 +181,7 @@
 					<p><i class="fa fa-circle"></i> Мужчины - <span class="bolder">37,5%</span></p>
 					<p><i class="fa fa-circle"></i> Женщины - <span class="bolder">50,5%</span></p>
 				</div>				
-				<div  id="lk_genders_donut"></div>
+				<div  id="lk_cities_donut"></div>
 			</div>
 		</div>
 	</div>

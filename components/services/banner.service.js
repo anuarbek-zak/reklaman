@@ -30,6 +30,18 @@ angular.module('app')
             })
     }
 
+    service.getBannerGraph = function(id,cb){
+        //method - (get)
+        //api - '/api/banner/:id/graph
+        $http.get('jsons/banner_graph.json')
+            .success(function(data){
+                cb(data);
+             })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.getStatuses = function(cb){
         //method - (get)
         //api - '/api/banner/statuses

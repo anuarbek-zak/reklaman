@@ -24,7 +24,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="banner in vm.banners">
+						<tr ui-sref="banner_info({id:banner.id})" ng-repeat="banner in vm.banners">
 							<td class="bolder">
 								{{banner.name | limitTo:50}}
 							<span ng-if="banner.name.length>50">...</span>

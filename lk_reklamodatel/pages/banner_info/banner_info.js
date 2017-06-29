@@ -1,144 +1,97 @@
-angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function(reklamodatelService,$localStorage,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($stateParams,$localStorage,bannerService) {
 	
-	var vm = this;
+	var vm = this,
+	colors = ['rgb(0, 142, 170)','#37951b','#f7d61c','#c95c36','#d8d8d8'];
 
-	vm.limit = 5;
-	vm.beginIndex =0;
-	vm.amount=0;
-	vm.banners=[];
-	vm.allSelected = false;
-	vm.isButtonsActive=0;
 	vm.company  = $localStorage.company;
 
-	getBannersOfCompany();
-	drawGraph();
-	drawLikes();
-	drawGenders();
+	bannerService.getBanner($stateParams.id,function(data) {
+		vm.banner = data;
+		vm.date_from = vm.banner.created_at;
+		vm.date_to = vm.banner.current_time; // current time from server		
+	})
 
-	function drawGraph() {
-		trace1 = {
-			type: 'scatter',
-			x: ['22.05.17', '23.05.17', '24.05.17','25.05.17','26.05.17','27.05.17'],
-			y: [100, 150, 230, 370,480,610],
-			mode: 'lines',
-			name: 'Показы',
-			line: {
-				color: 'rgb(55, 149, 27)',
-				width: 3
+
+	
+	
+	vm.getBannerGraph = function(){
+		bannerService.getBannerGraph($stateParams.id,function (data) {
+			vm.graphs = data;
+			vm.drawnGraphs=[];
+			data.graphs.ctr={values:[],label:''};
+			data.graphs.ctr.label = 'CTR';
+			for(var i=0;i<data.graphs.transitions.values.length;i++){
+				data.graphs.ctr.values.push(data.graphs.transitions.values[i]/data.graphs.impressions.values[i]);
 			}
-		};
+			
+			vm.drawGraph("transitions")
+		})
+	}
 
-		trace2 = {
-			type: 'scatter',
-			x: ['22.05.17', '23.05.17', '24.05.17','25.05.17','26.05.17','27.05.17'],
-			y: [120, 90, 150, 520,320,220],
-			mode: 'lines',
-			name: 'Переходы',
+	vm.getBannerGraph();	
 
-			line: {
-				color: 'rgb(0, 153, 153)',
-				width: 3
+	vm.drawGraph = function(graphName) {
+		var addToDrawnGraphsh = true;
+		vm.drawnGraphs.forEach(function(graph,i) {
+			if(graph.custom_name==graphName) {
+				vm.drawnGraphs.splice(i,1);
+				addToDrawnGraphsh = false;
+				Plotly.newPlot('lk_line_graph', vm.drawnGraphs, layout,{displayModeBar: false});
 			}
-		};
+		})
+		
+		if(!addToDrawnGraphsh) return;
 
+		var trace = {
+				custom_name:graphName,
+				type: 'scatter',
+				x: vm.graphs.days,
+				y: vm.graphs.graphs[graphName].values,
+				mode: 'lines',
+				name: vm.graphs.graphs[graphName].label,
+				line: {
+					color: colors[vm.drawnGraphs.length],
+					width: 3
+				}
+			};
+		vm.drawnGraphs.push(trace);		
 		var layout = {
 			width: 850,
-			height: 380
+			height: 380,
+			margin: {l: 40,r: 10, b: 50,t: 10,pad: 4}
 		};
 
-		var data = [trace1, trace2];
-
-		Plotly.newPlot('lk_line_graph', data, layout,{displayModeBar: false});
+		Plotly.newPlot('lk_line_graph', vm.drawnGraphs, layout,{displayModeBar: false});
 	}
 
-	function drawLikes() {
+
+		drawDonut('lk_likes_donut', ['Понарвилось','Не ответили' ,'Ewe chec to'], [62.5,30,7.5]);	
+
+
+	function drawDonut(id,labels,values) {
 		var data = [{
-			values: [62.5,30,7.5],
-			labels: ['Понарвилось','Не ответили' ,'Ewe chec to'],
+			values:values,
+			labels:labels,
 			hoverinfo: 'label+percent',
 			hole: .5,
 			type: 'pie',
 			textinfo:'none',
 			marker: {
-				colors: ['rgb(0, 142, 170)','#37951b','#f7d61c','#d8d8d8','#c95c36']
+				colors: colors
 			}
 		}];
 
 		var layout = {
-			annotations: [
-			{
-				font: {
-					size: 20
-				},
-				showarrow: false,
-				text: '',
-				x: 0.9,
-				y: 0.9
-			},
-			],
 			showlegend: false,
 			height: 140,
 			width: 140,
-			margin: {
-				l: 0,
-				r: 0,
-				b: 0,
-				t: 0,
-				pad: 4
-			}
+			margin: {l: 0,r: 0,	b: 0,t: 0,pad: 4}
 		};
 
-		Plotly.newPlot('lk_likes_donut', data, layout,{displayModeBar: false});
+		Plotly.newPlot(id, data, layout,{displayModeBar: false});
 	}
 
-	function drawGenders() {
-		var data = [{
-			values: [62.5,37.5],
-			labels: ['Мужчины','Женщины' ],
-			hoverinfo: 'label+percent',
-			hole: .5,
-			type: 'pie',
-			textinfo:'none',
-			marker: {
-				colors: ['rgb(0, 142, 170)','#37951b','#f7d61c','#d8d8d8','#c95c36']
-			}
-		}];
 
-		var layout = {
-			annotations: [
-			{
-				font: {
-					size: 20
-				},
-				showarrow: false,
-				text: '',
-				x: 0.9,
-				y: 0.9
-			},
-			],
-			showlegend: false,
-			height: 140,
-			width: 140,
-			margin: {
-				l: 0,
-				r: 0,
-				b: 0,
-				t: 0,
-				pad: 4
-			}
-		};
-
-		Plotly.newPlot('lk_genders_donut', data, layout,{displayModeBar: false});
-	}
-	
-
-
-	function getBannersOfCompany(){
-		reklamodatelService.getBannersOfCompany(vm.company.id,vm.beginIndex,vm.limit,function(data){
-			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
-			vm.amount = data.amount;
-		});	
-	}
 
 	
 })

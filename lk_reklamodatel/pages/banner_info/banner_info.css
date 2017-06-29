@@ -140,8 +140,12 @@
   text-transform: none;
 }
 
-.lk_banner_statistics .line-2 .btn-green{
+.lk_banner_statistics .statistics-1 .line-2 .btn-green{
   margin-left: 15px;
+}
+
+.lk_banner_statistics .statistics-1 .line-1{
+  margin-bottom: 0;
 }
 
 .lk_banner_statistics .date{
@@ -163,12 +167,13 @@
 .lk_banner_statistics .line-2 .toggler p{
   margin: 0 20px;
   font-size: 13px;
-  color: #303030;
+  color: #303030;;
+  cursor: pointer;  
 } 
 
 .lk_banner_statistics .graph{
   width: 100%;
-  margin-top: -20px;
+  margin-top: -30px;
   height: 400px;
   padding: 10px;
 }

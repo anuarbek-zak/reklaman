@@ -3,7 +3,7 @@
 		
 		<div class="title-div">
 			<img src="assets/images/graph.png" class="title-icon">
-			<h2 class="title-text">баннер «ЛОНГЕР СЫРНЫЙ»</h2>
+			<h2 class="title-text">баннер «{{vm.banner.name}}»</h2>
 		</div>
 		
 		<button class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
@@ -22,41 +22,41 @@
 			</tr>			
 		</thead>
 		<tbody>
-			<tr ng-repeat="banner in vm.banners | limitTo:1">
+			<tr>
 				<td ui-sref="banner_info" >					
 					<div class="flex">
-						<div class="photo" set-background-img src="{{banner.photo}}"></div>
+						<div class="photo" set-background-img src="{{vm.banner.photo}}"></div>
 						<div class="banner-info flex-column">
-							<p class="green bolder name">{{banner.name}}</p>
+							<p class="green bolder name">{{vm.banner.name}}</p>
 							<p class="description bold">
-								{{banner.gender.name}},{{banner.age_from}}-{{banner.age_to}} лет,
+								{{vm.banner.gender.name}},{{vm.banner.age_from}}-{{vm.banner.age_to}} лет,
 								<span ng-repeat="city in banner.cities | limitTo:3">{{city.name}}
 									<span ng-if="$index+1<banner.cities.length">, </span>									
 								</span>
-								<span ng-if="banner.cities.length>3">и еще {{banner.cities.length-3}} города(-ов)</span>
+								<span ng-if="banner.cities.length>3">и еще {{vm.banner.cities.length-3}} города(-ов)</span>
 							</p>
-							<p class="people">{{banner.appropriate_users}} человек</p>
-							<a target="_blank" href="{{banner.link}}" class="link green">{{banner.link}}</a>
+							<p class="people">{{vm.banner.appropriate_users}} человек</p>
+							<a target="_blank" href="{{vm.banner.link}}" class="link green">{{vm.banner.link}}</a>
 						</div>
 					</div>
 				</td>
 				<td class="status" >
-					<button class="btn-gray" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{banner.status.name}}</button>
+					<button class="btn-gray" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{vm.banner.status.name}}</button>
 					<div ng-if="banner.status.reason" class="reason">
 						<p>Причина:</p>
-						<p>{{banner.status.reason }}</p>
+						<p>{{vm.banner.status.reason }}</p>
 					</div>
 				</td>
-				<td>{{banner.cost}} <i class="fa fa-rub"></i></td>
-				<td>{{banner.consumption}} <i class="fa fa-rub"></i></td>
-				<td>{{banner.displays}}</td>
+				<td>{{vm.banner.cost}} <i class="fa fa-rub"></i></td>
+				<td>{{vm.banner.consumption}} <i class="fa fa-rub"></i></td>
+				<td>{{vm.banner.audience}}</td>
 				<td>
-					{{banner.saved}}
-					<p class="green">14.13%</p>	
+					{{vm.banner.saved}}
+					<p class="green">{{vm.banner.saved_percent}}%</p>	
 				</td>
 				<td>
-					{{banner.transition}}
-					<p class="green">7.11%</p>	
+					{{vm.banner.transitions}}
+					<p class="green">{{vm.banner.transitions_percent}}%</p>	
 				</td>
 				<td class="operations">
 					<div ui-sref="lk_banner_update({id:banner.id})" class="btn-gray">
@@ -85,29 +85,29 @@
 				<img src="assets/images/graph.png" class="title-icon">
 				<h2 class="title-text">Статистика</h2>
 			</div>		
-			<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+			<button ng-click="vm.getBannerGraph()" class="reload"><img src="assets/images/reload.png" alt=""></button>
 		</div>
 		<div class="line-2 flex">
 			<div class="flex">
-				<button class="btn-blue">Переходы</button>
-				<button class="btn-green">Показы</button>
+				<button ng-click="vm.drawGraph('transitions')" class="btn-blue">Переходы</button>
+				<button ng-click="vm.drawGraph('impressions')" class="btn-green">Показы</button>
 			</div>
 			<div class="flex toggler">
-				<p>CTR</p>
-				<p>Потрачено, <i class="fa fa-rub"></i> </p>
+				<p ng-click="vm.drawGraph('ctr')">CTR</p>
+				<p ng-click="vm.drawGraph('spent')">Потрачено, <i class="fa fa-rub"></i> </p>
 			</div>
 			<div class="flex date">
-				<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-					<input placeholder="13 ноября 2017"   type="text" class="input">
+				<datepicker   date-week-start-day="1"  datepicker-mobile="true"  date-format="dd-MM-yyyy" >
+					<input placeholder="13 ноября 2017" ng-model="vm.date_from"   type="text" class="input">
 				</datepicker>
 				<span class="divider-line">-</span>
-				<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-					<input placeholder="13 декабря 2017"   type="text" class="input">
+				<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+					<input placeholder="13 декабря 2017" ng-model="vm.date_to"   type="text" class="input">
 				</datepicker>
 			</div>	
 		</div>
 		<div class="graph">
-			<div id="lk_line_graph" width="100%" height="100%"></div>
+			<div id="lk_line_graph"></div>
 		</div>
 	</div>
 

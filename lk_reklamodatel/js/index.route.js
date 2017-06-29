@@ -58,7 +58,7 @@ angular.module('lk_reklamodatel')
                 parent:'lk_reklamodatel'
             })
             .state('banner_info', {
-                url: '/banner_info',
+                url: '/banner_info/:id',
                 templateUrl: 'lk_reklamodatel/pages/banner_info/banner_info.html',
                 controller:'bannerInfoCtrl',
                 controllerAs:'vm',

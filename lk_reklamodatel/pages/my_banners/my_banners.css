@@ -26,6 +26,12 @@
   font-size: 17px;
 }
 
+.lk_my_banners .line-1 .instruction:hover{
+  background: #00aed0;
+  border-color: transparent;
+  color: #fff;
+}
+
 .lk_my_banners .line-1 .instruction .fa-play{
   margin-right: 10px;
 }

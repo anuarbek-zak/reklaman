@@ -62,7 +62,7 @@
 		 	},
 	"city":{"id":1,"name":"Москва"},
 	"referal":{"id":1,"email":"root@reklaman.ru"},
-	"registrated_at":"2017-05-15",
+	"registrated_at":"1498630512714",
 	"birth_date":"13 сентября 2017",
 	"balance":27000
 }

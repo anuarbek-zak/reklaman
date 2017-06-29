@@ -44,7 +44,7 @@
 					<span ng-if="company.email.length>28">...</span>
 				</td>
 				<td>{{company.phone}}</td>
-				<td>{{company.registrated_at}}</td>
+				<td>{{company.registrated_at | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td>{{company.balance}}</td>
 				<td class="operations">
 					<div class="btn-gray">

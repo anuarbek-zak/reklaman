@@ -47,10 +47,10 @@
 					<label for="{{$index}}"></label>
 				</td>
 				<td class="bolder">{{withdraw.balance}}</td>
-				<td>{{withdraw.created_at}}</td>
+				<td>{{withdraw.created_at | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td>{{withdraw.comment | limitTo:30}}<span ng-if="withdraw.comment.length>30">...</span></td>
 				<td class="status" ng-class="{'blue':(withdraw.status.id==3),'green':(withdraw.status.id==2)}">{{withdraw.status.name}}</td>
-				<td>{{withdraw.accepted_at}}</td>
+				<td>{{withdraw.accepted_at | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td class="operations">
 					<div ui-sref="user_update" class="btn-gray">
 						<i class="fa fa-paint-brush"></i>

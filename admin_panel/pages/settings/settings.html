@@ -74,7 +74,7 @@
 					<td>{{setting.description}}</td>
 					<td>{{setting.key}}</td>
 					<td>{{setting.value}}</td>
-					<td>{{setting.created_at}}</td>
+					<td>{{setting.created_at   | date:'yyyy-MM-dd HH:mm'}}</td>
 					<td class="operations">
 						<div ng-click="vm.showUpdatingModal(setting)"  class="btn-gray">
 						<i class="fa fa-paint-brush"></i>

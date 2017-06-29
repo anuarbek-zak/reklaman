@@ -4,7 +4,7 @@
 			<img src="assets/images/wallet-gray.png" class="title-icon">
 			<h2 class="title-text">платежи</h2>
 		</div>
-
+ 
 		<input type="text" ng-model="search" class="input" placeholder="Поиск ...">
 	</div>
 	<div class="line-2 flex">
@@ -44,8 +44,8 @@
 					</span>
 					
 				</td>
-				<td>{{payment.created_at}} </td>
-				<td>{{payment.paid_at}}</td>
+				<td>{{payment.created_at | date:'yyyy-MM-dd HH:mm'}} </td>
+				<td>{{payment.paid_at | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td class="summ">{{payment.summ}}</td>
 				<td>{{payment.payment_type.name}}</td>
 				<td class="status" ng-class="{'green':(payment.status.id==2)}">{{payment.status.name}}</td>

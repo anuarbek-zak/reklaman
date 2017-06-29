@@ -3,8 +3,8 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	var vm = this;
 
 	vm.isVisible = true;	
-	vm.limit = $stateParams.limit?parseInt($stateParams.limit):25;
-	vm.beginIndex =$stateParams.from?parseInt($stateParams.from):0;
+	vm.limit = 25;
+	vm.beginIndex =0;
 	vm.filters = {zones:{countries:[],regions:[],cities:[]}};
 	vm.amount=0;
 	vm.selectedCountryCount=0;

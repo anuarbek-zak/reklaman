@@ -52,13 +52,13 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	vm.addToFilter = function(key,val){
 		if(key) vm.filters[key] = val;
 		vm.beginIndex=0;
+		vm.withdraws=[];
 		getWithdraws();		
 	}	
 
 	vm.getNewData = function(){
 		if(vm.withdraws.length>=vm.amount) return;
-		vm.beginIndex=vm.withdraws.length+1;
-		vm.withdraws=[];				
+		vm.beginIndex=vm.withdraws.length+1;				
 		getWithdraws();
 	}
 	

@@ -37,9 +37,30 @@ angular.module('lk_reklamodatel')
                 parent:'lk_reklamodatel'
             })
             .state('account_settings', {
-                url: '/account_setting',
+                url: '/account_settings',
                 templateUrl: 'lk_reklamodatel/pages/account_settings/account_settings.html',
                 controller:'accountSettingsCtrl',
+                controllerAs:'vm',
+                parent:'lk_reklamodatel'
+            })
+            .state('answer_questions', {
+                url: '/answer_questions',
+                templateUrl: 'lk_reklamodatel/pages/answer_questions/answer_questions.html',
+                controller:'answerQuestionsCtrl',
+                controllerAs:'vm',
+                parent:'lk_reklamodatel'
+            })
+            .state('my_balance', {
+                url: '/my_balance',
+                templateUrl: 'lk_reklamodatel/pages/my_balance/my_balance.html',
+                controller:'myBalanceCtrl',
+                controllerAs:'vm',
+                parent:'lk_reklamodatel'
+            })
+            .state('banner_info', {
+                url: '/banner_info',
+                templateUrl: 'lk_reklamodatel/pages/banner_info/banner_info.html',
+                controller:'bannerInfoCtrl',
                 controllerAs:'vm',
                 parent:'lk_reklamodatel'
             });

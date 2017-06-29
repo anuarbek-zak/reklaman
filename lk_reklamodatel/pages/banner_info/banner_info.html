@@ -1,0 +1,190 @@
+<div class="lk_banner_info  white-div">
+	<div class="line-1 flex">
+		
+		<div class="title-div">
+			<img src="assets/images/graph.png" class="title-icon">
+			<h2 class="title-text">баннер «ЛОНГЕР СЫРНЫЙ»</h2>
+		</div>
+		
+		<button class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Объявление</th>
+				<th>Статус</th>
+				<th>Стоимость</th>
+				<th>Расход</th>
+				<th>Показы</th>
+				<th>Сохранено</th>
+				<th>Переходы</th>
+				<th>Статистика</th>
+			</tr>			
+		</thead>
+		<tbody>
+			<tr ng-repeat="banner in vm.banners | limitTo:1">
+				<td ui-sref="banner_info" >					
+					<div class="flex">
+						<div class="photo" set-background-img src="{{banner.photo}}"></div>
+						<div class="banner-info flex-column">
+							<p class="green bolder name">{{banner.name}}</p>
+							<p class="description bold">
+								{{banner.gender.name}},{{banner.age_from}}-{{banner.age_to}} лет,
+								<span ng-repeat="city in banner.cities | limitTo:3">{{city.name}}
+									<span ng-if="$index+1<banner.cities.length">, </span>									
+								</span>
+								<span ng-if="banner.cities.length>3">и еще {{banner.cities.length-3}} города(-ов)</span>
+							</p>
+							<p class="people">{{banner.appropriate_users}} человек</p>
+							<a target="_blank" href="{{banner.link}}" class="link green">{{banner.link}}</a>
+						</div>
+					</div>
+				</td>
+				<td class="status" >
+					<button class="btn-gray" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{banner.status.name}}</button>
+					<div ng-if="banner.status.reason" class="reason">
+						<p>Причина:</p>
+						<p>{{banner.status.reason }}</p>
+					</div>
+				</td>
+				<td>{{banner.cost}} <i class="fa fa-rub"></i></td>
+				<td>{{banner.consumption}} <i class="fa fa-rub"></i></td>
+				<td>{{banner.displays}}</td>
+				<td>
+					{{banner.saved}}
+					<p class="green">14.13%</p>	
+				</td>
+				<td>
+					{{banner.transition}}
+					<p class="green">7.11%</p>	
+				</td>
+				<td class="operations">
+					<div ui-sref="lk_banner_update({id:banner.id})" class="btn-gray">
+						<i class="fa fa-paint-brush"></i>
+						<span class="my-tooltip">Редактировать</span>
+					</div>	
+					<div class="btn-gray">
+						<i class="fa fa-trash"></i>
+						<span class="my-tooltip">Удалить</span>
+					</div>					
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+</div>
+
+<div class="lk_banner_statistics">
+
+
+	<div class="statistics-1 white-div">
+		<div class="line-1 flex">
+
+			<div class="title-div">
+				<img src="assets/images/graph.png" class="title-icon">
+				<h2 class="title-text">Статистика</h2>
+			</div>		
+			<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+		</div>
+		<div class="line-2 flex">
+			<div class="flex">
+				<button class="btn-blue">Переходы</button>
+				<button class="btn-green">Показы</button>
+			</div>
+			<div class="flex toggler">
+				<p>CTR</p>
+				<p>Потрачено, <i class="fa fa-rub"></i> </p>
+			</div>
+			<div class="flex date">
+				<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
+					<input placeholder="13 ноября 2017"   type="text" class="input">
+				</datepicker>
+				<span class="divider-line">-</span>
+				<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
+					<input placeholder="13 декабря 2017"   type="text" class="input">
+				</datepicker>
+			</div>	
+		</div>
+		<div class="graph">
+			<div id="lk_line_graph" width="100%" height="100%"></div>
+		</div>
+	</div>
+
+	<div class="donuts flex">
+		<div class="likes white-div">
+			<div class="line-1 flex">
+
+				<div class="title-div">
+					<img src="assets/images/heart.png" class="title-icon">
+					<h2 class="title-text">Статистика по лайкам</h2>
+				</div>		
+				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+			</div>
+
+			<div class="donut flex">
+				<div>
+					<p><i class="fa fa-circle"></i> Понравилось - <span class="bolder">37,5%</span></p>
+					<p><i class="fa fa-circle"></i> Не ответили - <span class="bolder">50,5%</span></p>
+				</div>	
+				<div  id="lk_likes_donut"></div>
+			</div>
+		</div>
+		<div class="genders white-div">
+			<div class="line-1 flex">
+
+				<div class="title-div">
+					<img src="assets/images/genders.png" class="title-icon">
+					<h2 class="title-text">Распределение по полу</h2>
+				</div>		
+				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+			</div>
+			<div class="donut flex">
+				<div>
+					<p><i class="fa fa-circle"></i> Мужчины - <span class="bolder">37,5%</span></p>
+					<p><i class="fa fa-circle"></i> Женщины - <span class="bolder">50,5%</span></p>
+				</div>				
+				<div  id="lk_genders_donut"></div>
+			</div>
+		</div>
+	</div>
+	<div class="donuts flex">
+		<div class="likes white-div">
+			<div class="line-1 flex">
+
+				<div class="title-div">
+					<img src="assets/images/age.png" class="title-icon">
+					<h2 class="title-text">Распределение по возрасту</h2>
+				</div>		
+				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+			</div>
+
+			<div class="donut flex">
+				<div>
+					<p><i class="fa fa-circle"></i> Понравилось - <span class="bolder">37,5%</span></p>
+					<p><i class="fa fa-circle"></i> Не ответили - <span class="bolder">50,5%</span></p>
+				</div>	
+				<div  id="lk_likes_donut"></div>
+			</div>
+		</div>
+		<div class="genders white-div">
+			<div class="line-1 flex">
+
+				<div class="title-div">
+					<img src="assets/images/map.png" class="title-icon">
+					<h2 class="title-text">Распределение по городам</h2>
+				</div>		
+				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+			</div>
+			<div class="donut flex">
+				<div>
+					<p><i class="fa fa-circle"></i> Мужчины - <span class="bolder">37,5%</span></p>
+					<p><i class="fa fa-circle"></i> Женщины - <span class="bolder">50,5%</span></p>
+				</div>				
+				<div  id="lk_genders_donut"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>

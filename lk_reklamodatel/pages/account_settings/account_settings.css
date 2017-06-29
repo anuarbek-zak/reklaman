@@ -23,6 +23,10 @@
 	color: #303030;
 }
 
+.lk_account-settings .input{
+	padding-right: 20px;
+}
+
 .lk_account-settings .settings .blue{
 	margin-top: 10px;
 	font-weight: bold;

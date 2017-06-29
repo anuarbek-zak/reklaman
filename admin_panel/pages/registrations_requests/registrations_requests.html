@@ -24,7 +24,7 @@
 				<td class="mail">{{request.email}}</td>	
 				<td>{{request.phone}}</td>
 				<td class="comment">{{request.comment}}</td>
-				<td>{{request.created_at}}</td>
+				<td>{{request.created_at | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td class="operations">
 					<div ng-click="vm.read(request)" class="btn-gray">
 						<i class="fa fa-check"></i>

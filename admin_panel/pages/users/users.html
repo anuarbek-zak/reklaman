@@ -133,7 +133,7 @@
 				</td>
 				<td>{{user.city.name|limitTo:20}}<span ng-if="user.city.name.length>20">...</span></td>
 				<td>{{user.status.name}}</td>
-				<td>{{user.registrated_at}}</td>
+				<td>{{user.registrated_at | date:'yyyy-MM-dd'}}</td>
 				<td >{{user.balance}}</td>
 				<td>
 				<span ng-repeat="line in user.lines" class="line" >{{line.amount}}</span>

@@ -41,6 +41,19 @@ angular.module('app')
                 })
     }
 
+    service.getBillings = function(id,cb){
+        //method - (get)
+        //api - /api/company/:id/billings
+        //params - compamy id
+                $http.get('jsons/billings.json')
+                .success(function(data){
+                    cb(data);
+                })
+                .error(function(err){
+                    console.log(err);
+                })
+    }
+
     service.getRequests = function(from,limit,cb){
         //method - (post)
         //api - '/api/reklamodatel/requests

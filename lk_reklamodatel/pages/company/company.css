@@ -45,6 +45,11 @@
 	padding: 15px;
 }
 
+.lk_company .my_banners .title-icon{
+	width: 16px;
+	height: 21px;
+}
+
 .lk_company .my_banners .line-1 .btn-blue{
 	padding: 8px 12px;
 	font-size: 11px;
@@ -97,6 +102,10 @@
 
 .lk_company .my_banners td:hover .my-tooltip{
 	display: block;
+}
+
+.lk_company .my_banners td{
+	cursor: pointer;	
 }
 
 .lk_company .my_banners td:first-child{

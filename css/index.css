@@ -489,6 +489,7 @@ header .logout:hover{
 table{
   margin-top: 25px;
   color: #303030;
+  width: 100%;
 }
 
 tr{
@@ -634,7 +635,12 @@ td{
 }
 
 .input.input-search{
-    background-image: url('../assets/images/magnifying-glass.pn') ;
+    background-image: url('../assets/images/magnifying-glass.png') ;
+}
+
+.input.input-datepicker{
+      background-image: url('../assets/images/calendar.png') ;
+
 }
 
 .hint-text{

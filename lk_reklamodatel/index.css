@@ -28,3 +28,12 @@
   left: 11px;
 }
 
+.my-modal-video .my-modal-body{
+  padding: 20px;
+}
+
+.my-modal-video iframe{
+  height: 330px;
+  border-radius: 4px
+}
+

@@ -186,6 +186,17 @@
 	justify-content: space-between;
 }
 
+.lk_company .video .video-img{
+	width: 85%;
+	height: 110px;
+	border: 2px dashed #00aed0;
+	margin: 0 auto;
+	margin-top: 15px;
+	display: block;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
 .lk_company .video{
 	margin-right: 10px;
 }
@@ -223,16 +234,6 @@
 	padding: 14px 15px;
 	font-size: 15px;
 	margin-top: 10px;
-}
-
-.lk_company iframe{
-	width: 80%;
-	height: 130px;
-	border: 2px dashed #00aed0;
-	margin: 0 auto;
-	margin-top: 15px;
-	display: block;
-	border-radius: 5px;
 }
 
 .lk_company .support{

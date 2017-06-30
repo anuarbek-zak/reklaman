@@ -2,6 +2,8 @@ angular.module('lk_reklamodatel').controller('companyCtrl',function(ticketServic
 	var vm = this;
 	vm.company = $localStorage.company;
 	vm.showNotification = true;
+	vm.showModal = false;
+
 
 	bannerService.getBannersOfCompany(vm.company.id,0,100,function(data) {
 		vm.banners = data.banners;

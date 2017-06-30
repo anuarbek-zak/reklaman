@@ -30,11 +30,26 @@ angular.module('app')
             })
     }
 
-    service.getBannerGraph = function(id,from,to,cb){
+    service.getGraph = function(id,from,to,cb){
         //method - (get)
         //api - '/api/banner/:id/graph
         //data - {from:from,to:to}
         $http.get('jsons/banner_graph.json')
+            .success(function(data){
+                cb(data);
+             })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
+    service.getDiagram = function(id,which,type,cb){
+        //method - (get)
+        //api - '/api/banner/:id/diagram
+        //data - {which:which,type:type}
+        //which can be 'likes','gender','age','cities'
+        //type can be 'transitions' or 'impressions'
+        $http.get('jsons/statistics_'+which+'.json')
             .success(function(data){
                 cb(data);
              })

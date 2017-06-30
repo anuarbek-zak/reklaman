@@ -1,23 +1,46 @@
 angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($stateParams,$localStorage,bannerService) {
 	
-	var vm = this,
-	colors = ['#008eaa','#37951b','#f7d61c','#c95c36','#d8d8d8'];
+	var vm = this;
+	vm.showModal = false;
 
-	vm.company  = $localStorage.company;
+	vm.diagrams = {"likes":{title:"Статистика по лайкам",type:'transitions',showButtons:false,img:"heart.png",labels:[],values:[],colors:["#37951b","#e0e0e0"]},
+				"gender":{title:"Распределение по полу	",type:'transitions',showButtons:true,img:"genders.png",labels:[],values:[],colors:["#37951b","#008eaa"]},
+				"age":{title:"Распределение по возрасту",type:'transitions',showButtons:true,img:"age.png",labels:[],values:[],colors:["#008eaa","#37951b","#e0e0e0","#c95c36","#f7d61c"]},
+				"cities":{title:"Распределение по городам",type:'transitions',showButtons:true,img:"map.png",labels:[],values:[],colors:["#008eaa","#37951b","#e0e0e0","#c95c36","#f7d61c"]}
+			};
 
 	bannerService.getBanner($stateParams.id,function(data) {
 		vm.banner = data;
 		vm.date_from = vm.banner.created_at;
 		vm.date_to = vm.banner.current_time; // current time from server
-		vm.getBannerGraph();		
-	})
+		vm.getGraph();		
+	});
 
+	vm.getDiagram = function(which) {
+		bannerService.getDiagram($stateParams.id,which,vm.diagrams[which].type,function(data) {
+			var labels=[],
+				values=[],
+				i=0;
+			for(var key in data){
+				if(i>4) vm.diagrams[which].colors.push('#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6));
+				labels.push(key);
+				values.push(data[key]);
+				i++;
+			}
+			vm.diagrams[which].labels=labels;
+			vm.diagrams[which].values=values;
+			drawDiagram(which,labels,values,vm.diagrams[which].colors)
+		})
+	}
+
+	vm.getDiagram('likes')
+	vm.getDiagram('gender')
+	vm.getDiagram('age')
+	vm.getDiagram('cities')
 
 	
-	
-	vm.getBannerGraph = function(){
-		console.log(vm.date_from,vm.date_to);
-		bannerService.getBannerGraph($stateParams.id,vm.date_from,vm.date_to,function (data) {
+	vm.getGraph = function(){
+		bannerService.getGraph($stateParams.id,vm.date_from,vm.date_to,function (data) {
 			vm.graphs = data;
 			vm.drawnGraphs=[];
 			data.graphs.ctr={values:[],label:''};
@@ -30,8 +53,6 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 			vm.drawGraph("impressions",'#008eaa')
 		})
 	}
-
-
 
 	vm.drawGraph = function(graphName,color) {
 		var addToDrawnGraphs = true;
@@ -67,11 +88,7 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 		Plotly.newPlot('lk_line_graph', vm.drawnGraphs, layout,{displayModeBar: false});
 	}
 
-
-	drawDonut('lk_likes_donut', ['Понарвилось','Не ответили' ,'Ewe chec to'], [62.5,30,7.5]);	
-
-
-	function drawDonut(	id,labels,values) {
+	function drawDiagram(which,labels,values,colors) {
 		var data = [{
 			values:values,
 			labels:labels,
@@ -86,15 +103,12 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 
 		var layout = {
 			showlegend: false,
-			height: 140,
-			width: 140,
+			height: 150,
+			width: 150,
 			margin: {l: 0,r: 0,	b: 0,t: 0,pad: 4}
 		};
 
-		Plotly.newPlot(id, data, layout,{displayModeBar: false});
+		Plotly.newPlot('lk_'+which+'_donut', data, layout,{displayModeBar: false});
 	}
-
-
-
 	
 })

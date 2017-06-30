@@ -8,7 +8,7 @@
 
 			<button ui-sref="lk_banner_create" class="btn-blue"><span>+</span>Создать баннер</button>
 		</div>		
-		<button class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
+		<button ng-click="vm.showModal=true" class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
 	</div>
 	<div class="line-2 flex">
 		<div>
@@ -72,7 +72,7 @@
 						<i class="fa fa-paint-brush"></i>
 						<span class="my-tooltip">Редактировать</span>
 					</div>	
-					<div class="btn-gray">
+					<div ui-sref="banner_info({id:banner.id})" class="btn-gray">
 						<i class="fa fa-bar-chart"></i>
 						<span class="my-tooltip">Статистика</span>
 					</div>					
@@ -98,4 +98,26 @@
 			Показано {{vm.banners.length}} из {{vm.amount}} пользователей
 		</div>
 	</div>	
+
+
+		<!-- MODAL  -->
+	<div ng-if="vm.showModal" ng-click="vm.showModal=false" class="my-modal my-modal-video  flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
+			<div class="my-modal-header  flex">
+				<div class="title-div">
+					<img src="assets/images/video-camera.png" class="title-icon">
+					<h2 class="title-text">Видео</h2>
+				</div>
+				<button ng-click="vm.showModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="my-modal-body flex-column">
+				<iframe src="https://www.youtube.com/embed/qr80Tk2DrLI" frameborder="0" allowfullscreen></iframe>			
+			</div>
+			<div class="my-modal-footer flex">
+			</div>				
+		</div>
+	</div>
+
+	<!-- MODAL  END -->
+
 </div>

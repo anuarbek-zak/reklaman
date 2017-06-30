@@ -130,6 +130,7 @@
 .lk_banner_statistics .donuts .white-div{
   padding: 20px;
   margin-right: 0;
+   width: 47%;
 }
 
 .lk_banner_statistics .donuts .white-div .line-1{
@@ -138,6 +139,17 @@
 
 .lk_banner_statistics .donuts .title-text{
   text-transform: none;
+  font-size: 16px;
+}
+
+.lk_banner_statistics .donuts .buttons{
+  margin-bottom: 20px;
+  color: #303030;
+}
+
+.lk_banner_statistics .donuts .buttons span{
+     cursor: pointer;
+    margin-left: 10px;
 }
 
 .lk_banner_statistics .statistics-1 .line-2 .btn-blue{
@@ -178,9 +190,6 @@
   padding: 10px;
 }
 
-.lk_banner_statistics .donuts .white-div{
-  width: 47%;
-}
 
 .lk_banner_statistics .donut{
   width: 100%;

@@ -6,7 +6,7 @@
 			<h2 class="title-text">баннер «{{vm.banner.name}}»</h2>
 		</div>
 		
-		<button class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
+		<button ng-click="vm.showModal=true" class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
 	</div>
 	<table>
 		<thead>
@@ -85,7 +85,7 @@
 				<img src="assets/images/graph.png" class="title-icon">
 				<h2 class="title-text">Статистика</h2>
 			</div>		
-			<button ng-click="vm.getBannerGraph()" class="reload"><img src="assets/images/reload.png" alt=""></button>
+			<button ng-click="vm.getGraph()" class="reload"><img src="assets/images/reload.png" alt=""></button>
 		</div>
 		<div class="line-2 flex">
 			<div class="flex">
@@ -98,11 +98,11 @@
 			</div>
 			<div class="flex date">
 				<datepicker   date-week-start-day="1"  datepicker-mobile="true"  date-format="dd-MM-yyyy" >
-					<input ng-change="vm.getBannerGraph()" placeholder="13 ноября 2017" ng-model="vm.date_from"   type="text" class="input">
+					<input ng-change="vm.getGraph()" placeholder="13 ноября 2017" ng-model="vm.date_from"   type="text" class="input">
 				</datepicker>
 				<span class="divider-line">-</span>
 				<datepicker  date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
-					<input ng-change="vm.getBannerGraph()"    placeholder="13 декабря 2017" ng-model="vm.date_to"   type="text" class="input">
+					<input ng-change="vm.getGraph()"    placeholder="13 декабря 2017" ng-model="vm.date_to"   type="text" class="input">
 				</datepicker>
 			</div>	
 		</div>
@@ -112,79 +112,71 @@
 	</div>
 
 	<div class="donuts flex">
-		<div class="likes white-div">
+		<div class="likes white-div" ng-repeat="(diagramName,diagram) in vm.diagrams" ng-if="$index==0||$index==1">
 			<div class="line-1 flex">
 
 				<div class="title-div">
-					<img src="assets/images/heart.png" class="title-icon">
-					<h2 class="title-text">Статистика по лайкам</h2>
+					<img src="assets/images/{{diagram.img}}" class="title-icon">
+					<h2 class="title-text">{{diagram.title}}</h2>
 				</div>		
-				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+				<button ng-click="vm.getDiagram(diagramName)" class="reload"><img src="assets/images/reload.png" alt=""></button>
 			</div>
 
 			<div class="donut flex">
 				<div>
-					<p><i class="fa fa-circle"></i> Понравилось - <span class="bolder">37,5%</span></p>
-					<p><i class="fa fa-circle"></i> Не ответили - <span class="bolder">50,5%</span></p>
+					<div ng-if="diagram.showButtons" class="buttons">
+						<button ng-click="diagram.type='transitions';vm.getDiagram(diagramName)" class="btn-green">Переходы</button>
+						<span ng-click="diagram.type='impressions';vm.getDiagram(diagramName)">Показы</span>
+					</div>
+					<p ng-repeat="label in diagram.labels"><i set-background-color="{{diagram.colors[$index]}}" class="fa fa-circle"></i> {{label}} - <span class="bolder">{{diagram.values[$index]}}%</span></p>
 				</div>	
-				<div  id="lk_likes_donut"></div>
+				<div  id="lk_{{diagramName}}_donut"></div>
 			</div>
 		</div>
-		<div class="genders white-div">
-			<div class="line-1 flex">
-
-				<div class="title-div">
-					<img src="assets/images/genders.png" class="title-icon">
-					<h2 class="title-text">Распределение по полу</h2>
-				</div>		
-				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
-			</div>
-			<div class="donut flex">
-				<div>
-					<p><i class="fa fa-circle"></i> Мужчины - <span class="bolder">37,5%</span></p>
-					<p><i class="fa fa-circle"></i> Женщины - <span class="bolder">50,5%</span></p>
-				</div>				
-				<div  id="lk_genders_donut"></div>
-			</div>
-		</div>
+		
 	</div>
 	<div class="donuts flex">
-		<div class="likes white-div">
+		<div class="likes white-div" ng-repeat="(diagramName,diagram) in vm.diagrams" ng-if="$index==2||$index==3">
 			<div class="line-1 flex">
 
 				<div class="title-div">
-					<img src="assets/images/age.png" class="title-icon">
-					<h2 class="title-text">Распределение по возрасту</h2>
+					<img src="assets/images/{{diagram.img}}" class="title-icon">
+					<h2 class="title-text">{{diagram.title}}</h2>
 				</div>		
-				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+				<button ng-click="vm.getDiagram(diagramName)" class="reload"><img src="assets/images/reload.png" alt=""></button>
 			</div>
 
 			<div class="donut flex">
 				<div>
-					<p><i class="fa fa-circle"></i> Понравилось - <span class="bolder">37,5%</span></p>
-					<p><i class="fa fa-circle"></i> Не ответили - <span class="bolder">50,5%</span></p>
+					<div ng-if="diagram.showButtons" class="buttons">
+						<button ng-click="diagram.type='transitions';vm.getDiagram(diagramName)" class="btn-green">Переходы</button>
+						<span ng-click="diagram.type='impressions';vm.getDiagram(diagramName)">Показы</span>
+					</div>
+					<p ng-repeat="label in diagram.labels"><i  set-background-color="{{diagram.colors[$index]}}"  class="fa fa-circle"></i> {{label}} - <span class="bolder">{{diagram.values[$index]}}%</span></p>
 				</div>	
-				<div  id="lk_age_donut"></div>
+				<div  id="lk_{{diagramName}}_donut"></div>
 			</div>
 		</div>
-		<div class="genders white-div">
-			<div class="line-1 flex">
+		
+	</div>
 
+		<!-- MODAL  -->
+	<div ng-if="vm.showModal" ng-click="vm.showModal=false" class="my-modal my-modal-video  flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
+			<div class="my-modal-header  flex">
 				<div class="title-div">
-					<img src="assets/images/map.png" class="title-icon">
-					<h2 class="title-text">Распределение по городам</h2>
-				</div>		
-				<button class="reload"><img src="assets/images/reload.png" alt=""></button>
+					<img src="assets/images/video-camera.png" class="title-icon">
+					<h2 class="title-text">Видео</h2>
+				</div>
+				<button ng-click="vm.showModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
 			</div>
-			<div class="donut flex">
-				<div>
-					<p><i class="fa fa-circle"></i> Мужчины - <span class="bolder">37,5%</span></p>
-					<p><i class="fa fa-circle"></i> Женщины - <span class="bolder">50,5%</span></p>
-				</div>				
-				<div  id="lk_cities_donut"></div>
+			<div class="my-modal-body flex-column">
+				<iframe src="https://www.youtube.com/embed/qr80Tk2DrLI" frameborder="0" allowfullscreen></iframe>			
 			</div>
+			<div class="my-modal-footer flex">
+			</div>				
 		</div>
 	</div>
-	
-	
+
+	<!-- MODAL  END -->	
 </div>

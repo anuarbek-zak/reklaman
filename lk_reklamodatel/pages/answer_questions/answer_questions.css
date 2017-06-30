@@ -137,3 +137,9 @@
 .lk_answer_questions .my-modal-footer .btn-blue span{
 	margin-right: 10px;
 }
+
+
+.lk_answer_questions .my-modal-video .my-modal-content{
+  width: 550px;
+  height: 440px;
+}

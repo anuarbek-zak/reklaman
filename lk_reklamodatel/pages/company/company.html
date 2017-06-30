@@ -76,7 +76,7 @@
 						<img src="assets/images/video-camera.png" class="title-icon">
 						<h2 class="title-text">видеоинструкция</h2>
 					</div>
-					<iframe  src="https://www.youtube.com/embed/qr80Tk2DrLI" frameborder="0" allowfullscreen></iframe>
+					<img ng-click="vm.showModal=true" class="video-img" src="assets/images/video.png" alt="">
 				</div>
 			</div>
 			<div class="support white-div">
@@ -127,4 +127,26 @@
 
 		</div>
 	</div>
+	
+
+			<!-- MODAL  -->
+	<div ng-if="vm.showModal" ng-click="vm.showModal=false" class="my-modal my-modal-video flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
+			<div class="my-modal-header  flex">
+				<div class="title-div">
+					<img src="assets/images/video-camera.png" class="title-icon">
+					<h2 class="title-text">Видео</h2>
+				</div>
+				<button ng-click="vm.showModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="my-modal-body flex-column">
+				<iframe src="https://www.youtube.com/embed/qr80Tk2DrLI" frameborder="0" allowfullscreen></iframe>			
+			</div>
+			<div class="my-modal-footer flex">
+			</div>				
+		</div>
+	</div>
+
+	<!-- MODAL  END -->	
+
 </div>

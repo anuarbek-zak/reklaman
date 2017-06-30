@@ -8,7 +8,7 @@
 
 			<button ng-click="vm.showModal=true" class="btn-blue"><span>?</span>Задать вопрос</button>
 		</div>		
-		<button class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
+		<button ng-click="vm.showModalVideo=true" class="instruction"><i class="fa fa-play"></i> ВИДЕОИНСТРУКЦИЯ</button>
 	</div>
 	<div class="flex">
 		<div class="questions">
@@ -55,6 +55,27 @@
 				<button ng-click="vm.createQuestion()" class="btn-blue">
 					<span>?</span> Задать вопрос
 				</button>
+			</div>				
+		</div>
+	</div>
+
+	<!-- MODAL  END -->	
+
+
+			<!-- MODAL  -->
+	<div ng-if="vm.showModalVideo" ng-click="vm.showModalVideo=false" class="my-modal my-modal-video  flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
+			<div class="my-modal-header  flex">
+				<div class="title-div">
+					<img src="assets/images/video-camera.png" class="title-icon">
+					<h2 class="title-text">Видео</h2>
+				</div>
+				<button ng-click="vm.showModalVideo=false" class="btn-gray"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="my-modal-body flex-column">
+				<iframe src="https://www.youtube.com/embed/qr80Tk2DrLI" frameborder="0" allowfullscreen></iframe>			
+			</div>
+			<div class="my-modal-footer flex">
 			</div>				
 		</div>
 	</div>

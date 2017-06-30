@@ -110,12 +110,12 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 
 	vm.sendToModeration = function() {
 		bannerService.sendToModeration(vm.file,vm.banner);
-		$state.go('company')
+		window.history.back();
 	}
 
 	vm.saveAsDraft = function(){
 		bannerService.saveAsDraft(vm.banner);
-		$state.go('company')
+		window.history.back();
 	}
 
 })

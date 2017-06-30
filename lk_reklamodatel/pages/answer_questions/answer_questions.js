@@ -4,6 +4,7 @@ angular.module('lk_reklamodatel').controller('answerQuestionsCtrl',function($loc
 	vm.showModal = false;
 	vm.questionText='';
 	vm.limit = 4;
+	vm.company = $localStorage.company
 	
 	 vm.gotoAnchor = function(x) {
       var newHash = 'anchor' + x;
@@ -20,8 +21,9 @@ angular.module('lk_reklamodatel').controller('answerQuestionsCtrl',function($loc
 
 	vm.createQuestion = function() {
 		if(vm.questionText=='') return;
-		faqService.createQuestion(vm.questionText,$localStorage.company.id);
+		faqService.createQuestion(vm.questionText,vm.company.id);
 		vm.questionText=''
+		vm.showModal = false;
 	}
 
 })

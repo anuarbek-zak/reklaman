@@ -16,7 +16,7 @@
 			<button ng-class="{'btn-blue':vm.isButtonsActive>0}" ng-click="vm.delete()" class="btn-gray"><i class="fa fa-trash-o"></i> Удалить</button>
 			<button ng-class="{'btn-blue':vm.isButtonsActive>0}" ng-click="vm.copy()" class="btn-gray"><i class="fa fa-files-o"></i> Копировать</button>
 		</div>
-		<input type="text" placeholder="Поиск" class="input">
+		<input ng-model="vm.searchText" type="text" ng-change="vm.search()" placeholder="Поиск" class="input input-search">
 	</div>
 	<table>
 		<thead>
@@ -42,7 +42,10 @@
 					<div class="flex">
 						<div class="photo" set-background-img src="{{banner.photo}}"></div>
 						<div class="banner-info flex-column">
-							<p class="green bolder name">{{banner.name}}</p>
+							<p class="green bolder name">
+								{{banner.name | limitTo:50}}
+								<span ng-if="banner.name.length>50">...</span>
+							</p>
 							<p class="description bold">
 								{{banner.gender.name}},{{banner.age_from}}-{{banner.age_to}} лет,
 								<span ng-repeat="city in banner.cities | limitTo:3">{{city.name}}
@@ -56,7 +59,7 @@
 					</div>
 				</td>
 				<td class="status" >
-					<button class="btn-gray" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{banner.status.name}}</button>
+					<button class="btn-gray btn-disabled" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{banner.status.name}}</button>
 					<div ng-if="banner.status.reason" class="reason">
 						<p>Причина:</p>
 						<p>{{banner.status.reason }}</p>

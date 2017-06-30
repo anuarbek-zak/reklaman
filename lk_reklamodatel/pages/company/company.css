@@ -23,8 +23,8 @@
 
 .lk_company .my-notification span{
 	position: absolute;
-	right: 25px;
-	top: 30%;
+	right: 15px;
+	top: 25%;
 	font-size: 35px;
 	cursor: pointer;
 }
@@ -38,7 +38,7 @@
 
 .lk_company .my_banners{
 	display: table;
-	min-width: 380px;
+	min-width: 410px;
 }
 
 .lk_company .my_banners .line-1{
@@ -51,8 +51,8 @@
 }
 
 .lk_company .my_banners .line-1 .btn-blue{
-	padding: 8px 12px;
-	font-size: 11px;
+	padding: 11px 18px;
+	font-size: 13px;
 }
 
 .lk_company .my_banners td:not(:first-child){
@@ -224,7 +224,7 @@
 }
 
 .lk_company .my-balance p{
-	font-size: 30px;
+	font-size:28px;
 	margin: 20px 0;
 	color: #303030;		
 }
@@ -270,6 +270,10 @@
 
 .lk_company .support td{
 	max-width: 180px;
+}
+
+.lk_company .support .operations{
+	padding-left: 10px;
 }
 
 .lk_company .support  .ask{

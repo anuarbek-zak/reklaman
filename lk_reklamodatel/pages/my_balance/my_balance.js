@@ -30,7 +30,7 @@ angular.module('lk_reklamodatel').controller('myBalanceCtrl',function($localStor
 	}
 	vm.prevent = function(e) {
 			e.stopPropagation();
-		}
+	}
 
 	
 

@@ -239,9 +239,9 @@ body{
 header{
   height: 70px;
   background: #fff;
-  -webkit-box-shadow: 2px -1px 15px -1px #999;
-  -moz-box-shadow: 2px -1px 15px -1px #999;
-  box-shadow: 2px -1px 15px -1px #999;
+  -webkit-box-shadow: 2px -1px 11px -2px #999;
+  -moz-box-shadow: 2px -1px 11px -2px #999;
+  box-shadow: 2px -1px 11px -2px #999;
 }
 
 header .logo{
@@ -567,7 +567,7 @@ td{
   outline: none;
   border: none;
   cursor: pointer;
-  transition: 0s
+  transition: 0.2s
 }
 
 .btn-green,.btn-blue{
@@ -582,18 +582,31 @@ td{
   background: #3b9e1d;
   font-size: 12px;
    font-weight: 500;
+   transition: 0.2s
 }
 
 .btn-green:hover,.btn-blue:hover{
-  -webkit-box-shadow: 2px -1px 15px -1px #999;
-  -moz-box-shadow: 2px -1px 15px -1px #999;
-  box-shadow: 2px -1px 15px -1px #999;
-  color: #fff;
+   -webkit-box-shadow: 6px 6px 4px -3px #999999;
+  -moz-box-shadow: 6px 6px 4px -3px #999999;
+  box-shadow: 6px 6px 4px -3px #999999;
+  color: #fff !important;
   text-decoration: none;
+}
+
+.btn-gray:hover{
+  -webkit-box-shadow: 6px 6px 4px -3px #999999;
+  -moz-box-shadow: 6px 6px 4px -3px #999999;
+  box-shadow: 6px 6px 4px -3px #999999;
+  color:#7c7c7c;
 }
 
 .btn-blue{
   background: #008eaa
+}
+
+.btn-disabled:hover{
+  box-shadow: none;
+  cursor: default;
 }
 
 .btn-green>img,.btn-blue>img,.btn-gray>img{

@@ -35,8 +35,8 @@
 	</div>
 
 	<!-- MODAL  -->
-	<div ng-show="vm.showModal" class="my-modal  flex">
-		<div class="my-modal-content white-div">
+	<div ng-show="vm.showModal" ng-click="vm.showModal=false" class="my-modal  flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
 			<div class="my-modal-header  flex">
 				<div class="title-div">
 					<img src="assets/images/question.png" class="title-icon">
@@ -62,7 +62,7 @@
 	<!-- MODAL  END -->	
 
 
-			<!-- MODAL  -->
+			<!-- MODAL  2 -->
 	<div ng-if="vm.showModalVideo" ng-click="vm.showModalVideo=false" class="my-modal my-modal-video  flex">
 		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
 			<div class="my-modal-header  flex">
@@ -80,6 +80,6 @@
 		</div>
 	</div>
 
-	<!-- MODAL  END -->	
+	<!-- MODAL 2  END -->	
 
 </div>

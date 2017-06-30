@@ -17,4 +17,8 @@ angular.module('lk_reklamodatel').controller('accountSettingsCtrl',function($loc
 		reklamodatelService.update(vm.file,vm.company);
 	}
 
+	vm.updateTwo = function(){
+		reklamodatelService.update({},vm.company);
+	}
+
 })

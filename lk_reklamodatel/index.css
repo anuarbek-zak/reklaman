@@ -28,6 +28,22 @@
   left: 11px;
 }
 
+
+
+.my-modal-video .title-text{
+  font-size: 13px;
+}
+
+.my-modal-video .my-modal-header .title-icon{
+  width: 21px;
+  height: 24px;
+}
+
+.my-modal-video .my-modal-header .btn-gray{
+  padding: 6px 9px;
+}
+
+
 .my-modal-video .my-modal-body{
   padding: 20px;
 }

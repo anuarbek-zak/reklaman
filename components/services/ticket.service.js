@@ -26,9 +26,10 @@ angular.module('app')
             })
     }
 
-    service.getCompanyTickets = function(user_id,cb){
+    service.getCompanyTickets = function(data,cb){
         //method - (get)
-        //api - /api/ticket/:user_id
+        //api - /api/ticket/
+        //data - {id:user_id,search:search}
         $http.get('jsons/company_tickets.json')
             .success(function(data){
                 cb(data);

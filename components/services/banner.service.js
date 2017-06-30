@@ -2,10 +2,10 @@ angular.module('app')
 .factory("bannerService", function($http,Upload) {
     var service = {};
 
-    service.getBannersOfCompany = function(id,from,limit,cb){
+    service.getBannersOfCompany = function(data,cb){
         //method - (post)
-        //api - '/api/banners/:id
-        //data -   {from:from,limit:limit}
+        //api - '/api/banners/
+        //data -   {id:id,from:from,limit:limit,search:search}
         $http.get('jsons/reklamodatel_banners.json')
             .success(function(data){
                 data.banners.forEach(function(i){
@@ -17,6 +17,7 @@ angular.module('app')
                 console.log(err);
             })
     }
+
 
     service.getBanner = function(id,cb){
         //method - (get)
@@ -102,7 +103,8 @@ angular.module('app')
     service.delete = function(bannersToRemove){
         //method - (delete)
         //api - '/api/banners/
-        //data -   {bannersToRemove:bannersToRemove}
+        //data - ids array of deleted banners {bannersToRemove:bannersToRemove}
+
         $http.delete('/api/banners/',{bannersToRemove:bannersToRemove})
             .success(function(data){
                 cb(data);

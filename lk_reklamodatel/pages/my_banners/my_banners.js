@@ -1,4 +1,4 @@
-angular.module('lk_reklamodatel').controller('myBannersCtrl',function(reklamodatelService,$localStorage,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerService,$localStorage,$stateParams) {
 	
 	var vm = this;
 
@@ -8,12 +8,13 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(reklamodat
 	vm.banners=[];
 	vm.allSelected = false;
 	vm.isButtonsActive=0;
+	vm.searchText = "";
 	vm.company  = $localStorage.company;
 
 	getBannersOfCompany();
 
 	function getBannersOfCompany(){
-		reklamodatelService.getBannersOfCompany(vm.company.id,vm.beginIndex,vm.limit,function(data){
+		bannerService.getBannersOfCompany({id:vm.company.id,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
 			vm.amount = data.amount;
 		});	
@@ -34,12 +35,12 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(reklamodat
 		vm.isButtonsActive=0;
 		for(var i=0;i<vm.banners.length;i++){
 			if(vm.banners[i].checked){
-				bannersToRemove.push(vm.banners[i]);
+				bannersToRemove.push(vm.banners[i].id);
 				vm.banners.splice(i,1);
 				i--;
 			}
 		}
-		reklamodatelService.delete(bannersToRemove);
+		bannerService.delete(bannersToRemove);
 	}
 
 	vm.check = function(banner) {
@@ -58,7 +59,7 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(reklamodat
 				 bannersToCopy.push(vm.banners[i]);
 			}
 		}
-		reklamodatelService.copy($stateParams.id,bannersToCopy);
+		bannerService.copy($stateParams.id,bannersToCopy);
 	}
 
 	vm.stop = function(){
@@ -71,7 +72,12 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(reklamodat
 				bannersToUpdate.push(vm.banners[i]);
 			}
 		}
-		reklamodatelService.update(bannersToUpdate);
+		bannerService.update(bannersToUpdate);
+	}
+
+	vm.search = function () {
+		vm.banners = [];
+		getBannersOfCompany();
 	}
 
 	vm.getNewData = function(){

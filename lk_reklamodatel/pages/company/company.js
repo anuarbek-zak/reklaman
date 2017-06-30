@@ -5,11 +5,11 @@ angular.module('lk_reklamodatel').controller('companyCtrl',function(ticketServic
 	vm.showModal = false;
 
 
-	bannerService.getBannersOfCompany(vm.company.id,0,100,function(data) {
+	bannerService.getBannersOfCompany({id:vm.company.id,from:0,limit:100,search:''},function(data) {
 		vm.banners = data.banners;
 	})
 
-	ticketService.getCompanyTickets(vm.company.id,function(data) {
+	ticketService.getCompanyTickets({id:vm.company.id,search:''},function(data) {
 		vm.tickets = data;
 	})
 

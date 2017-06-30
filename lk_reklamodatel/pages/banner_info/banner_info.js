@@ -110,5 +110,10 @@ angular.module('lk_reklamodatel').controller('bannerInfoCtrl',function($statePar
 
 		Plotly.newPlot('lk_'+which+'_donut', data, layout,{displayModeBar: false});
 	}
+
+	vm.delete = function() {
+		bannerService.delete([$stateParams.id]);
+		window.history.back();
+	}
 	
 })

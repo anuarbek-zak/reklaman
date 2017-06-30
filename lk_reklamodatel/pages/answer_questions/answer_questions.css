@@ -60,6 +60,10 @@
   cursor: pointer;	
 }
 
+.lk_answer_questions .questions li:hover{
+  text-decoration: underline;
+}
+
 .lk_answer_questions .answers {
 	margin-left: 20px;
 	max-width: 650px;
@@ -137,7 +141,6 @@
 .lk_answer_questions .my-modal-footer .btn-blue span{
 	margin-right: 10px;
 }
-
 
 .lk_answer_questions .my-modal-video .my-modal-content{
   width: 550px;

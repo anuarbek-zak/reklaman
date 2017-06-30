@@ -1,5 +1,5 @@
 angular.module('app')
-.factory("reklamodatelService", function($http) {
+.factory("reklamodatelService", function($http,Upload) {
     var service = {};
 
     service.getQuestions = function(from,limit,cb){
@@ -67,22 +67,6 @@ angular.module('app')
             })
     }
 
-    service.getBannersOfCompany = function(id,from,limit,cb){
-        //method - (post)
-        //api - '/api/banners/:id
-        //data -   {from:from,limit:limit}
-        $http.get('jsons/reklamodatel_banners.json')
-            .success(function(data){
-                data.banners.forEach(function(i){
-                    i.checked = false;
-                })
-                cb(data);
-             })
-            .error(function(err){
-                console.log(err);
-            })
-    }
-
     service.getBannersOnModeration = function(from,limit,cb){
         //method - (post)
         //api - '/api/banners/on_moderation
@@ -116,6 +100,7 @@ angular.module('app')
     service.update = function(file,company) {
         //api - '/api/reklamodatel
         //data -   {file:file,banner:banner}
+        //if no new photo 'file' will be {} 
        Upload.upload({
             url: '/api/reklamodatel/update',
             data: {file:file,company:company}

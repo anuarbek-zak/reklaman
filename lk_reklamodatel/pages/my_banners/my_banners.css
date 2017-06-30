@@ -73,13 +73,18 @@
   width: 100%;
 }
 
+.lk_my_banners td:not(:first-child),
+.lk_my_banners th:nth-child(n+3){
+  text-align: center;
+}
+
 .lk_my_banners  td.check{
   vertical-align: top;
   padding-top: 20px;
   text-align: center;
 }
 
-.lk_my_banners tdfirst{
+.lk_my_banners td:first-child{
   padding: 0;
   padding-top: 30px;
 }
@@ -130,7 +135,7 @@
 
 .lk_my_banners .status .btn-blue:hover{
   max-width: 130px;
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .lk_my_banners .status .reason p:first-child{

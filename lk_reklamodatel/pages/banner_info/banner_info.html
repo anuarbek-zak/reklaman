@@ -27,7 +27,10 @@
 					<div class="flex">
 						<div class="photo" set-background-img src="{{vm.banner.photo}}"></div>
 						<div class="banner-info flex-column">
-							<p class="green bolder name">{{vm.banner.name}}</p>
+							<p class="green bolder name">
+							{{vm.banner.name | limitTo:40}}
+							<span ng-if="vm.banner.name.length>40">...</span>
+							</p>
 							<p class="description bold">
 								{{vm.banner.gender.name}},{{vm.banner.age_from}}-{{vm.banner.age_to}} лет,
 								<span ng-repeat="city in banner.cities | limitTo:3">{{city.name}}
@@ -41,7 +44,7 @@
 					</div>
 				</td>
 				<td class="status" >
-					<button class="btn-gray" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{vm.banner.status.name}}</button>
+					<button class="btn-gray btn-disabled" ng-class="{'btn-green':banner.status.id==2,'btn-blue':banner.status.id==3}">{{vm.banner.status.name}}</button>
 					<div ng-if="banner.status.reason" class="reason">
 						<p>Причина:</p>
 						<p>{{vm.banner.status.reason }}</p>
@@ -63,7 +66,7 @@
 						<i class="fa fa-paint-brush"></i>
 						<span class="my-tooltip">Редактировать</span>
 					</div>	
-					<div class="btn-gray">
+					<div ng-click="vm.delete()" class="btn-gray">
 						<i class="fa fa-trash"></i>
 						<span class="my-tooltip">Удалить</span>
 					</div>					

@@ -8,7 +8,7 @@
 			<button ng-click="vm.showModal=true" class="btn-blue"><img src="assets/images/megaphone-(1).png" alt="">Новый тикет</button>
 		</div>
 
-		<input ng-model="search" type="text" ng-model="search" placeholder="Поиск" class="input">
+		<input ng-change="vm.search()" type="text" ng-model="vm.searchText" placeholder="Поиск" class="input input-search">
 	</div>
 	<table>
 		<thead>
@@ -22,7 +22,7 @@
 			<th>Операции</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="ticket in vm.tickets | filter:search">
+			<tr ng-repeat="ticket in vm.tickets">
 				<td>{{$index+1}}</td>
 				<td>{{ticket.subject | limitTo:25 }}
 					<span ng-if="ticket.subject.length>25">...</span>
@@ -35,7 +35,7 @@
 				<td>{{ticket.first_message.created_at | date : 'dd.MM.yy HH:mm'}}</td>
 				<td>{{ticket.last_message.created_at | date : 'dd.MM.yy HH:mm'}}</td>
 				<td class="operations">
-					<div ng-class="{'invisible':ticket.new_messages==0}"  class="btn-gray">
+					<div ng-class="{'invisible':ticket.new_messages==0}"  class="btn-gray btn-disabled">
 						<i class="fa">{{ticket.new_messages}}</i>
 						<span class="my-tooltip">Новые сообщения</span>
 					</div>	
@@ -52,8 +52,8 @@
 		</tbody>
 	</table>
 	<!-- MODAL  -->
-	<div ng-show="vm.showModal" class="my-modal  flex">
-		<div class="my-modal-content white-div">
+	<div ng-click="vm.showModal=false" ng-show="vm.showModal" class="my-modal  flex">
+		<div class="my-modal-content white-div" ng-click="$event.stopPropagation()">
 			<div class="my-modal-header  flex">
 				<div class="title-div">
 					<img src="assets/images/megaphone-(2).png" class="title-icon">

@@ -27,10 +27,14 @@
 					</div>				
 				</div>
 				<div class="photo label-input">
+
+				
+
+
 					<label >Загрузите файл</label>
 
 					<div>
-						<div ngf-pattern="'image/*'"
+						<div ng-change="vm.cl()" ngf-pattern="'image/*'"
     												ngf-accept="'image/*'" ngf-max-size="5MB" ngf-select ng-model="vm.file" class="dropdown">
 							<input placeholder="{{vm.file.name||'Выберите изображение'}}" disabled="true" class="input">
 						</div>

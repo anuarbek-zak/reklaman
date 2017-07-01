@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('usersCtrl',function(userService,myService,$state,$stateParams,countriesService) {
+angular.module('admin_panel').controller('usersCtrl',function(userService,myService,countriesService) {
 	
 	var vm = this;
 
@@ -17,21 +17,21 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 		vm.lists = data;
 	});
 
-	countriesService.getCountries(function(data){
+	countriesService.getCountries({},function(data){
 		vm.countries = data;
 	})
 
-
+	userService.getCounters(function(data) {
+		vm.total_amount = data.total_amount;
+		vm.withdraws = data.withdraws;
+	})
 	
 	function getUsers(){
-		userService.getUsers(vm.filters,vm.beginIndex,vm.limit,function(data){
+		userService.getUsers({filters:vm.filters,from:vm.beginIndex,limit:vm.limit},function(data){
 			vm.users =vm.users.length==0?data.users:vm.users.concat(data.users);
 			vm.amount = data.amount;
-			vm.total_amount = data.total_amount;
-			vm.withdraws = data.withdraws_amount;
 		});	
 	}	
-
 	
 
 	vm.clearFilters = function(){
@@ -51,7 +51,7 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	vm.addCountry = function(place) {
 		place.checked=!place.checked;
 		vm.selectedCountryCount=0;
-		vm.filters.zones = {countries:[],regions:[],cities:[]};
+		vm.filters = {zones:{countries:[],regions:[],cities:[]}};
 		vm.countries.forEach(function(country) {
 			if(country.checked){
 				vm.filters.zones.countries.push(country.id);

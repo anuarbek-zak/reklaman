@@ -19,13 +19,13 @@ angular.module('admin_panel').controller('userUpdateCtrl',function(myService,use
 	
 	function getUser(){
 		userService.getUser($stateParams.id,function(data){
-			vm.user =data;
+			vm.user = data;
 		});	
 	}
 
 	vm.saveUser = function(){
 		userService.saveUser(vm.user);
-		$state.go('users');
+		window.history.back()
 	}
 	
 

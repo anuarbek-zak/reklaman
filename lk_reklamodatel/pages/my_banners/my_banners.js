@@ -76,6 +76,7 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 	}
 
 	vm.search = function () {
+		vm.beginIndex = 0;
 		vm.banners = [];
 		getBannersOfCompany();
 	}

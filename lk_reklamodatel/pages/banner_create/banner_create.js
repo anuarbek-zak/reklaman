@@ -24,7 +24,7 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 		vm.gender = data.gender;
 	})
 
-	countriesService.getCities(function(data){
+	countriesService.getCities({},function(data){
 		vm.cities = data;
 	})
 
@@ -39,7 +39,7 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 		});			
 	}	
 	
-	countriesService.getCountries(function(data){
+	countriesService.getCountries({},function(data){
 		vm.countries = data;
 		vm.countries.forEach(function(country) {
 			country.checked = false;

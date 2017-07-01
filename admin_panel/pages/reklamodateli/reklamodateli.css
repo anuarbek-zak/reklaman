@@ -40,6 +40,11 @@
   font-weight: bold;
 }
 
+
+.ap_reklamodateli td:first-child{
+  color: #999;
+}
+
 .ap_reklamodateli .operations{
       min-width: 150px;
 }

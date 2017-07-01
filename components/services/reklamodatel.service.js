@@ -2,10 +2,23 @@ angular.module('app')
 .factory("reklamodatelService", function($http,Upload) {
     var service = {};
 
+    service.getPayments = function(data,cb){
+        //method - (post)
+        //api - /api/payments
+        //data - {filters:{dateFrom:date,dateTo:date},from:number,limit:number,search:string}
+        $http.get('jsons/payments.json')
+            .success(function(data){
+                    cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.getQuestions = function(from,limit,cb){
         //method - (post)
         //api - '/api/reklamodatel/questions
-        //data -   {from:from,limit:limit}
+        //data -   {from:number,limit:number}
         $http.get('jsons/reklamodatel_questions.json')
             .success(function(data){
                 cb(data);
@@ -15,10 +28,11 @@ angular.module('app')
             })
     }
 
-    service.getCompanies = function(from,limit,cb){
+
+    service.getCompanies = function(data,cb){
         //method - (post)
         //api - /api/companies
-        //data - {from:from,limit:limit}
+        //data - {from:number,limit:number,search:string}
                 $http.get('jsons/companies.json')
                 .success(function(data){
                     cb(data);
@@ -33,6 +47,18 @@ angular.module('app')
         //api - /api/company/:id
         //params - compamy id
                 $http.get('jsons/company.json')
+                .success(function(data){
+                    cb(data);
+                })
+                .error(function(err){
+                    console.log(err);
+                })
+    }
+
+    service.getCounters = function(cb){
+        //method - (get)
+        //api - /api/company/counters
+                $http.get('jsons/companies_counters.json')
                 .success(function(data){
                     cb(data);
                 })
@@ -57,7 +83,7 @@ angular.module('app')
     service.getRequests = function(from,limit,cb){
         //method - (post)
         //api - '/api/reklamodatel/requests
-        //data -   {from:from,limit:limit}
+        //data -   {from:number,limit:number}
         $http.get('jsons/reklamodatel_requests.json')
             .success(function(data){
                 cb(data);
@@ -70,7 +96,7 @@ angular.module('app')
     service.getBannersOnModeration = function(from,limit,cb){
         //method - (post)
         //api - '/api/banners/on_moderation
-        //data -  {from:from,limit:limit}
+        //data -  {from:number,limit:number}
         $http.get('jsons/banners_on_moderation.json')
             .success(function(data){
                 data.banners.forEach(function(i){

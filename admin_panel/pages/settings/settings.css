@@ -42,7 +42,8 @@
 }
 
 .ap_settings .countries_managing .buttons button{
-	padding: 8px 14px
+	padding: 10px 14px;
+	font-size: 14px;
 }
 
 .ap_settings .countries_managing .buttons button .fa{

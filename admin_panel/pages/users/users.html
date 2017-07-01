@@ -26,7 +26,7 @@
 					
 					<button class="input" bs-dropdown>{{vm.filters[listName].name||'Без фильтра'}}</button>
 					<ul  class="dropdown-menu" role="menu">
-						<li ng-click="vm.addToFilter(listName,null)">Без фильтра</li>
+						<li ng-click="vm.addToFilter(listName,{})">Без фильтра</li>
 						<li ng-repeat="option in listVal.options"  ng-click="vm.addToFilter(listName,option)">{{option.name}}</li>
 					</ul>
 				</div>
@@ -67,18 +67,18 @@
 		<div class="flex row-2">
 			<div class="item">
 				<label  for="">Возраст</label>
-				<input ng-model="vm.filters.age_from"  placeholder="0" max="100" min="0" class="input">
+				<input ng-model="vm.filters.age_from"  type="number" placeholder="0" max="100" min="0" class="input">
 				
 				<span>-</span>
-				<input ng-model="vm.filters.age_to" placeholder="100" max="100" min="0" class="input">
+				<input ng-model="vm.filters.age_to" type="number" placeholder="100" max="100" min="0" class="input">
 				
 			</div>
 			<div class="item">	
 				<label  for="">Сумма на счету</label>
-				<input ng-model="vm.filters.balance_from" placeholder="0"  min="0" class="input">
+				<input ng-model="vm.filters.balance_from" type="number" placeholder="0"  min="0" class="input">
 				
 				<span>-</span>
-				<input ng-model="vm.filters.balance_to" placeholder="100" min="0" class="input">
+				<input ng-model="vm.filters.balance_to" type="number" placeholder="100" min="0" class="input">
 				
 			</div>
 			<div class="item">
@@ -96,7 +96,7 @@
 
 	</div>
 	<div class="line-5 flex">
-		<input placeholder="Поиск пользователей ..." ng-model="search" type="text" class="input">
+		<input placeholder="Поиск пользователей ..." ng-model="vm.searchText" ng-change="vm.filter()" type="text" class="input">
 	</div>
 	<table>
 		<thead>
@@ -120,7 +120,7 @@
 		</tr>			
 		</thead>
 		<tbody>
-			<tr ng-repeat="user in vm.users | filter:search">
+			<tr ng-repeat="user in vm.users">
 				<td  class="with-photo flex">
 					<div set-background-img src="{{user.photo}}" class="user-photo"></div>
 					<span>{{user.name |limitTo:20}} 

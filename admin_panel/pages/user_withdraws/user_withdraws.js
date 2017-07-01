@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('userWithdrawsCtrl',function(userService,$state,$stateParams,$filter) {
+angular.module('admin_panel').controller('userWithdrawsCtrl',function(userService) {
 	
 	var vm = this;
 
@@ -9,6 +9,7 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	vm.withdraws=[];
 	vm.filters = {};
 	vm.allSelected = false;
+	vm.searchText = "";
 
 	getWithdraws();
 
@@ -17,7 +18,7 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	})
 	
 	function getWithdraws(){
-		userService.getWithdraws(vm.filters,vm.beginIndex,vm.limit,function(data){
+		userService.getWithdraws({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			vm.withdraws =vm.withdraws.length==0?data.withdraws:vm.withdraws.concat(data.withdraws);
 			vm.amount = data.amount;
 		});	
@@ -51,9 +52,13 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 
 	vm.addToFilter = function(key,val){
 		if(key) vm.filters[key] = val;
+		vm.filter();	
+	}
+
+	vm.filter = function() {
 		vm.beginIndex=0;
 		vm.withdraws=[];
-		getWithdraws();		
+		getWithdraws();	
 	}	
 
 	vm.getNewData = function(){

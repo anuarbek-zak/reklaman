@@ -14,7 +14,7 @@
 	<div class="line-2 flex">
 		<div>
 			<a href="" class="btn-green">+ Добавить компанию</a>
-			<input type="text"	ng-model="search" class="input" placeholder="Поиск компании в списке...">
+			<input type="text" ng-change="vm.search()"	ng-model="vm.searchText" class="input input-search" placeholder="Поиск компании в списке...">
 		</div>
 		<p>Всего рекламодателей	- {{vm.total_amount}}</p>	
 	</div>
@@ -31,7 +31,7 @@
 		</tr>			
 		</thead>
 		<tbody>
-			<tr ng-repeat="company in vm.companies | filter:search">
+			<tr ng-repeat="company in vm.companies">
 				<td>{{$index+1}}</td>
 				<td  class="with-photo flex">
 					<div set-background-img src="{{company.photo}}" class="user-photo"></div>

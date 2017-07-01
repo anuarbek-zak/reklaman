@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('settingsCtrl',function($state,$stateParams,countriesService,settingsService) {
+angular.module('admin_panel').controller('settingsCtrl',function(countriesService,settingsService) {
 	
 	var vm = this;
 	
@@ -11,6 +11,8 @@ angular.module('admin_panel').controller('settingsCtrl',function($state,$statePa
 	vm.settings=[];
 	vm.currentRoute = {};
 	vm.activeButton  = "";
+	vm.searchModal = "";
+	vm.searchText = "";
 
 	settingsService.getRoutes(function(data){
 		vm.routes = data;
@@ -20,25 +22,35 @@ angular.module('admin_panel').controller('settingsCtrl',function($state,$statePa
 	getCountries();
 	getSettings();
 
-	function getCountries(){
-		countriesService.getCountries(function(data){
-			vm.countries = vm.countries.length==0?data:vm.countries.concat(data);		
-		},vm.modal_beginIndex,vm.modal_limit);
-	}
-	
+	countriesService.getManagingCountries(function(data){
+		vm.managing_countries = data;		
+	});
 
-	function getSettings(){
-		console.log('set');
-		settingsService.getSettings(vm.beginIndex,vm.limit,function(data){
-			vm.settings = vm.settings.length==0?data.settings:vm.settings.concat(data.settings);		
-			vm.amount = data.amount
+	function getCountries(){
+		countriesService.getCountries({from:vm.modal_beginIndex,limit:vm.modal_limit,search:vm.searchModal},function(data){
+			vm.countries = vm.countries.length==0?data:vm.countries.concat(data);		
 		});
 	}
 	
 
-	countriesService.getManagingCountries(function(data){
-		vm.managing_countries = data;		
-	});
+	function getSettings(){
+		settingsService.getSettings({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
+			vm.settings = vm.settings.length==0?data.settings:vm.settings.concat(data.settings);		
+			vm.amount = data.amount
+		});
+	}
+
+	vm.searchCountry = function() {
+		vm.countries = [];
+		vm.modal_beginIndex = 0;
+		getCountries();
+	}
+
+	vm.search = function() {
+		vm.settings = [];
+		vm.beginIndex = 0;
+		getSettings();
+	}
 
 	vm.showUpdatingModal = function(setting){
 		vm.showSettingsModal = true;
@@ -46,7 +58,6 @@ angular.module('admin_panel').controller('settingsCtrl',function($state,$statePa
 	}
 
 	vm.updateSetting = function(){
-		console.log(vm.currentSetting);
 		settingsService.updateSetting(vm.currentSetting);
 		vm.showSettingsModal=false;
 	}

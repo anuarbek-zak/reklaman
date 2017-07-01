@@ -1,16 +1,16 @@
-angular.module('admin_panel').controller('paymentsCtrl',function(myService,$state,$stateParams) {
+angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelService) {
 	
 	var vm = this;
 
-	vm.limit = $stateParams.limit?parseInt($stateParams.limit):25;
-	vm.beginIndex =$stateParams.from?parseInt($stateParams.from):0;
-
+	vm.limit = 25;
+	vm.beginIndex = 0;
+	vm.searchText = "";
 	vm.filters = {};
-	vm.payments=[];	
+	vm.payments = [];	
 	vm.totalSumm = 0;
 
 	function getPayments(){
-		myService.getPayments(vm.filters,vm.beginIndex,vm.limit,function(data){
+		reklamodatelService.getPayments({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			vm.payments = vm.payments.length==0?data.payments:vm.payments.concat(data.payments);
 			vm.totalSumm = data.totalSumm;
 			vm.amount = data.amount;
@@ -36,7 +36,7 @@ angular.module('admin_panel').controller('paymentsCtrl',function(myService,$stat
 	}
 
 	vm.bill = function(id){
-
+		//some logic...
 	}
 
 })

@@ -16,6 +16,11 @@ angular.module('admin_panel').controller('reklamodateliQuestionsCtrl',function($
 		});
 	}	
 
+	vm.search = function() {
+		vm.questions=[];
+		vm.beginIndex=0;
+		getQuestions();
+	}
 
 	vm.getNewData = function(){
 		if(vm.questions.length>=vm.amount) return;

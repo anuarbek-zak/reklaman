@@ -2,11 +2,10 @@ angular.module('app')
 .factory("countriesService", function($http) {
     var service = {};
 
-    service.getCountries = function(cb,begin,limit){
+    service.getCountries = function(data,cb){
     	//(post)'/api/countries
-    	//data - {from:begin,limit:limit}
-    	var data = {};
-    	if(begin && limit) data = {from:begin,limit:limit};
+    	//data - {from:number,limit:number,search:string}
+    	//data may be empty {}
     	 $http.get('jsons/countries.json')
 				.success(function(data){
 					cb(data);
@@ -16,11 +15,9 @@ angular.module('app')
 				})
     	}
 
-    service.getCities = function(cb,begin,limit){
+    service.getCities = function(data,cb){
     	//(post)'/api/countries
-    	//data - {from:begin,limit:limit}
-    	var data = {};
-    	if(begin && limit) data = {from:begin,limit:limit};
+    	//data - {from:number,limit:number}
     	 $http.get('jsons/cities.json')
 				.success(function(data){
 					cb(data);
@@ -54,7 +51,7 @@ angular.module('app')
     }
 
     service.removeFromManaging = function(id){
-    	//(post)'/api/managing_countries/:id
+    	//(delete)'/api/managing_countries/:id
     	//params - country id	
     	 $http.delete('/api/managing_countries/'+id)
 				.success(function(data){

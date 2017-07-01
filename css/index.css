@@ -817,6 +817,7 @@ td{
 
 .dropdown-menu{
     width: 100%;
+    min-width: 100px;
     border: 1px solid #e1e1e1;
     border-radius: 0 0 4px 4px;
     max-height: 500px;
@@ -959,5 +960,11 @@ footer a{
   color: #6a6a6a;
   margin-right: 30px;
   font-size: 14px;
+  text-decoration: underline;
+}
+
+footer a:hover{
+   color: #6a6a6a;
+   text-decoration: none;
 }
 /* -------------------    FOOTER  END----------------------------*/

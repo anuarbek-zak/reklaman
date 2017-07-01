@@ -5,7 +5,7 @@
 			<h2 class="title-text">выводы средств пользователей</h2>
 		</div>
 
-		<input ng-model="search" type="text" placeholder="Поиск ..." class="input">
+		<input ng-model="vm.searchText" ng-change="vm.filter()" type="text" placeholder="Поиск ..." class="input">
 	</div>
 	<div class="line-2 flex">
 		<div class="dropdown">
@@ -15,13 +15,13 @@
 			</ul>
 		</div>
 		<div class="flex date">
-			<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-				<input ng-change="vm.addToFilter('dateFrom',vm.filters.dateFrom)" ng-model="vm.filters.dateFrom" placeholder="12 сентября 2017" type="text" class="input">
+			<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+				<input ng-change="vm.addToFilter('dateFrom',vm.filters.dateFrom)" ng-model="vm.filters.dateFrom" placeholder="12-06-2017" type="text" class="input">
 			</datepicker>
 
 			<p>-</p> 
-			<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-				<input ng-change="vm.addToFilter('dateTo',vm.filters.dateFrom)" ng-model="vm.filters.dateTo" placeholder="13 декабря 2017" type="text" class="input">
+			<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+				<input ng-change="vm.addToFilter('dateTo',vm.filters.dateFrom)" ng-model="vm.filters.dateTo" placeholder="13-07-2017" type="text" class="input">
 			</datepicker>
 		</div>
 			<button ng-click="vm.changeStatuses('accept')" class="btn-green"><img src="assets/images/close.png" alt="">Провести выплаты </button>
@@ -41,7 +41,7 @@
 		</tr>			
 		</thead>
 		<tbody>
-			<tr ng-repeat="withdraw in vm.withdraws | filter:search" ng-init="withdraw.checked = false">
+			<tr ng-repeat="withdraw in vm.withdraws" ng-init="withdraw.checked = false">
 				<td ng-click="withdraw.checked=!withdraw.checked">
 					<input id="{{$index}}" ng-class="{'active':withdraw.checked}" ng-model="withdraw.checked" class="checkbox-custom" type="checkbox">
 					<label for="{{$index}}"></label>

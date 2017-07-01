@@ -1,12 +1,12 @@
-angular.module('app')
-.factory("userService", function($http) {
+angular.module('app').factory("userService", function($http) {
     var service = {};
 
     service.saveUser = function(newUser,cb){
     	//method - (put)
     	//api - /api/user
     	//data - {user:newUser}
-    	$http.put('/api/user')
+        console.log(newUser);
+    	$http.put('/api/user', {user:newUser})
 			.success(function(data){
 				})
 			.error(function(err){
@@ -15,11 +15,23 @@ angular.module('app')
     }
 		
   
-    service.getUsers = function(filters,from,limit,cb){
-    	//method - (post)
-    	//api - '/api/users
-    	//data - {filters:filters,from:from,limit:limit}
-    	$http.get('jsons/users.json')
+    service.getUsers = function(data,cb){
+        //method - (post)
+        //api - '/api/users
+        //data - {filters:{zones:{countries:[],regions:[],cities:[]},age_from:number,age_to:number,balance_from:number,balance_to:number,gender:{},status:{},user_status:{}},from:number,limit:number}
+        $http.get('jsons/users.json')
+            .success(function(data){
+                    cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
+    service.getCounters = function(cb){
+    	//method - (get)
+    	//api - '/api/user/counters
+    	$http.get('jsons/user_counters.json')
 			.success(function(data){
 					cb(data);
 				})
@@ -53,10 +65,10 @@ angular.module('app')
             })
     }
 
-    service.getWithdraws = function(filters,from,limit,cb){
+    service.getWithdraws = function(data,cb){
         //method - (post)
         //api - '/api/withdraws
-        //data -  {filters:filters,from:from,limit:limit}
+        //data -  {filters:filters,from:number,limit:number,search:string}
         $http.get('jsons/withdraws.json')
             .success(function(data){
                     cb(data);
@@ -69,7 +81,7 @@ angular.module('app')
     service.changeWithdraw = function(withdraw){
         //method - (put)
         //api - '/api/withdraws
-        //data -  {withdraw:withdraw}
+        //data -  {withdraw:object}
         $http.post('/api/withdraws')
             .success(function(data){
                 })
@@ -78,10 +90,11 @@ angular.module('app')
             })
     }
 
-    service.getQuestions = function(from,limit,cb){
-    	//method - (get)
+    service.getQuestions = function(data,cb){
+    	//method - (post)
     	//api - '/api/user/questions
-        //data -   {from:from,limit:limit}
+        //data -   {from:number,limit:number,search:string}
+        console.log(data)
     	$http.get('jsons/user_questions.json')
 			.success(function(data){
                 cb(data);

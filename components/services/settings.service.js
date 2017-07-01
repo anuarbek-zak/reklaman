@@ -36,10 +36,12 @@ angular.module('app')
     }
 		
 
-    service.getSettings = function(from,limit,cb){
-    	//mehtod - get
-    	//api - /api/settings/:from/:limit
-    	//params - from,limit
+    service.getSettings = function(data,cb){
+    	//mehtod - post
+    	//api - /api/settings/
+    	//data - {from:number,limit:number,search:string}
+    	    	console.log(data);
+
 			$http.get('jsons/settings.json')
 			.success(function(data){
 					cb(data);

@@ -5,20 +5,20 @@
 			<h2 class="title-text">платежи</h2>
 		</div>
  
-		<input type="text" ng-model="search" class="input" placeholder="Поиск ...">
+		<input type="text" ng-model="vm.searchText" ng-change="vm.filter()" class="input input-search" placeholder="Поиск ...">
 	</div>
 	<div class="line-2 flex">
 		<p>Оплачено счетов на сумму: <span>{{vm.totalSumm}} руб</span> </p> 
 	</div>
 	<div class="line-3 flex">
 		<p>Показать за период:</p>
-		<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-			<input ng-change="vm.filter()" ng-model="vm.filters.dateFrom" placeholder="12 сентября 2017" type="text" class="input">
+		<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+			<input ng-change="vm.filter()" ng-model="vm.filters.dateFrom" placeholder="12-06-2017" type="text" class="input">
 		</datepicker>
 
 		<p>-</p> 
-		<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
-			<input ng-change="vm.filter()" ng-model="vm.filters.dateTo" placeholder="13 декабря 2017" type="text" class="input">
+		<datepicker date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+			<input ng-change="vm.filter()" ng-model="vm.filters.dateTo" placeholder="13-07-2017" type="text" class="input">
 		</datepicker>
 	</div>
 	<table>

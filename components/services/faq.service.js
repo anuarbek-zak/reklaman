@@ -2,6 +2,7 @@ angular.module('app')
 .factory("faqService", function($http) {
     var service = {};
 
+
     service.getAnswers = function(cb){
         //method - (get)
         //api - /api/answers

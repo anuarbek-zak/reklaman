@@ -1,11 +1,13 @@
 angular.module('app').factory("userService", function($http) {
     var service = {};
 
+        // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
+
     service.saveUser = function(newUser,cb){
     	//method - (put)
     	//api - /api/user
     	//data - {user:newUser}
-        console.log(newUser);
     	$http.put('/api/user', {user:newUser})
 			.success(function(data){
 				})
@@ -19,6 +21,7 @@ angular.module('app').factory("userService", function($http) {
         //method - (post)
         //api - '/api/users
         //data - {filters:{zones:{countries:[],regions:[],cities:[]},age_from:number,age_to:number,balance_from:number,balance_to:number,gender:{},status:{},user_status:{}},from:number,limit:number}
+        // limit and from optional,means get all data
         $http.get('jsons/users.json')
             .success(function(data){
                     cb(data);
@@ -81,7 +84,7 @@ angular.module('app').factory("userService", function($http) {
     service.changeWithdraw = function(withdraw){
         //method - (put)
         //api - '/api/withdraws
-        //data -  {withdraw:object}
+        //data -  {withdraw:obj}
         $http.post('/api/withdraws')
             .success(function(data){
                 })
@@ -94,7 +97,6 @@ angular.module('app').factory("userService", function($http) {
     	//method - (post)
     	//api - '/api/user/questions
         //data -   {from:number,limit:number,search:string}
-        console.log(data)
     	$http.get('jsons/user_questions.json')
 			.success(function(data){
                 cb(data);

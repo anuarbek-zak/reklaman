@@ -2,6 +2,9 @@ angular.module('app')
 .factory("settingsService", function($http) {
     var service = {};
 
+        // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
+
     service.getRoutes = function(cb){
     	//method - (get)
     	//api - '/api/routes
@@ -40,8 +43,6 @@ angular.module('app')
     	//mehtod - post
     	//api - /api/settings/
     	//data - {from:number,limit:number,search:string}
-    	    	console.log(data);
-
 			$http.get('jsons/settings.json')
 			.success(function(data){
 					cb(data);

@@ -3,15 +3,18 @@ angular.module('admin_panel')
 	
 	var vm = this;
 	vm.compressed=false;
- 	vm.activeItem=1;
+	vm.activeItem=1;
 
 	myService.getQuestionsCounter(function(data){
 		vm.questionsCounter = data;
 	});
 
-	myService.getAdmin(function(data){
-		vm.admin = data;
-		$localStorage.admin = vm.admin;
-	})	
+	vm.admin = {
+		"id":1,
+		"name":"Admin",
+		"photo":"assets/images/zhdun_136443469_orig_.jpg",
+		"email":"anuarbekzakirianov97@gmail.com"
+	};
+	$localStorage.admin = vm.admin;
 
 })

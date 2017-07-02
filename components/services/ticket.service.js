@@ -2,6 +2,9 @@ angular.module('app')
 .factory("ticketService", function($http) {
     var service = {};
 
+        // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
+    
     service.getStatuses = function(cb){
         //method - (get)
         //api - /api/ticket/status

@@ -13,7 +13,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 		vm.gender = data.gender;
 	})
 
-	countriesService.getCities(function(data){
+	countriesService.getCities({},function(data){
 		vm.cities = data;
 	})
 
@@ -25,7 +25,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 
 
 	function getAudience() {
-		userService.getUsers(vm.filters,0,0,function(data){
+		userService.getUsers({filters:vm.filters},function(data){
 			vm.audienceCount = data.amount;
 		});			
 	}	
@@ -40,7 +40,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 			};
 			getAudience();
 
-			countriesService.getCountries(function(data){
+			countriesService.getCountries({},function(data){
 				vm.countries = data;
 				vm.countries.forEach(function(country) {
 					if(vm.banner.zones.countries.indexOf(country.id)>-1) {
@@ -70,11 +70,6 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 		});	
 
 	}
-
-	vm.saveBanner = function(){
-		bannerService.saveBanner(vm.banner);
-		$state.go('reklamodatel_banners');
-	}	
 
 	vm.changeInfo = function(which,newVal,updateAudienceCounter){
 		vm.banner[which] = newVal;
@@ -125,12 +120,12 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 
 	vm.sendToModeration = function() {
 		bannerService.sendToModeration(vm.file,vm.banner);
-		$state.go('reklamodatel_banners')
+		window.history.back();
 	}
 
 	vm.saveAsDraft = function(){
 		bannerService.saveAsDraft(vm.banner);
-		$state.go('reklamodatel_banners')
+		window.history.back();
 	}
 
 })

@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('ticketCtrl',function($localStorage,userService,ticketService,$state,$stateParams) {
+angular.module('admin_panel').controller('ticketCtrl',function($localStorage,ticketService,$stateParams) {
 	
 	var vm = this;
 	vm.limit =3 ;

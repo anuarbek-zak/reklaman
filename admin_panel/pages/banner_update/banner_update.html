@@ -43,7 +43,7 @@
 				</div>
 				<div class="cost label-input">
 					<label >Стоимость показа (руб)</label>
-					<input ng-model="vm.banner.cost" type="number" class="input">		
+					<input type="number" ng-model="vm.banner.cost" placeholder="0" min="0" class="input">		
 				</div>
 			</div>	
 			
@@ -144,11 +144,11 @@
 			<div class="label-input date">
 				<label>Даты трансляции баннера</label>
 				<div class="flex">
-					<datepicker  placeholder="13 ноября 2017" date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
+					<datepicker  placeholder="13-06-2017" date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
 						<input  ng-model="vm.banner.display_from" type="text" class="input">
 					</datepicker>
 					<span class="divider-line">-</span>
-					<datepicker  placeholder="13 декабря 2017"  date-week-start-day="1" datepicker-mobile="true"  date-format="dd MMMM yyyy">
+					<datepicker  placeholder="13-07-2017"  date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
 						<input  ng-model="vm.banner.display_to"  type="text" class="input">
 					</datepicker>
 				</div>

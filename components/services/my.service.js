@@ -12,17 +12,6 @@ angular.module('app')
 					console.log(err);
 				})
     }
-   
-    service.getAdmin = function(cb){
-    	//(get)'/api/admin
-			$http.get('jsons/admin.json')
-					.success(function(data){
-						cb(data);
-					})
-					.error(function(err){
-						console.log(err);
-					})
-    }
     
     service.getListOptions = function(cb){
     	//method - (get)

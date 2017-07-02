@@ -2,6 +2,8 @@ angular.module('app')
 .factory("reklamodatelService", function($http,Upload) {
     var service = {};
 
+    // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
     service.getPayments = function(data,cb){
         //method - (post)
         //api - /api/payments

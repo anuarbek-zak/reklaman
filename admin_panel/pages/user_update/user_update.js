@@ -1,13 +1,13 @@
-angular.module('admin_panel').controller('userUpdateCtrl',function(myService,userService,countriesService,$state,$stateParams) {
+angular.module('admin_panel').controller('userUpdateCtrl',function(myService,userService,countriesService,$stateParams) {
 	
 	var vm = this;
 	vm.countries = [];
 	vm.lists=[];
 
-	vm.limit = $stateParams.limit?parseInt($stateParams.limit):25;
-	vm.beginIndex =$stateParams.from?parseInt($stateParams.from):0;
+	vm.limit = 25;
+	vm.beginIndex = 0;
 
-	countriesService.getCountries(function(data){
+	countriesService.getCountries({},function(data){
 		vm.countries = data;
 	})
 

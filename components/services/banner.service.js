@@ -2,6 +2,9 @@ angular.module('app')
 .factory("bannerService", function($http,Upload) {
     var service = {};
 
+    // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
+
     service.getBannersOfCompany = function(data,cb){
         //method - (post)
         //api - '/api/banners/
@@ -90,7 +93,7 @@ angular.module('app')
     service.update = function(bannersToUpdate){
        //method - (put)
         //api - /api/banners/
-        //data -   {(bannersToUpdate:bannersToUpdate}
+        //data -   {bannersToUpdate:array}
         $http.put('/api/banners/',{bannersToUpdate:bannersToUpdate})
             .success(function(data){
                 cb(data);
@@ -103,7 +106,7 @@ angular.module('app')
     service.delete = function(bannersToRemove){
         //method - (delete)
         //api - '/api/banners/
-        //data - ids array of deleted banners {bannersToRemove:bannersToRemove}
+        //data - array of deleted banners {bannersToRemove:bannersToRemove}
 
         $http.delete('/api/banners/',{bannersToRemove:bannersToRemove})
             .success(function(data){
@@ -117,7 +120,7 @@ angular.module('app')
     service.copy = function(bannersToCopy,cb){
         //method - (post)
         //api - '/api/banners/copy
-        //data -   {bannersToCopy:bannersToCopy}
+        //data -   {bannersToCopy:array}
         $http.post('/api/banners/copy',{bannersToCopy:bannersToCopy})
             .success(function(newBanners){
                 cb(newBanners);
@@ -130,7 +133,7 @@ angular.module('app')
     service.saveAsDraft = function(banner){
         //method - (post)
         //api - '/api/banners/asDraft
-        //data -   {banner:banner}
+        //data -   {banner:obj}
         $http.post('/api/banners/asDraft',{banner:banner})
             .success(function(newBanners){
                
@@ -143,7 +146,7 @@ angular.module('app')
     service.sendToModeration = function(file,banner){
         //method - (post)
         //api - '/api/banner/toModeration
-        //data -   {file:file,banner:banner}
+        //data -   {file:ojb,banner:obj}
        Upload.upload({
             url: '/api/banner/toModeration',
             data: {file:file,banner:banner}

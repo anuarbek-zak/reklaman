@@ -2,11 +2,13 @@ angular.module('app')
 .factory("countriesService", function($http) {
     var service = {};
 
+
+    // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
+
     service.getCountries = function(data,cb){
     	//(post)'/api/countries
     	//data - {from:number,limit:number,search:string}
-    	//data may be empty {}
-    	 $http.get('jsons/countries.json')
+    	    	 $http.get('jsons/countries.json')
 				.success(function(data){
 					cb(data);
 				})
@@ -18,6 +20,7 @@ angular.module('app')
     service.getCities = function(data,cb){
     	//(post)'/api/countries
     	//data - {from:number,limit:number}
+    	
     	 $http.get('jsons/cities.json')
 				.success(function(data){
 					cb(data);
@@ -26,6 +29,7 @@ angular.module('app')
 					console.log(err);
 				})
     	}
+    
     
     service.getManagingCountries = function(cb){
     	//(get)'/api/managing_countries

@@ -36,6 +36,7 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 
 	vm.clearFilters = function(){
 		vm.filters = {zones:{countries:[],regions:[],cities:[]}};
+		vm.selectAllZones();
 	}
 
 	vm.addToFilter = function(key,val){

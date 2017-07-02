@@ -34,7 +34,7 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 
 
 	function getAudience() {
-		userService.getUsers(vm.filters,0,0,function(data){
+		userService.getUsers({filters:vm.filters},function(data){
 			vm.audienceCount = data.amount;
 		});			
 	}	

@@ -19,7 +19,7 @@ angular.module('app')
         //method - (post)
         //api - /api/question
         //data - {questionText:questionText,company_id:company_id}
-        $http.get('jsons/answers.json')
+        $http.post('/api/question',{questionText:questionText,company_id:company_id})
             .success(function(data){
                 })
             .error(function(err){

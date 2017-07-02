@@ -5,7 +5,7 @@ angular.module('app')
     service.getBannersOfCompany = function(data,cb){
         //method - (post)
         //api - '/api/banners/
-        //data -   {id:id,from:from,limit:limit,search:search}
+        //data -   {id:id,from:number,limit:number,search:string}
         $http.get('jsons/reklamodatel_banners.json')
             .success(function(data){
                 data.banners.forEach(function(i){
@@ -34,7 +34,7 @@ angular.module('app')
     service.getGraph = function(id,from,to,cb){
         //method - (get)
         //api - '/api/banner/:id/graph
-        //data - {from:from,to:to}
+        //data - {from:number,to:to}
         $http.get('jsons/banner_graph.json')
             .success(function(data){
                 cb(data);
@@ -71,10 +71,10 @@ angular.module('app')
             })
     }
 
-    service.getBannersOnModeration = function(from,limit,cb){
+    service.getBannersOnModeration = function(data,cb){
         //method - (post)
         //api - '/api/banners/on_moderation
-        //data -  {from:from,limit:limit}
+        //data -  {from:number,limit:number,search:string}
         $http.get('jsons/banners_on_moderation.json')
             .success(function(data){
                 data.banners.forEach(function(i){
@@ -90,7 +90,7 @@ angular.module('app')
     service.update = function(bannersToUpdate){
        //method - (put)
         //api - /api/banners/
-        //data -   {(bannersToUpdate:(bannersToUpdate}
+        //data -   {(bannersToUpdate:bannersToUpdate}
         $http.put('/api/banners/',{bannersToUpdate:bannersToUpdate})
             .success(function(data){
                 cb(data);
@@ -114,11 +114,11 @@ angular.module('app')
             })
     }
 
-    service.copy = function(company_id,bannersToCopy,cb){
+    service.copy = function(bannersToCopy,cb){
         //method - (post)
         //api - '/api/banners/copy
-        //data -   {company_id:company_id,bannersToCopy:bannersToCopy}
-        $http.post('/api/banners/copy',{company_id:company_id,bannersToCopy:bannersToCopy})
+        //data -   {bannersToCopy:bannersToCopy}
+        $http.post('/api/banners/copy',{bannersToCopy:bannersToCopy})
             .success(function(newBanners){
                 cb(newBanners);
                 })

@@ -11,7 +11,7 @@
 			<button ng-click="vm.delete()" ng-class="{'btn-blue':vm.isButtonsActive>0}" class="btn-gray"><i class="fa fa-trash-o"></i> Удалить</button>
 			<button ng-click="vm.copy()" ng-class="{'btn-blue':vm.isButtonsActive>0}" class="btn-gray"><i class="fa fa-files-o"></i> Копировать</button>
 		</div>
-		<input type="text" placeholder="Поиск" class="input">
+		<input type="text" placeholder="Поиск" ng-model="vm.searchText" ng-change="vm.search()" class="input input-search">
 	</div>
 	<table>
 		<thead>
@@ -94,7 +94,7 @@
 			<span><<</span>  <span >Показать еще</span> <span>>></span>
 		</div>
 		<div >
-			Показано {{vm.banners.length}} из {{vm.amount}} пользователей
+			Показано {{vm.banners.length}} из {{vm.amount}} объявлений
 		</div>
 	</div>	
 </div>

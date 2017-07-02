@@ -18,7 +18,7 @@
 		</tr>			
 		</thead>
 		<tbody>
-			<tr ng-repeat="request in vm.requests | filter:search">
+			<tr ng-repeat="request in vm.requests">
 				<td class="company_name">{{request.company_name}}</td>
 				<td>{{request.name }}<span>
 				<td class="mail">{{request.email}}</td>	
@@ -61,7 +61,7 @@
 			<span><<</span>  <span >Показать еще</span> <span>>></span>
 		</div>
 		<div >
-			Показано {{vm.requests.length}} из {{vm.amount}} пользователей
+			Показано {{vm.requests.length}} из {{vm.amount}} объявлений
 		</div>
 	</div>	
 </div>

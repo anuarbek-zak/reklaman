@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('registrationsRequestsCtrl',function(reklamodatelService,$state,$stateParams) {
+angular.module('admin_panel').controller('registrationsRequestsCtrl',function(reklamodatelService) {
 	
 	var vm = this;
 
@@ -11,7 +11,7 @@ angular.module('admin_panel').controller('registrationsRequestsCtrl',function(re
 
 	
 	function getRequests(){
-		reklamodatelService.getRequests(vm.beginIndex,vm.limit,function(data){
+		reklamodatelService.getRequests({from:vm.beginIndex,limit:vm.limit},function(data){
 			vm.requests =vm.requests.length==0?data.requests:vm.requests.concat(data.requests);
 			vm.amount = data.amount;
 		});	
@@ -19,23 +19,23 @@ angular.module('admin_panel').controller('registrationsRequestsCtrl',function(re
 
 	vm.delete = function(request){
 		vm.requests.splice(vm.requests.indexOf(request),1);
-		reklamodatelService.deleteFromRequests(request.id,false);
+		reklamodatelService.deleteFromRequests(request,false);
 	}
 
 	vm.add = function(request) {
 		vm.requests.splice(vm.requests.indexOf(request),1);
-		reklamodatelService.deleteFromRequests(request.id,true);
+		reklamodatelService.deleteFromRequests(request,true);
 
 	}
 
 	vm.read = function (request) {
 		vm.requests.splice(vm.requests.indexOf(request),1);
-		reklamodatelService.deleteFromRequests(request.id,false);
+		reklamodatelService.makeRead(request);
 	}
 
 	vm.getNewData = function(){
-		if(vm.beginIndex+vm.limit>vm.amount) return;
-		vm.beginIndex+=vm.limit;				
+		if(vm.requests.length>=vm.amount) return;
+		vm.beginIndex+=vm.requests.length+1;				
 		getRequests();
 	}
 	

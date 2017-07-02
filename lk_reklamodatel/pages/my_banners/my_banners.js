@@ -20,13 +20,22 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 		});	
 	}
 
+	vm.check = function(banner) {
+		banner.checked = !banner.checked;
+		if(banner.checked) vm.isButtonsActive+=1;
+		else vm.isButtonsActive-=1;
+		if(vm.isButtonsActive==0) vm.allSelected = false;
+		else if(vm.isButtonsActive==vm.banners.length) vm.allSelected = true;
+	}
+
 	vm.selectAll = function(bool){
 		vm.allSelected=bool;
+		if(vm.allSelected) vm.isButtonsActive = vm.banners.length;
+		else vm.isButtonsActive = 0;
 		for(var i=0;i<vm.banners.length;i++){
 			vm.banners[i].checked = bool;
 		}
-		if(bool) vm.isButtonsActive+=1;
-		else vm.isButtonsActive-=1;	
+
 	}
 
 	vm.delete = function(){
@@ -43,12 +52,6 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 		bannerService.delete(bannersToRemove);
 	}
 
-	vm.check = function(banner) {
-		banner.checked = !banner.checked;
-		if(banner.checked) vm.isButtonsActive+=1;
-		else vm.isButtonsActive-=1;
-	}
-
 
 	vm.copy  = function(banner){
 		if(vm.isButtonsActive==0) return;
@@ -59,7 +62,7 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 				 bannersToCopy.push(vm.banners[i]);
 			}
 		}
-		bannerService.copy($stateParams.id,bannersToCopy);
+		bannerService.copy(bannersToCopy);
 	}
 
 	vm.stop = function(){

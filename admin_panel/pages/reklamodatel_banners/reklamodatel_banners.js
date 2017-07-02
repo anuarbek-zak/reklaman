@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(reklamodatelService,$localStorage,$state,$stateParams) {
+angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bannerService,$stateParams) {
 	
 	var vm = this;
 
@@ -8,23 +8,33 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(rekl
 	vm.banners=[];
 	vm.allSelected = false;
 	vm.isButtonsActive=0;
+	vm.searchText = "";
 
 	getBannersOfCompany();
 
 	function getBannersOfCompany(){
-		reklamodatelService.getBannersOfCompany($stateParams.id,vm.beginIndex,vm.limit,function(data){
+		bannerService.getBannersOfCompany({id:$stateParams.id,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
 			vm.amount = data.amount;
 		});	
 	}
 
+	vm.check = function(banner) {
+		banner.checked = !banner.checked;
+		if(banner.checked) vm.isButtonsActive+=1;
+		else vm.isButtonsActive-=1;
+		if(vm.isButtonsActive==0) vm.allSelected = false;
+		else if(vm.isButtonsActive==vm.banners.length) vm.allSelected = true;
+	}
+
 	vm.selectAll = function(bool){
 		vm.allSelected=bool;
+		if(vm.allSelected) vm.isButtonsActive = vm.banners.length;
+		else vm.isButtonsActive = 0;
 		for(var i=0;i<vm.banners.length;i++){
 			vm.banners[i].checked = bool;
 		}
-		if(bool) vm.isButtonsActive+=1;
-		else vm.isButtonsActive-=1;	
+
 	}
 
 	vm.delete = function(){
@@ -38,18 +48,11 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(rekl
 				i--;
 			}
 		}
-		reklamodatelService.delete(bannersToRemove);
+		bannerService.delete(bannersToRemove);
 	}
-
-	vm.check = function(banner) {
-		banner.checked = !banner.checked;
-		if(banner.checked) vm.isButtonsActive+=1;
-		else vm.isButtonsActive-=1;
-	}
-
 
 	vm.copy  = function(banner){
-				if(vm.isButtonsActive==0) return;
+		if(vm.isButtonsActive==0) return;
 
 		var bannersToCopy = [];
 		for(var i=0;i<vm.banners.length;i++){
@@ -57,8 +60,7 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(rekl
 				 bannersToCopy.push(vm.banners[i]);
 			}
 		}
-		console.log(bannersToCopy);
-		reklamodatelService.copy($stateParams.id,bannersToCopy);
+		bannerService.copy(bannersToCopy);
 	}
 
 	vm.stop = function(){
@@ -71,7 +73,13 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(rekl
 				bannersToUpdate.push(vm.banners[i]);
 			}
 		}
-		reklamodatelService.update(bannersToUpdate);
+		bannerService.update(bannersToUpdate);
+	}
+
+	vm.search = function () {
+		vm.beginIndex = 0;
+		vm.banners = [];
+		getBannersOfCompany();
 	}
 
 	vm.getNewData = function(){

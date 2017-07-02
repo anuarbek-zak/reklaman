@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('bannersOnModerationCtrl',function(reklamodatelService,$localStorage,$state,$stateParams) {
+angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bannerService,$localStorage) {
 	
 	var vm = this;
 
@@ -8,12 +8,12 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 	vm.banners=[];
 	vm.allSelected = false;
 	vm.isButtonsActive=0;
-
+	vm.searchText = "";
 
 	getBannersOnModeration();
 
 	function getBannersOnModeration(){
-		reklamodatelService.getBannersOnModeration(vm.beginIndex,vm.limit,function(data){
+		bannerService.getBannersOnModeration({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
 			vm.amount = data.amount;
 		});	
@@ -24,15 +24,17 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 		banner.checked = !banner.checked;
 		if(banner.checked) vm.isButtonsActive+=1;
 		else vm.isButtonsActive-=1;
+		if(vm.isButtonsActive==0) vm.allSelected = false;
+		else if(vm.isButtonsActive==vm.banners.length) vm.allSelected = true;
 	}
 
 	vm.selectAll = function(bool){
 		vm.allSelected=bool;
+		if(vm.allSelected) vm.isButtonsActive = vm.banners.length;
+		else vm.isButtonsActive = 0;
 		for(var i=0;i<vm.banners.length;i++){
 			vm.banners[i].checked = bool;
 		}
-		if(bool) vm.isButtonsActive+=1;
-		else vm.isButtonsActive-=1;
 
 	}
 
@@ -48,7 +50,7 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 				i--;
 			}
 		}
-		reklamodatelService.delete(bannersToRemove);
+		bannerService.delete(bannersToRemove);
 	}
 
 	vm.copy  = function(banner){
@@ -59,7 +61,7 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 				 bannersToCopy.push(vm.banners[i]);
 			}
 		}
-		reklamodatelService.copy($stateParams.id,bannersToCopy,function(newBanners) {
+		bannerService.copy(bannersToCopy,function(newBanners) {
 			vm.banners.concat(newBanners);
 		});
 	}
@@ -67,9 +69,9 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 	vm.changeAcceptingStatus = function(banner,bool) {
 		banner.accepted=bool;
 		vm.banners.splice(vm.banners.indexOf(banner),1);
-		if(banner.checked) vm.isButtonsActive-=1
-			;
-		reklamodatelService.update([banner]);
+		if(banner.checked) vm.isButtonsActive-=1;
+		if(vm.isButtonsActive==0) vm.allSelected = false;
+		bannerService.update([banner]);
 	}
 
 	vm.stop = function(){
@@ -81,7 +83,14 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(rekl
 				bannersToUpdate.push(vm.banners[i]);
 			}
 		}
-		reklamodatelService.update(bannersToUpdate);
+		bannerService.update(bannersToUpdate);
+	}
+
+
+	vm.search = function () {
+		vm.beginIndex = 0;
+		vm.banners = [];
+		getBannersOnModeration();
 	}
 
 	vm.getNewData = function(){

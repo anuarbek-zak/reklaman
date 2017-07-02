@@ -17,7 +17,7 @@ angular.module('app')
 
     service.getQuestions = function(from,limit,cb){
         //method - (post)
-        //api - '/api/reklamodatel/questions
+        //api - '/api/company/questions
         //data -   {from:number,limit:number}
         $http.get('jsons/reklamodatel_questions.json')
             .success(function(data){
@@ -80,9 +80,9 @@ angular.module('app')
                 })
     }
 
-    service.getRequests = function(from,limit,cb){
+    service.getRequests = function(data,cb){
         //method - (post)
-        //api - '/api/reklamodatel/requests
+        //api - '/api/company/requests
         //data -   {from:number,limit:number}
         $http.get('jsons/reklamodatel_requests.json')
             .success(function(data){
@@ -93,28 +93,26 @@ angular.module('app')
             })
     }
 
-    service.getBannersOnModeration = function(from,limit,cb){
+
+    service.deleteFromRequests = function(company,addToCompaniesList){
         //method - (post)
-        //api - '/api/banners/on_moderation
-        //data -  {from:number,limit:number}
-        $http.get('jsons/banners_on_moderation.json')
-            .success(function(data){
-                data.banners.forEach(function(i){
-                    i.checked = false;
+        //api - '/api/banners/deleteFromRequests
+        //data -   {company:object,addToCompaniesList:boolean}
+        $http.post('/api/company/removeFromRequests',{company:company,addToCompaniesList:addToCompaniesList})
+            .success(function(newBanners){
+                cb(newBanners);
                 })
-                cb(data);
-             })
             .error(function(err){
                 console.log(err);
             })
     }
 
 
-    service.deleteFromRequests = function(company_id,addToCompaniesList){
+    service.makeRead = function(company){
         //method - (post)
-        //api - '/api/banners/copy
-        //data -   {company_id:company_id,addToCompaniesList:addToCompaniesList}
-        $http.post('/api/reklamodatel/removeFromRequests',{company_id:company_id,addToCompaniesList:addToCompaniesList})
+        //api - '/api/banners/makeRead
+        //data -   {company:object}
+        $http.post('/api/company/removeFromRequests',{company:company})
             .success(function(newBanners){
                 cb(newBanners);
                 })
@@ -124,11 +122,11 @@ angular.module('app')
     }
 
     service.update = function(file,company) {
-        //api - '/api/reklamodatel
+        //api - '/api/company
         //data -   {file:file,banner:banner}
         //if no new photo 'file' will be {} 
        Upload.upload({
-            url: '/api/reklamodatel/update',
+            url: '/api/company/update',
             data: {file:file,company:company}
         }).then(function (resp) {
             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);

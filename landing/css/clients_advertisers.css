@@ -34,6 +34,9 @@
  	.page-header .icons .icon img{
  		width: 30px;
  	}
+ 	.logo img{
+		width: 60px;
+	}
 
  	.registration-button.show-registration-layer{
  		display: inline-block;

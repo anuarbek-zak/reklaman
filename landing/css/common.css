@@ -23,7 +23,7 @@
 	display: none;
 	position: relative;
 	float: right;
-	margin-right: -7px;
+	margin-right: -9px;
 }
 
 .page-header .icons .icon{
@@ -139,7 +139,7 @@
 
 
 	.logo img{
-		width: 70px;
+		width: 60px;
 	}
 
  	.page-header{

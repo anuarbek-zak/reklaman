@@ -1,0 +1,44 @@
+ @font-face {
+ 	font-family: 'PTSans'; /* Имя шрифта */
+ 	src: url('../fonts/PTSans-Bold.ttf'); /* Путь к файлу со шрифтом */
+ 	font-weight: bold
+ }
+ @font-face {
+ 	font-family: 'PTSans'; /* Имя шрифта */
+ 	src: url('../fonts/PTSans-Regular.ttf'); /* Путь к файлу со шрифтом */
+ 	font-weight: normal;
+ }
+
+ body{
+ 	font-family: 'PTSans';
+ }
+
+ .container {
+ 	width: 95%;
+ }
+
+ @media screen and (max-width: 768px) {
+	.picture-block{
+		display: none;
+	}
+
+	.homepage-block{
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		-ms-align-items: center;
+		align-items: center;
+	}
+
+	.text-block h2{
+		font-size: 30px;
+
+	}
+ }

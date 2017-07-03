@@ -23,7 +23,7 @@
 	display: none;
 	position: relative;
 	float: right;
-	margin-right: -13px;
+	margin-right: -7px;
 }
 
 .page-header .icons .icon{
@@ -230,6 +230,10 @@
 
 	.page-footer .copyright .socials{
 		display: block;
+	}
+
+	.page-footer .copyright .socials a{
+		margin-left: 10px;
 	}
 
 	.copyright{

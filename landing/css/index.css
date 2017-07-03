@@ -72,7 +72,7 @@ w @font-face {
   	display: none;
   	position: relative;
 	float: right;
-	/*margin-right: -13px;*/
+	margin-right: -13px;
 	}
 
   .page-header .icons .icon{
@@ -89,16 +89,6 @@ w @font-face {
   	color: #767676;
   	background: #f1f1f1;
   	padding: 15px;
-  	display: -webkit-flex;
-  	display: -moz-flex;
-  	display: -ms-flex;
-  	display: -o-flex;
-  	display: flex;
-  	-webkit-flex-direction: column;
-  	-moz-flex-direction: column;
-  	-ms-flex-direction: column;
-  	-o-flex-direction: column;
-  	flex-direction: column;
   	border-radius: 4px;
   	box-shadow: 1px 1px 8px -2px #999;
   	  	display: none;
@@ -154,8 +144,35 @@ w @font-face {
   	margin-left: 10px;
   }
 
+  .mobile-menu-modal{
+  	top: 100%;
+  	right: 0;
+  	position: absolute;
+  	z-index: 10;
+  	color: #767676;
+  	background: #f1f1f1;
+  	font-weight: bold;
+  	padding: 25px;
+  	box-shadow: 1px 1px 8px -2px #999;
+  	display: none;
+  	line-height: 2;
+  	
+  }
+
+  .mobile-menu-modal li a{
+  	color: #424242;
+  }
+	
+	 .logo{
+	 	margin-top: 15px;
+	 }
+
 
  @media screen and (max-width: 768px) {
+
+ 	.logo{
+	 	margin: 15px;
+	 }
 
 
 	.page-header .icons{

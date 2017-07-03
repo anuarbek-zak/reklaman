@@ -126,9 +126,11 @@
 
 	.text-block h2{
 		font-size: 30px;
-
 	}
-
+	
+	.text-block .btn{
+		padding: 11px 35px;
+	}
 
 	.homepage-block .text-block {
 	    width: 100%;

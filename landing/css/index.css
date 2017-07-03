@@ -125,7 +125,11 @@
 	}
 
 	.text-block h2{
-		font-size: 30px;
+		font-size: 33px;
+	}
+
+	.page-footer .phone-section{
+		font-size: 24px;
 	}
 	
 	.text-block .btn{
@@ -173,10 +177,6 @@
 	    align-items: center;
 	}
 
-	.page-footer .phone-section .btn {
-	   	margin-top: 15px;
-     	margin-left: 0px; 
-	}
 
 	.push{
 		padding-bottom: 0;
@@ -216,7 +216,10 @@
 	}
 
 	.page-footer .phone-section .btn{
-		width: 180px;
+		width: 200px;
+		margin-top: 15px;
+     	margin-left: 0px;
+     	font-size: 17px;
 	}
 
 	.footer-menu{

@@ -3,11 +3,10 @@
 }
 
 @media screen and (max-width: 768px) {
-	.page-header{}
-	.page-header .icons .icon img{
- 		width: 30px;
- 	}
-
+	.page-header{
+		padding-bottom: 20px;
+	}
+	
 	.map-block{
 		height: 500px;
 	}
@@ -15,6 +14,11 @@
 	.variant-footer{
  		margin-top: 35px;
  	}
+	
+	.wrap {
+	    min-height: 87%;
+	}
+
 
 }
 @media screen and (max-width:600px) {
@@ -22,5 +26,6 @@
 		height: 450px;	
 		margin-top: 0;
 	}
+	 
 
 }

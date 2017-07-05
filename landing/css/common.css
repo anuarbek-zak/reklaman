@@ -23,13 +23,14 @@
 	display: none;
 	position: relative;
 	float: right;
-	margin-right: -9px;
+	margin-right: -8px;
 }
 
 .page-header .icons .icon{
 	padding:20px 13px;
 	display: inline-block;
 	text-align: center;	
+	vertical-align: top;
 }
 
 .page-header .icons .icon .second:nth-child(2){
@@ -41,7 +42,7 @@
 }
 
 .mobile-login-modal{
-	top: 97%;
+	top: 94%;
 	right: 48%;
 	position: absolute;
 	z-index: 10;

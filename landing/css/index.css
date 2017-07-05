@@ -41,6 +41,10 @@
 	margin-left: 10px;
 }
 
+.text-block h2{
+		font-size: 30px;
+	}
+
 @media screen and (max-width: 768px) {
 	.page-header{
 		padding-bottom: 10px;
@@ -96,9 +100,7 @@
 		margin-top: 0;
 	}
 
-	.text-block h2{
-		font-size: 33px;
-	}
+	
 	
 	.text-block .btn{
 		padding: 11px 35px;

@@ -75,9 +75,40 @@
   width: 100%;
 }
 
+.lk_banner_update .banner>.photo .input-green{
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-between;   
+}
+
 .lk_banner_update .banner>.photo span i{
   text-decoration: underline;
-} 
+}
+
+.lk_banner_update .banner>.photo .input{
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  width: 80%;
+}
+
+.lk_banner_update .banner>.photo .input .text-arrow{
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  width: 90%;
+}
+
+.lk_banner_update .banner>.photo input[type="file"]{
+  opacity: 0;
+  padding: 8px 20px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
 
 .lk_banner_update .audience h3{
   margin-top: 60px;
@@ -168,9 +199,23 @@
   bottom: 5px;
   z-index: 10;
   background: #f8f8f8;
-  background-size: contain;
-   background-repeat: no-repeat;
-  background-position: center center;  
+ display: -webkit-flex;
+ display: -moz-flex;
+ display: -ms-flex;
+ display: -o-flex;
+ display: flex;
+ justify-content: center;
+ -ms-align-items: center;
+ align-items: center;
+ background-size: contain;
+ background-position: center;
+ background-repeat: no-repeat;
+}
+
+.lk_banner_update .area-gray .background-img img{
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
 }
 
 .lk_banner_update .area-gray,.lk_banner_update .area-green{
@@ -250,4 +295,16 @@
 
 .lk_banner_update .buttons-bottom button span{
   margin-right: 10px;
+}
+
+.lk_banner_update .my-modal-footer,.lk_banner_update .my-modal-body{
+  padding:0 20px;
+}
+
+.lk_banner_update .my-modal-body{
+  justify-content: space-between;
+}
+
+.lk_banner_update .my-modal-footer .btn-green{
+  margin-top: 15px;
 }

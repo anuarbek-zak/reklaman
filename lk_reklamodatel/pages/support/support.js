@@ -1,16 +1,17 @@
 angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStorage,ticketService) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 	vm.showModal = false;
 	vm.company = $localStorage.company;
 	vm.newTicket = {};
 	vm.searchText = "";
-
+	vm.tickets  = [];
 	getTickets()
 
 	function getTickets() {
 		ticketService.getCompanyTickets({id:vm.company.id,search:vm.searchText},function(data) {
-			vm.tickets = data;
+			vm.tickets = vm.tickets.concat(data);
 		})
 	}	
 
@@ -24,8 +25,13 @@ angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStor
 	}
 
 	vm.search = function() {
-		vm.tickets = [];
-		getTickets()
+		if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		     vm.tickets = [];
+			 getTickets();
+		  }, 200);
 	}
 
 	vm.createTicket = function() {

@@ -1,6 +1,7 @@
 angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bannerService,$localStorage) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 
 	vm.limit = 25;
 	vm.beginIndex =0;
@@ -14,7 +15,8 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bann
 
 	function getBannersOnModeration(){
 		bannerService.getBannersOnModeration({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
+			if(vm.beginIndex==0) vm.banners = [];
+			vm.banners = vm.banners.concat(data.banners);
 			vm.amount = data.amount;
 		});	
 	}
@@ -88,9 +90,13 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bann
 
 
 	vm.search = function () {
-		vm.beginIndex = 0;
-		vm.banners = [];
-		getBannersOnModeration();
+		 if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		     vm.beginIndex = 0;
+			getBannersOnModeration();
+		  }, 200);
 	}
 
 	vm.getNewData = function(){

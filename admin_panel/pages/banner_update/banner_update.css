@@ -13,6 +13,7 @@
   width: 100%;
 }
 
+
 .ap_banner_update .banner .input,
 .ap_banner_update .audience .input{
     background-image: none;
@@ -22,6 +23,7 @@
   background-image: url('../../assets/images/angle-bottom.png') ;
   background-position: 95% center;
   text-align: left;
+  padding-right: 20px;
 }
 
 .ap_banner_update  h3{
@@ -49,6 +51,7 @@
   width: 100% ;
 }
 
+
 .ap_banner_update .line-1{
   height: 70px;
 }
@@ -72,9 +75,40 @@
   width: 100%;
 }
 
+.ap_banner_update .banner>.photo .input-green{
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-between;   
+}
+
 .ap_banner_update .banner>.photo span i{
   text-decoration: underline;
-} 
+}
+
+.ap_banner_update .banner>.photo .input{
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  width: 80%;
+}
+
+.ap_banner_update .banner>.photo .input .text-arrow{
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  width: 90%;
+}
+
+.ap_banner_update .banner>.photo input[type="file"]{
+  opacity: 0;
+  padding: 8px 20px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
 
 .ap_banner_update .audience h3{
   margin-top: 60px;
@@ -157,6 +191,32 @@
   overflow: hidden;
 }
 
+.ap_banner_update .area-gray .background-img{
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  z-index: 10;
+  background: #f8f8f8;
+ display: -webkit-flex;
+ display: -moz-flex;
+ display: -ms-flex;
+ display: -o-flex;
+ display: flex;
+ justify-content: center;
+ -ms-align-items: center;
+ align-items: center;
+ background-size: contain;
+ background-position: center;
+ background-repeat: no-repeat;
+}
+
+.ap_banner_update .area-gray .background-img img{
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
 
 .ap_banner_update .area-gray,.ap_banner_update .area-green{
   margin-bottom: 20px;
@@ -235,4 +295,16 @@
 
 .ap_banner_update .buttons-bottom button span{
   margin-right: 10px;
+}
+
+.ap_banner_update .my-modal-footer,.ap_banner_update .my-modal-body{
+  padding:0 20px;
+}
+
+.ap_banner_update .my-modal-body{
+  justify-content: space-between;
+}
+
+.ap_banner_update .my-modal-footer .btn-green{
+  margin-top: 15px;
 }

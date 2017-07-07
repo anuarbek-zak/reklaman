@@ -1,6 +1,7 @@
 angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerService,$localStorage,$stateParams) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 
 	vm.limit = 5;
 	vm.beginIndex =0;
@@ -15,7 +16,8 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 
 	function getBannersOfCompany(){
 		bannerService.getBannersOfCompany({id:vm.company.id,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.banners =vm.banners.length==0?data.banners:vm.banners.concat(data.banners);
+			if(vm.beginIndex==0) vm.banners = [];
+			vm.banners = vm.banners.concat(data.banners);
 			vm.amount = data.amount;
 		});	
 	}
@@ -79,9 +81,13 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 	}
 
 	vm.search = function () {
-		vm.beginIndex = 0;
-		vm.banners = [];
-		getBannersOfCompany();
+	if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		     vm.beginIndex = 0;
+			 getBannersOfCompany();
+		  }, 200);
 	}
 
 	vm.getNewData = function(){

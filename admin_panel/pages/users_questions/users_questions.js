@@ -1,6 +1,7 @@
 angular.module('admin_panel').controller('usersQuestionsCtrl',function($state,$stateParams,userService) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 	
 	vm.limit = 25;
 	vm.beginIndex=0;
@@ -12,15 +13,20 @@ angular.module('admin_panel').controller('usersQuestionsCtrl',function($state,$s
 
 	function getQuestions(){
 		userService.getQuestions({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.questions = vm.questions.length==0?data.questions:vm.questions.concat(data.questions);		
+			if(vm.beginIndex==0) vm.questions = [];
+			vm.questions = vm.questions.concat(data.questions);
 			vm.amount = data.amount
 		});
 	}
 
 	vm.search = function () {
-		vm.questions = [];
-		vm.beginIndex = 0;
-		getQuestions();
+		if (timeout) {  
+			clearTimeout(timeout);
+		}
+		timeout = setTimeout(function() {
+			vm.beginIndex = 0;
+			getQuestions();
+		}, 200);
 	}
 
 	vm.getNewData = function(){

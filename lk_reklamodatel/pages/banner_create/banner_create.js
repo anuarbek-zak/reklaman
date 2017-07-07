@@ -1,19 +1,25 @@
-angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($scope,$localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
+
+	vm.showModal = false;
+	vm.cropper = {};
+	vm.cropper.sourceImage = null;
+
+
 	vm.countries = [];
 	vm.lists=[];
 	vm.gender={};
 	vm.banner = {"display_days":
-					[
-						{"id":0,"name":"Понедельник","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":1,"name":"Вторник","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":2,"name":"Среда","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":3,"name":"Четверг","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":4,"name":"Пятница","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":5,"name":"Суббота","checked":true,"from":Date.now(),"to":Date.now()},
-						{"id":6,"name":"Воскресенье","checked":true,"from":Date.now(),"to":Date.now()}
-					]};
+	[
+	{"id":0,"name":"Понедельник","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":1,"name":"Вторник","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":2,"name":"Среда","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":3,"name":"Четверг","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":4,"name":"Пятница","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":5,"name":"Суббота","checked":true,"from":Date.now(),"to":Date.now()},
+	{"id":6,"name":"Воскресенье","checked":true,"from":Date.now(),"to":Date.now()}
+	]};
 	vm.showCountries=false;
 	vm.selectedCountryCount=0;
 	vm.filters = {zones:{countries:[],regions:[],cities:[]}};
@@ -31,7 +37,6 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 	bannerService.getStatuses(function(data){
 		vm.statuses = data;
 	});	
-
 
 	function getAudience() {
 		userService.getUsers({filters:vm.filters},function(data){
@@ -109,7 +114,7 @@ angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($loca
 	}
 
 	vm.sendToModeration = function() {
-		bannerService.sendToModeration(vm.file,vm.banner);
+		bannerService.sendToModeration(vm.banner);
 		window.history.back();
 	}
 

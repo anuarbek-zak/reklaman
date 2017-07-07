@@ -10,6 +10,7 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	vm.selectedCountryCount=0;
 	vm.countries=[];
 	vm.users=[];
+	var timeout;
 
 	getUsers();
 
@@ -28,7 +29,8 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	
 	function getUsers(){
 		userService.getUsers({filters:vm.filters,from:vm.beginIndex,limit:vm.limit},function(data){
-			vm.users =vm.users.length==0?data.users:vm.users.concat(data.users);
+			if(vm.beginIndex==0) vm.users = [];
+			vm.users = vm.users.concat(data.users);
 			vm.amount = data.amount;
 		});	
 	}	
@@ -74,8 +76,17 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	vm.filter = function(){
 		vm.showCountries = false;
 		vm.beginIndex=0;
-		vm.users=[];
 		getUsers();
+	}
+
+	vm.search = function() {
+		if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		    vm.beginIndex = 0;
+			getUsers();
+		  }, 200);
 	}	
 
 	

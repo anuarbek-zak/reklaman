@@ -1,6 +1,11 @@
 angular.module('lk_reklamodatel').controller('lkBannerUpdateCtrl',function(bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
+
+	vm.showModal = false;
+	vm.cropper = {};
+	vm.cropper.sourceImage = null;
+
 	vm.countries = [];
 	vm.lists=[];
 	vm.gender={};
@@ -125,7 +130,7 @@ angular.module('lk_reklamodatel').controller('lkBannerUpdateCtrl',function(banne
 	}
 
 	vm.sendToModeration = function() {
-		bannerService.sendToModeration(vm.file,vm.banner);
+		bannerService.sendToModeration(vm.banner);
 		window.history.back();
 	}
 

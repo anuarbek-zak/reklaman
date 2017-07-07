@@ -8,13 +8,13 @@
 	<div class="flex">
 		<div class="left-side">
 			<div class="status">
-					<label class="blue bolder">Статус баннера</label>
-					<div class="dropdown">		
-						<button class="input" bs-dropdown>{{vm.banner.status.name}}</button>
-						<ul  class="dropdown-menu" role="menu">
-							<li ng-click="vm.changeInfo('status',status)" ng-repeat="status in vm.statuses">{{status.name}}</li>
-						</ul>
-					</div>
+				<label class="blue bolder">Статус баннера</label>
+				<div class="dropdown">		
+					<button class="input" bs-dropdown>{{vm.banner.status.name}}</button>
+					<ul  class="dropdown-menu" role="menu">
+						<li ng-click="vm.changeInfo('status',status)" ng-repeat="status in vm.statuses">{{status.name}}</li>
+					</ul>
+				</div>
 			</div>
 			
 			<div class="banner">
@@ -27,18 +27,19 @@
 					</div>				
 				</div>
 				<div class="photo label-input">
-
-				
-
-
 					<label >Загрузите файл</label>
-
 					<div>
-						<div ng-change="vm.cl()" ngf-pattern="'image/*'"
-    												ngf-accept="'image/*'" ngf-max-size="5MB" ngf-select ng-model="vm.file" class="dropdown">
-							<input placeholder="{{vm.file.name||'Выберите изображение'}}" disabled="true" class="input">
+						<div class="flex input-green">
+							<div ng-click="vm.showModal=true" class="input input-select">
+								<div class="flex text-arrow">
+									<p>Выберите файл</p>
+									<img src="assets/images/angle-bottom.png" alt="">
+								</div>
+								<input type="file"  img-cropper-fileread image="vm.cropper.sourceImage" />	
+							</div>
+							<span class="green">~ <i>{{4.5}}Mb</i></span>
 						</div>
-						<span class="green">~ <i>{{4.5}}Mb</i></span>
+
 					</div>				
 				</div>
 				<div class="link label-input">
@@ -55,37 +56,37 @@
 				<h3 class="green bolder">Аудитория</h3>
 				<div class="label-input country">
 					<label  for="">Страна</label>
-				<div class="dropdown">		
-					<!-- просто ад -->
-					<button ng-click="vm.showCountries=!vm.showCountries" ng-class="{'with-close':vm.showCountries}" class="input">
-					{{vm.selectedCountryCount||
-					'Все' | ending}}
-					</button>
-					<ul class="dropdown-menu"  ng-show="vm.showCountries" >
-						<li  ng-click="vm.selectAllZones()">
-							<label>Все</label>
-						</li>	
-						<li  ng-repeat="country in vm.countries">
-							<input  class="checkbox-custom" ng-class="{'active':country.checked}"  type="checkbox">
-							<label ng-click="vm.addCountry(country)" >{{country.name}}</label>
-							<ul ng-show="country.checked">
-								<li ng-repeat="region in country.regions">
-									<input class="checkbox-custom" ng-class="{'active':region.checked}" type="checkbox">
-									<label ng-click="vm.addCountry(region)" >{{region.name}}</label>
-									<ul ng-show="region.checked">
-										<li ng-repeat="city in region.cities" >
-											<input class="checkbox-custom" ng-class="{'active':city.checked}" type="checkbox">
-											<label ng-click="vm.addCountry(city)" >{{city.name}}</label>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<!-- просто ад -->
+					<div class="dropdown">		
+						<!-- просто ад -->
+						<button ng-click="vm.showCountries=!vm.showCountries" ng-class="{'with-close':vm.showCountries}" class="input">
+							{{vm.selectedCountryCount||
+							'Все' | ending}}
+						</button>
+						<ul class="dropdown-menu"  ng-show="vm.showCountries" >
+							<li  ng-click="vm.selectAllZones()">
+								<label>Все</label>
+							</li>	
+							<li  ng-repeat="country in vm.countries">
+								<input  class="checkbox-custom" ng-class="{'active':country.checked}"  type="checkbox">
+								<label ng-click="vm.addCountry(country)" >{{country.name}}</label>
+								<ul ng-show="country.checked">
+									<li ng-repeat="region in country.regions">
+										<input class="checkbox-custom" ng-class="{'active':region.checked}" type="checkbox">
+										<label ng-click="vm.addCountry(region)" >{{region.name}}</label>
+										<ul ng-show="region.checked">
+											<li ng-repeat="city in region.cities" >
+												<input class="checkbox-custom" ng-class="{'active':city.checked}" type="checkbox">
+												<label ng-click="vm.addCountry(city)" >{{city.name}}</label>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<!-- просто ад -->
+					</div>
 				</div>
-				</div>
-			
+
 				<div class="flex">
 					<label>{{vm.gender.label}}</label>
 					<div ng-repeat="gender in vm.gender.options" ng-click="vm.changeInfo('gender',gender,true)" class="label-input">
@@ -114,99 +115,126 @@
 					</div>				
 				</div>				
 			</div>
-			</div>
-			<div class="right-side">
-				<div class="area-gray">
-					<div ng-if="vm.file" class="background-img" ngf-background="vm.file"></div>
-					<div ng-if="!vm.file" set-background-img src="{{vm.banner.photo}}"  class="background flex-column">
-						<div ng-if="!vm.banner.photo && !vm.file">
-							<p>Размер изображения</p>
-							<p class="bold">не более 5 Mb</p>
-						</div>
-						<div ng-if="!vm.banner.photo && !vm.file">
-							
-							<p>Рекомендуемая пропорция</p>
-							<p>325 x 500 px</p>
-						</div>		
-					</div>						
+		</div>
+		<div class="right-side">
+			<div class="area-gray">
+				<div ng-if="vm.banner.photo" id="background-img"  class="background-img">
+					<img ng-src="{{vm.banner.photo}}" alt="">
 				</div>
-				<div class="area-green flex-column">
-					<div>
-						<p>Аудитория:</p>
-						<p class="bolder">{{vm.audienceCount}} человек</p>
+				<div   class="background flex-column">
+					<div ng-if="!vm.banner.photo">
+						<p>Размер изображения</p>
+						<p class="bold">не более 5 Mb</p>
 					</div>
-					<div>
-						<p>Цена за показ</p>
-						<p class="bolder">{{vm.banner.cost}} рублей</p>
+					<div ng-if="!vm.banner.photo">
+
+						<p>Рекомендуемая пропорция</p>
+						<p>325 x 500 px</p>
 					</div>		
-					
+				</div>						
+			</div>
+			<div class="area-green flex-column">
+				<div>
+					<p>Аудитория:</p>
+					<p class="bolder">{{vm.audienceCount}} человек</p>
 				</div>
+				<div>
+					<p>Цена за показ</p>
+					<p class="bolder">{{vm.banner.cost}} рублей</p>
+				</div>		
+
 			</div>
 		</div>
-		<div class="displays">
-			<h3 class="bolder green">Расписание показов</h3>
-			<div class="label-input date">
-				<label>Даты трансляции баннера</label>
-				<div class="flex">
-					<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
-						<input placeholder="13-07-2017"  ng-model="vm.banner.display_from" type="text" class="input">
-					</datepicker>
-					<span class="divider-line">-</span>
-					<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
-						<input placeholder="13-08-2017"  ng-model="vm.banner.display_to"  type="text" class="input">
-					</datepicker>
-				</div>
+	</div>
+	<div class="displays">
+		<h3 class="bolder green">Расписание показов</h3>
+		<div class="label-input date">
+			<label>Даты трансляции баннера</label>
+			<div class="flex">
+				<datepicker   date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+					<input placeholder="13-07-2017"  ng-model="vm.banner.display_from" type="text" class="input">
+				</datepicker>
+				<span class="divider-line">-</span>
+				<datepicker    date-week-start-day="1" datepicker-mobile="true"  date-format="dd-MM-yyyy">
+					<input placeholder="13-08-2017"  ng-model="vm.banner.display_to"  type="text" class="input">
+				</datepicker>
 			</div>
-			<div class="time-picker flex">
-				<div class="targeting">
-					<p>Временной таргетинг</p>
-					<div class="label-input">
-						<label>Время:</label>
+		</div>
+		<div class="time-picker flex">
+			<div class="targeting">
+				<p>Временной таргетинг</p>
+				<div class="label-input">
+					<label>Время:</label>
 					<div class="dropdown">		
 						<button class="input flex" bs-dropdown>{{vm.banner.timeTargetCity.name||'Без города'}} <img src="assets/images/angle-bottom.png" alt=""></button>
 						<ul  class="dropdown-menu" role="menu">
 							<li ng-click="vm.banner.timeTargetCity=city" ng-repeat="city in vm.cities">{{city.name}}</li>
 						</ul>
 					</div>
-					</div>
-					
 				</div>
-				<div class="days">
-					<div ng-repeat="day in vm.banner.display_days" class="label-input flex">
-						<label>{{day.name}}</label>
-						<div>
-							<input class=" input input-small"   name="time2" bs-timepicker data-time-format="HH:mm" data-length="1" data-minute-step="1" placeholder="--:--" data-arrow-behavior="picker" type="text" class="" ng-model="day.from">
-							<span class="divider-line">-</span>
-							<input class=" input input-small"  name="time2" bs-timepicker data-time-format="HH:mm" data-length="1" data-minute-step="1" placeholder="--:--" data-arrow-behavior="picker" type="text" class="" ng-model="day.to">
-							<input ng-class="{'active':day.checked}" type="checkbox" class="radio-custom">
-							<label ng-click="day.checked=!day.checked"></label>
-						</div>						
-					</div>
-				</div>
-				<div class="buttons flex-column">
-					<button ng-click="vm.setDayChecked(true)" class="btn-green">
-						<i class="fa fa-check"></i>
-						Выбрать все
-					</button>
-					<button ng-click="vm.setDayChecked(false)" class="btn-blue">
-						<i class="fa fa-trash"></i>
-						Очистить все
-					</button>
+
+			</div>
+			<div class="days">
+				<div ng-repeat="day in vm.banner.display_days" class="label-input flex">
+					<label>{{day.name}}</label>
+					<div>
+						<input class=" input input-small"   name="time2" bs-timepicker data-time-format="HH:mm" data-length="1" data-minute-step="1" placeholder="--:--" data-arrow-behavior="picker" type="text" class="" ng-model="day.from">
+						<span class="divider-line">-</span>
+						<input class=" input input-small"  name="time2" bs-timepicker data-time-format="HH:mm" data-length="1" data-minute-step="1" placeholder="--:--" data-arrow-behavior="picker" type="text" class="" ng-model="day.to">
+						<input ng-class="{'active':day.checked}" type="checkbox" class="radio-custom">
+						<label ng-click="day.checked=!day.checked"></label>
+					</div>						
 				</div>
 			</div>
+			<div class="buttons flex-column">
+				<button ng-click="vm.setDayChecked(true)" class="btn-green">
+					<i class="fa fa-check"></i>
+					Выбрать все
+				</button>
+				<button ng-click="vm.setDayChecked(false)" class="btn-blue">
+					<i class="fa fa-trash"></i>
+					Очистить все
+				</button>
+			</div>
 		</div>
-		<div class="buttons-bottom">
+	</div>
+	<div class="buttons-bottom">
 
-			<button ng-click="vm.sendToModeration()" class="btn-green">
-				<span>+</span>
-				Сохранить и отправить на модерацию
-			</button>
-			<button ng-click="vm.saveAsDraft()" ui-sref="users" class="btn-gray">
-				<span>+</span>
-				Сохранить как черновик
-			</button>
-		</div>	
+		<button ng-click="vm.sendToModeration()" class="btn-green">
+			<span>+</span>
+			Сохранить и отправить на модерацию
+		</button>
+		<button ng-click="vm.saveAsDraft()" ui-sref="users" class="btn-gray">
+			<span>+</span>
+			Сохранить как черновик
+		</button>
+
+	</div>
+	
+	<div ng-show="vm.showModal"  class="my-modal flex">
+		<div  class="my-modal-content white-div">
+			<div class="my-modal-header  flex">
+				<div class="title-div">
+					<img src="assets/images/settings-gray.png" class="title-icon">
+					<h2 class="title-text bold">Редактирование фото</h2>
+				</div>
+				<button ng-click="vm.showModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="flex my-modal-body">
+				<div >
+					<canvas crop-area-bounds="vm.bounds" width="300" height="300" id="canvas" image-cropper image="vm.cropper.sourceImage" cropped-image="vm.banner.photo" crop-width="325" crop-height="500" keep-aspect="true" touch-radius="30" ></canvas>
+				</div>
+				<img width="200" height="300" ng-src="{{vm.banner.photo}}" alt="">
+			</div>			
+			<div class="my-modal-footer flex">
+				<button ng-click="vm.showModal=false" class="btn-green">
+					Сохранить
+				</button>
+			</div>				
+		</div>
 	</div>
 
+</div>
 
-	
+
+

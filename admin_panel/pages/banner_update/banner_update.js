@@ -1,6 +1,9 @@
 angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
+	vm.showModal = false;
+	vm.cropper = {};
+	vm.cropper.sourceImage = null;
 	vm.countries = [];
 	vm.lists=[];
 	vm.gender={};
@@ -119,7 +122,7 @@ angular.module('admin_panel').controller('bannerUpdateCtrl',function(Upload,bann
 	}
 
 	vm.sendToModeration = function() {
-		bannerService.sendToModeration(vm.file,vm.banner);
+		bannerService.sendToModeration(vm.banner);
 		window.history.back();
 	}
 

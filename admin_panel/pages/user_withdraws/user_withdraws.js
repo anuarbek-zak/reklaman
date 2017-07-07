@@ -10,6 +10,7 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	vm.filters = {};
 	vm.allSelected = false;
 	vm.searchText = "";
+	var timeout;
 
 	getWithdraws();
 
@@ -19,7 +20,8 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	
 	function getWithdraws(){
 		userService.getWithdraws({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.withdraws =vm.withdraws.length==0?data.withdraws:vm.withdraws.concat(data.withdraws);
+			if(vm.beginIndex==0) vm.withdraws = [];
+			vm.withdraws = vm.withdraws.concat(data.withdraws);
 			vm.amount = data.amount;
 		});	
 	}
@@ -57,8 +59,16 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 
 	vm.filter = function() {
 		vm.beginIndex=0;
-		vm.withdraws=[];
 		getWithdraws();	
+	}
+
+	vm.search = function(){
+		 if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		    filter();
+		  }, 200);
 	}	
 
 	vm.getNewData = function(){

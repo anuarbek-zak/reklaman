@@ -1,6 +1,7 @@
 angular.module('admin_panel').controller('settingsCtrl',function(countriesService,settingsService) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 	
 	vm.modal_limit = 5;
 	vm.modal_beginIndex =0;
@@ -28,28 +29,38 @@ angular.module('admin_panel').controller('settingsCtrl',function(countriesServic
 
 	function getCountries(){
 		countriesService.getCountries({from:vm.modal_beginIndex,limit:vm.modal_limit,search:vm.searchModal},function(data){
-			vm.countries = vm.countries.length==0?data:vm.countries.concat(data);		
+			if(vm.modal_beginIndex==0) vm.countries = [];
+			vm.countries = vm.countries.concat(data);		
 		});
 	}
 	
 
 	function getSettings(){
 		settingsService.getSettings({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.settings = vm.settings.length==0?data.settings:vm.settings.concat(data.settings);		
-			vm.amount = data.amount
+         if(vm.beginIndex==0) vm.settings = [];
+			vm.settings = vm.settings.concat(data.settings);					
+			vm.amount = data.amount;
 		});
 	}
 
 	vm.searchCountry = function() {
-		vm.countries = [];
-		vm.modal_beginIndex = 0;
-		getCountries();
+		if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		    vm.modal_beginIndex=0;
+			getCountries();
+		  }, 200);
 	}
 
 	vm.search = function() {
-		vm.settings = [];
-		vm.beginIndex = 0;
-		getSettings();
+		if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		    vm.beginIndex=0;
+			getSettings();
+		  }, 200);
 	}
 
 	vm.showUpdatingModal = function(setting){

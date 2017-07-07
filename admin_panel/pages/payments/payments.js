@@ -1,6 +1,7 @@
 angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelService) {
 	
-	var vm = this;
+	var vm = this,
+	timeout;
 
 	vm.limit = 25;
 	vm.beginIndex = 0;
@@ -11,7 +12,8 @@ angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelSer
 
 	function getPayments(){
 		reklamodatelService.getPayments({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			vm.payments = vm.payments.length==0?data.payments:vm.payments.concat(data.payments);
+		    if(vm.beginIndex==0) vm.payments = [];
+			vm.payments = vm.payments.concat(data.payments);			
 			vm.totalSumm = data.totalSumm;
 			vm.amount = data.amount;
 		})
@@ -31,8 +33,17 @@ angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelSer
 
 	vm.filter = function(){
 		vm.beginIndex=0;
-		vm.payments=[];
 		getPayments();
+	}
+
+	vm.search = function () {
+		 if (timeout) {  
+		    clearTimeout(timeout);
+		  }
+		  timeout = setTimeout(function() {
+		     vm.filter();
+		  }, 200);
+		
 	}
 
 	vm.bill = function(id){

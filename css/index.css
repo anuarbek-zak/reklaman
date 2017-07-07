@@ -917,6 +917,7 @@ td{
   justify-content: center;
   -ms-align-items: center;
   align-items: center;
+  z-index: 99999;
 }
 
 .my-modal-content{
@@ -924,6 +925,7 @@ td{
   height: 460px;
   width: 600px;
   background: #fff;
+   z-index: 999999;
 }
 
 .my-modal-content .title-text{

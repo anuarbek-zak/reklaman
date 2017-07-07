@@ -1,5 +1,5 @@
 angular.module('app')
-.factory("bannerService", function($http,Upload) {
+.factory("bannerService", function($http) {
     var service = {};
 
     // FROM AND LIMIT CAN BE NULL. THAT MEANS GET ALL DATA (FROM BEGIN TO END) 
@@ -133,7 +133,8 @@ angular.module('app')
     service.saveAsDraft = function(banner){
         //method - (post)
         //api - '/api/banners/asDraft
-        //data -   {banner:obj}
+        //data -   {base64,banner:obj}
+        //banner.photo in base64 format
         $http.post('/api/banners/asDraft',{banner:banner})
             .success(function(newBanners){
                
@@ -143,19 +144,18 @@ angular.module('app')
             })
     }
 
-    service.sendToModeration = function(file,banner){
+    service.sendToModeration = function(banner){
         //method - (post)
         //api - '/api/banner/toModeration
-        //data -   {file:ojb,banner:obj}
-       Upload.upload({
-            url: '/api/banner/toModeration',
-            data: {file:file,banner:banner}
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-        });
+        //data -   {base64,banner:obj}
+        //banner.photo in base64 format
+        $http.post('/api/banner/toModeration',{banner:banner})
+            .success(function(newBanners){
+               
+                })
+            .error(function(err){
+                console.log(err);
+            })
     }
 		
     return service;

@@ -17,6 +17,18 @@ angular.module('app')
             })
     }
 
+    service.acceptPayment = function(payment,isAccepted){
+        //method - (post)
+        //api - /api/payments/changeAcceptedStatus
+        //data - {payment:obj,isAccepted:boolean}
+        $http.post('/api/payments/changeAcceptedStatus')
+            .success(function(data){
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.getQuestions = function(from,limit,cb){
         //method - (post)
         //api - '/api/company/questions

@@ -85,6 +85,20 @@ angular.module('admin_panel')
                 controllerAs:'vm',
                 parent:'admin_panel'
             })
+            .state('ap_banner_info', {
+                url: '/banner_info/:id',
+                templateUrl: 'admin_panel/pages/banner_info/banner_info.html',
+                controller:'apBannerInfoCtrl',
+                controllerAs:'vm',
+                parent:'admin_panel'
+            })
+            .state('ap_banner_create', {
+                url: '/banner_create/:id',
+                templateUrl: 'admin_panel/pages/banner_create/banner_create.html',
+                controller:'apBannerCreateCtrl',
+                controllerAs:'vm',
+                parent:'admin_panel'
+            })
             .state('ticket', {
                 url: '/ticket/:id',
                 templateUrl: 'admin_panel/pages/ticket/ticket.html',

@@ -45,7 +45,14 @@
 					
 				</td>
 				<td>{{payment.created_at | date:'yyyy-MM-dd HH:mm'}} </td>
-				<td>{{payment.paid_at | date:'yyyy-MM-dd HH:mm'}}</td>
+				<td class="paid_at">
+				 <span ng-if="payment.paid_at">{{payment.paid_at | date:'yyyy-MM-dd HH:mm'}}</span>
+				 <div class="flex" ng-if="!payment.paid_at">
+				 	<span  ng-click="vm.acceptPayment(payment,true)" class="green">Подтвердить</span>
+				 	<span>/</span>
+				 	<span  ng-click="vm.acceptPayment(payment,false)">Удалить</span>
+				 </div>
+				</td>
 				<td class="summ">{{payment.summ}}</td>
 				<td>{{payment.payment_type.name}}</td>
 				<td class="status" ng-class="{'green':(payment.status.id==2)}">{{payment.status.name}}</td>

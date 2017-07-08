@@ -1,11 +1,11 @@
-angular.module('admin_panel').controller('apBannerCreateCtrl',function($localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('apBannerCreateCtrl',function(bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
 
 	vm.showModal = false;
 	vm.cropper = {};
 	vm.cropper.sourceImage = null;
-	vm.creator_id = $localStorage.company.id;
+	vm.creator_id = $stateParams.id;
 
 
 	vm.countries = [];

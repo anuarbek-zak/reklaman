@@ -134,7 +134,7 @@ angular.module('app')
     service.saveAsDraft = function(banner){
         //method - (post)
         //api - '/api/banners/asDraft
-        //data -   {base64,banner:obj}
+        //data -   {banner:obj}
         //banner.photo in base64 format
         $http.post('/api/banners/asDraft',{banner:banner})
             .success(function(newBanners){
@@ -148,9 +148,37 @@ angular.module('app')
     service.sendToModeration = function(banner){
         //method - (post)
         //api - '/api/banner/toModeration
-        //data -   {base64,banner:obj}
+        //data -   {banner:obj}
         //banner.photo in base64 format
         $http.post('/api/banner/toModeration',{banner:banner})
+            .success(function(newBanners){
+               
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
+    service.saveAsDraftNew = function(creator_id,banner){
+        //method - (post)
+        //api - '/api/banners/asDraft
+        //data -   {creator_id:id,banner:obj}
+        //banner.photo in base64 format
+        $http.post('/api/banners/asDraft',{creator_id:creator_id,banner:banner})
+            .success(function(newBanners){
+               
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
+    service.sendToModerationNew = function(creator_id,banner){
+        //method - (post)
+        //api - '/api/banner/toModeration
+        //data -   {creator_id:id,banner:obj}
+        //banner.photo in base64 format
+        $http.post('/api/banner/toModeration',{creator_id:creator_id,banner:banner})
             .success(function(newBanners){
                
                 })

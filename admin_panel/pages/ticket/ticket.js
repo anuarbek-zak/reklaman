@@ -4,6 +4,7 @@ angular.module('admin_panel').controller('ticketCtrl',function($localStorage,tic
 	vm.limit =3 ;
 	vm.messageText = "";
 	vm.admin = $localStorage.admin;
+	vm.isShowMore = true;
 
 	ticketService.getStatuses(function(data) {
 		vm.statuses = data;
@@ -21,9 +22,7 @@ angular.module('admin_panel').controller('ticketCtrl',function($localStorage,tic
 		if(vm.messageText=="") return;	
 		var message = {from:vm.admin,to:$stateParams.id,text:vm.messageText,created_at:Date.now()};
 		vm.ticket.messages.unshift(message);
-		console.log(message);
 		vm.messageText = "";
-		message.from = vm.admin.id;
 		ticketService.createMessage(vm.ticket.id,message);
 	}
 

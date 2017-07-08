@@ -10,12 +10,13 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bann
 	vm.allSelected = false;
 	vm.isButtonsActive=0;
 	vm.searchText = "";
+	vm.company_id = $stateParams.id;
 
 
 	getBannersOfCompany();
 
 	function getBannersOfCompany(){
-		bannerService.getBannersOfCompany({id:$stateParams.id,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
+		bannerService.getBannersOfCompany({id:vm.company_id,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
 			if(vm.beginIndex==0) vm.banners = [];
 			vm.banners = vm.banners.concat(data.banners);
 			vm.amount = data.amount;
@@ -60,10 +61,18 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bann
 		var bannersToCopy = [];
 		for(var i=0;i<vm.banners.length;i++){
 			if(vm.banners[i].checked){
-				 bannersToCopy.push(vm.banners[i]);
+				bannerToCopy = angular.copy(vm.banners[i]);
+				bannerToCopy.name = bannerToCopy.name + "- Копия";
+				bannerToCopy.checked = false;
+				bannersToCopy.push(bannerToCopy);
 			}
 		}
-		bannerService.copy(bannersToCopy);
+		bannerService.copy(bannersToCopy,function(newBanners) {
+			for(var i=0;i<newBanners.length;i++){
+				vm.banners.unshift(newBanners[i]);
+			}
+
+		});
 	}
 
 	vm.stop = function(){

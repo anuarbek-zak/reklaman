@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="messages">
-			<div class="message flex" ng-repeat="message in vm.ticket.messages | limitTo:vm.limit">
+			<div class="message flex" ng-repeat="message in vm.ticket.messages | limitTo:vm.limit | orderBy:'-created_at'">
 				<div set-background-img src="{{message.from.photo}}" class="user-photo"></div>
 				<div >
 					<p class="text">
@@ -48,8 +48,8 @@
 				</div>
 			</div>
 		</div>
-			<div class="show-more">
-				<button ng-click="vm.limit = null" class="btn-gray"><span><<</span> Показать все сообщения <span>>></span></button>	
+			<div class="show-more" ng-show="vm.isShowMore">
+				<button ng-click="vm.limit = null;vm.isShowMore=false" class="btn-gray"><span><<</span> Показать все сообщения <span>>></span></button>	
 			</div>
 			
 

@@ -29,6 +29,18 @@ angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelSer
 	
 	vm.changeLimit = function(newLimit){
 		vm.limit = newLimit;			
+	}
+
+	vm.acceptPayment = function(payment,bool){
+		if(bool){
+			reklamodatelService.acceptPayment(payment,bool);
+		    payment.paid_at = Date.now();
+		    payment.status={"id":2,"name":"Оплачен"};
+		}else{
+			reklamodatelService.acceptPayment(payment,bool);
+			vm.payments.splice(vm.payments.indexOf(payment),1);
+		}
+		
 	}	
 
 	vm.filter = function(){

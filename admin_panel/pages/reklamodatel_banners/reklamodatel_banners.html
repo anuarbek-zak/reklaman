@@ -5,7 +5,7 @@
 			<h2 class="title-text">баннеры рекламодателя</h2>
 		</div>
 
-		<button class="btn-blue"><span>+</span>Создать баннер</button>
+		<button ui-sref="ap_banner_create({id:vm.company_id})" class="btn-blue"><span>+</span>Создать баннер</button>
 	</div>
 	<div class="line-2 flex">
 		<div>
@@ -69,7 +69,7 @@
 						<i class="fa fa-paint-brush"></i>
 						<span class="my-tooltip">Редактировать</span>
 					</div>	
-					<div class="btn-gray">
+					<div ui-sref="ap_banner_info({id:banner.id})" class="btn-gray">
 						<i class="fa fa-bar-chart"></i>
 						<span class="my-tooltip">Статистика</span>
 					</div>					

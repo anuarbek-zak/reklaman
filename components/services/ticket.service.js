@@ -70,7 +70,7 @@ angular.module('app')
     service.createMessage = function(ticket_id,message){
         //method - (post)
         //api - /api/ticket/message
-        //data - {ticket_id:ticket_id,message:{from:id,to:id,message:string}}
+        //data - {ticket_id:ticket_id,message:{from:obj,to:id,message:string}}
         $http.post('/api/ticket/message',{ticket_id:ticket_id,message:message})
             .success(function(data){
                 })

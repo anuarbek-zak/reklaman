@@ -50,6 +50,15 @@
   font-weight: bold;
 }
 
+.ap_payments td.paid_at .green{
+  text-decoration: underline;
+}
+
+.ap_payments td.paid_at span:first-child,
+.ap_payments td.paid_at span:last-child{
+  cursor: pointer;
+}
+
 .ap_payments .with-photo .user-photo{
   margin-right: 10px;
   background: url('../assets/images/kfc.png');

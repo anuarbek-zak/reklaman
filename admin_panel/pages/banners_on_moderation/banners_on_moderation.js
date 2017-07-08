@@ -60,11 +60,17 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bann
 		var bannersToCopy = [];
 		for(var i=0;i<vm.banners.length;i++){
 			if(vm.banners[i].checked){
-				 bannersToCopy.push(vm.banners[i]);
+				bannerToCopy = angular.copy(vm.banners[i]);
+				bannerToCopy.name = bannerToCopy.name + "- Копия";
+				bannerToCopy.checked = false;
+				bannersToCopy.push(bannerToCopy);
 			}
 		}
 		bannerService.copy(bannersToCopy,function(newBanners) {
-			vm.banners.concat(newBanners);
+			for(var i=0;i<newBanners.length;i++){
+				vm.banners.unshift(newBanners[i]);
+			}
+
 		});
 	}
 

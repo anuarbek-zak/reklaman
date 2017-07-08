@@ -63,7 +63,7 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 		for(var i=0;i<vm.banners.length;i++){
 			if(vm.banners[i].checked){
 				bannerToCopy = angular.copy(vm.banners[i]);
-				bannerToCopy.name = bannerToCopy.name + "- копия";
+				bannerToCopy.name = bannerToCopy.name + "- Копия";
 				bannerToCopy.checked = false;
 				bannersToCopy.push(bannerToCopy);
 			}

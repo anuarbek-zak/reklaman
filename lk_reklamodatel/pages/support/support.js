@@ -12,7 +12,6 @@ angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStor
 	function getTickets() {
 		ticketService.getCompanyTickets({id:vm.company.id,search:vm.searchText},function(data) {
 			vm.tickets = vm.tickets.concat(data);
-			console.log(vm.tickets);;
 		})
 	}	
 

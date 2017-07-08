@@ -29,6 +29,19 @@ angular.module('app')
             })
     }
 
+    service.getTicketById = function(id,company_id,cb){
+        //method - (get)
+        //api - /api/ticket/:id/:company_id
+        $http.get('jsons/ticketById.json')
+            .success(function(data){
+                console.log(data);
+                cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.getCompanyTickets = function(data,cb){
         //method - (get)
         //api - /api/ticket/
@@ -57,7 +70,7 @@ angular.module('app')
     service.createMessage = function(ticket_id,message){
         //method - (post)
         //api - /api/ticket/message
-        //data - {ticket_id:ticket_id,message:message}
+        //data - {ticket_id:ticket_id,message:{from:id,to:id,message:string}}
         $http.post('/api/ticket/message',{ticket_id:ticket_id,message:message})
             .success(function(data){
                 })
@@ -66,12 +79,14 @@ angular.module('app')
             })
     }
 
-    service.create = function(ticket,creator){
+    service.create = function(ticket,creator,cb){
         //method - (post)
         //api - /api/ticket
-        //data - {ticket:ticket,creator:creator}
-        $http.post('/api/ticket',{ticket:ticket,creator:creator})
-            .success(function(data){
+        //data - {ticket:{subject:string,text:string},creator:id}
+        //response - new ticket
+        $http.post('jsons/newTicket.json')
+            .success(function(newTicket){
+                    cb(newTicket);
                 })
             .error(function(err){
                 console.log(err);

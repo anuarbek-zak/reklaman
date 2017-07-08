@@ -1,7 +1,8 @@
 angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerService,$localStorage,$stateParams) {
 	
 	var vm = this,
-	timeout;
+	timeout,
+	bannerToCopy;
 
 	vm.limit = 5;
 	vm.beginIndex =0;
@@ -61,10 +62,18 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 		var bannersToCopy = [];
 		for(var i=0;i<vm.banners.length;i++){
 			if(vm.banners[i].checked){
-				 bannersToCopy.push(vm.banners[i]);
+				bannerToCopy = angular.copy(vm.banners[i]);
+				bannerToCopy.name = bannerToCopy.name + "- копия";
+				bannerToCopy.checked = false;
+				bannersToCopy.push(bannerToCopy);
 			}
 		}
-		bannerService.copy(bannersToCopy);
+		bannerService.copy(bannersToCopy,function(newBanners) {
+			for(var i=0;i<newBanners.length;i++){
+				vm.banners.unshift(newBanners[i]);
+			}
+
+		});
 	}
 
 	vm.stop = function(){

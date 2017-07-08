@@ -63,6 +63,13 @@ angular.module('lk_reklamodatel')
                 controller:'bannerInfoCtrl',
                 controllerAs:'vm',
                 parent:'lk_reklamodatel'
+            })
+            .state('lk_ticket', {
+                url: '/ticket/:id',
+                templateUrl: 'lk_reklamodatel/pages/ticket/ticket.html',
+                controller:'lkTicketCtrl',
+                controllerAs:'vm',
+                parent:'lk_reklamodatel'
             });
         $urlRouterProvider.otherwise('/company');
     });

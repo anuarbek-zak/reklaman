@@ -121,7 +121,8 @@ angular.module('app')
         //method - (post)
         //api - '/api/banners/copy
         //data -   {bannersToCopy:array}
-        $http.post('/api/banners/copy',{bannersToCopy:bannersToCopy})
+        //response - newBanners array
+        $http.post('jsons/newCopiedBanners.json')
             .success(function(newBanners){
                 cb(newBanners);
                 })

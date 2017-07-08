@@ -12,6 +12,7 @@ angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStor
 	function getTickets() {
 		ticketService.getCompanyTickets({id:vm.company.id,search:vm.searchText},function(data) {
 			vm.tickets = vm.tickets.concat(data);
+			console.log(vm.tickets);;
 		})
 	}	
 
@@ -36,7 +37,9 @@ angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStor
 
 	vm.createTicket = function() {
 		if(!vm.newTicket.subject || !vm.newTicket.text) return;
-		ticketService.create(vm.newTicket,$localStorage.company.id);
+		ticketService.create(vm.newTicket,vm.company.id,function(newTicket) {
+			vm.tickets.unshift(newTicket);	
+		});
 		vm.showModal = false;
 	}
 	

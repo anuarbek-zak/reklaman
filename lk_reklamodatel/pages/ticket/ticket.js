@@ -1,16 +1,17 @@
-angular.module('admin_panel').controller('ticketCtrl',function($localStorage,ticketService,$stateParams) {
+angular.module('lk_reklamodatel').controller('lkTicketCtrl',function($localStorage,ticketService,$stateParams) {
 	
 	var vm = this;
 	vm.limit =3 ;
 	vm.messageText = "";
-	vm.admin = $localStorage.admin;
+	vm.company = $localStorage.company;
 
 	ticketService.getStatuses(function(data) {
 		vm.statuses = data;
 	})
 
-	ticketService.getTicket(vm.admin.id,$stateParams.id,function(data) {
+	ticketService.getTicketById($stateParams.id,vm.company.id,function(data) {
 		vm.ticket = data;
+		vm.admin = data.admin;
 	})
 
 	vm.save = function() {
@@ -19,11 +20,11 @@ angular.module('admin_panel').controller('ticketCtrl',function($localStorage,tic
 
 	vm.createMessage = function() {
 		if(vm.messageText=="") return;	
-		var message = {from:vm.admin,to:$stateParams.id,text:vm.messageText,created_at:Date.now()};
+		var message = {from:vm.company.id,to:vm.admin.id,text:vm.messageText};
+		message.from.role = vm.company.status.name;
+		message.created_at = Date.now();
 		vm.ticket.messages.unshift(message);
-		console.log(message);
 		vm.messageText = "";
-		message.from = vm.admin.id;
 		ticketService.createMessage(vm.ticket.id,message);
 	}
 

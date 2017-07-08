@@ -17,7 +17,8 @@ angular.module('lk_reklamodatel')
 					"legacy_address":"Россиия, Татарстан, Набережные Челны, ул. Усманова, дом 33",
 					"mail_address":"Россиия, Татарстан, Набережные Челны, ул. Усманова, дом 33",
 					"iin":"1650535912",
-					"kpp":"16503359124546"
+					"kpp":"16503359124546",
+					status:{id:12,name:"Пользователь"}
 				};
 	
 	$localStorage.company = vm.company;

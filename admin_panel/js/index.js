@@ -13,7 +13,8 @@ angular.module('admin_panel')
 		"id":1,
 		"name":"Admin",
 		"photo":"assets/images/zhdun_136443469_orig_.jpg",
-		"email":"anuarbekzakirianov97@gmail.com"
+		"email":"anuarbekzakirianov97@gmail.com",
+		"status":{id:1,name:"Админ"}
 	};
 	$localStorage.admin = vm.admin;
 

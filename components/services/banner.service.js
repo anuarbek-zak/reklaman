@@ -122,7 +122,7 @@ angular.module('app')
         //api - '/api/banners/copy
         //data -   {bannersToCopy:array}
         //response - newBanners array
-        $http.post('jsons/newCopiedBanners.json')
+        $http.get('jsons/newCopiedBanners.json')
             .success(function(newBanners){
                 cb(newBanners);
                 })

@@ -84,7 +84,7 @@ angular.module('app')
         //api - /api/ticket
         //data - {ticket:{subject:string,text:string},creator:id}
         //response - new ticket
-        $http.post('jsons/newTicket.json')
+        $http.get('jsons/newTicket.json')
             .success(function(newTicket){
                     cb(newTicket);
                 })

@@ -1,7 +1,6 @@
-angular.module('admin_panel').controller('usersQuestionsCtrl',function($state,$stateParams,userService) {
+angular.module('admin_panel').controller('usersQuestionsCtrl',function(myService,userService) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 	
 	vm.limit = 25;
 	vm.beginIndex=0;
@@ -20,13 +19,10 @@ angular.module('admin_panel').controller('usersQuestionsCtrl',function($state,$s
 	}
 
 	vm.search = function () {
-		if (timeout) {  
-			clearTimeout(timeout);
-		}
-		timeout = setTimeout(function() {
+		myService.search(function() {
 			vm.beginIndex = 0;
 			getQuestions();
-		}, 200);
+		});
 	}
 
 	vm.getNewData = function(){

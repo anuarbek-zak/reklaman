@@ -132,11 +132,11 @@ angular.module('app')
     }
 
     service.saveAsDraft = function(banner){
-        //method - (post)
+        //method - (put)
         //api - '/api/banners/asDraft
         //data -   {banner:obj}
         //banner.photo in base64 format
-        $http.post('/api/banners/asDraft',{banner:banner})
+        $http.put('/api/banners/asDraft',{banner:banner})
             .success(function(newBanners){
                
                 })
@@ -146,11 +146,11 @@ angular.module('app')
     }
 
     service.sendToModeration = function(banner){
-        //method - (post)
+        //method - (put)
         //api - '/api/banner/toModeration
         //data -   {banner:obj}
         //banner.photo in base64 format
-        $http.post('/api/banner/toModeration',{banner:banner})
+        $http.put('/api/banner/toModeration',{banner:banner})
             .success(function(newBanners){
                
                 })
@@ -179,8 +179,7 @@ angular.module('app')
         //data -   {creator_id:id,banner:obj}
         //banner.photo in base64 format
         $http.post('/api/banner/toModeration',{creator_id:creator_id,banner:banner})
-            .success(function(newBanners){
-               
+            .success(function(newBanners){               
                 })
             .error(function(err){
                 console.log(err);

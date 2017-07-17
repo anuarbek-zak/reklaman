@@ -2,7 +2,7 @@
 	<div class="line-1 flex">
 		<div class="title-div">
 			<img src="assets/images/wallet-gray.png" class="title-icon">
-			<h2 class="title-text">выводы средств пользователей</h2>
+			<h2 class="title-text">{{vm.user_id?'выводы средств пользователя':'выводы средств пользователей'}}</h2>
 		</div>
 
 		<input ng-model="vm.searchText" ng-change="vm.search()" type="text" placeholder="Поиск ..." class="input">
@@ -56,7 +56,7 @@
 						<i class="fa fa-paint-brush"></i>
 						<span class="my-tooltip">Подробнее</span>
 					</div>	
-					<div class="btn-gray">
+					<div ng-if="!vm.user_id" ui-sref="user_withdraws({id:withdraw.company_id})" class="btn-gray">
 						<i class="fa fa-credit-card"></i>
 						<span class="my-tooltip">Платежи</span>
 

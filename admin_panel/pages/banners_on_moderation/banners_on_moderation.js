@@ -1,7 +1,6 @@
-angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bannerService,$localStorage) {
+angular.module('admin_panel').controller('bannersOnModerationCtrl',function(myService,bannerService,$localStorage) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 
 	vm.limit = 25;
 	vm.beginIndex =0;
@@ -96,13 +95,10 @@ angular.module('admin_panel').controller('bannersOnModerationCtrl',function(bann
 
 
 	vm.search = function () {
-		 if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		     vm.beginIndex = 0;
+		 myService.search(function() {
+		    vm.beginIndex = 0;
 			getBannersOnModeration();
-		  }, 200);
+		  });
 	}
 
 	vm.getNewData = function(){

@@ -38,7 +38,6 @@
 						<th>Id</th>
 						<th>Регионы</th>
 						<th>Статус</th>
-						<th>Править</th>
 					</thead>
 					<tbody>
 						<tr ng-repeat="country in vm.managing_countries">
@@ -46,7 +45,6 @@
 							<td>{{country.id}}</td>
 							<td>{{country.regions.length||0}}</td>
 							<td ng-class="{'blue':country.status.id==1,'green':country.status.id==2}">{{country.status.name}}</td>
-							<td><button class="btn-gray">Регионы</button></td>
 						</tr>						
 					</tbody>
 				</table>	

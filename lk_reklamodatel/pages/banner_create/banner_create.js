@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('apBannerCreateCtrl',function($localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
+angular.module('lk_reklamodatel').controller('lkBannerCreateCtrl',function($scope,$localStorage,bannerService,countriesService,myService,userService,$state,$stateParams) {
 	
 	var vm = this;
 
@@ -6,7 +6,6 @@ angular.module('admin_panel').controller('apBannerCreateCtrl',function($localSto
 	vm.cropper = {};
 	vm.cropper.sourceImage = null;
 	vm.creator_id = $localStorage.company.id;
-
 
 	vm.countries = [];
 	vm.lists=[];
@@ -25,6 +24,7 @@ angular.module('admin_panel').controller('apBannerCreateCtrl',function($localSto
 	vm.selectedCountryCount=0;
 	vm.filters = {zones:{countries:[],regions:[],cities:[]}};
 	vm.audienceCount=0;
+	vm.company = $localStorage.company;
 
 	myService.getListOptions(function(data){
 		vm.gender = data.gender;
@@ -114,7 +114,7 @@ angular.module('admin_panel').controller('apBannerCreateCtrl',function($localSto
 	}
 
 	vm.sendToModeration = function() {
-		bannerService.sendToModerationNew(vm.creator_id,vm.banner);
+		bannerService.sendToModerationNew(vm.creator_id, vm.banner);
 		window.history.back();
 	}
 

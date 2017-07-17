@@ -30,7 +30,7 @@ angular.module('admin_panel')
                 parent:'admin_panel'
             })
             .state('user_withdraws', {
-                url: '/user_withdraws',
+                url: '/user_withdraws/:id',
                 templateUrl: 'admin_panel/pages/user_withdraws/user_withdraws.html',
                 controller:'userWithdrawsCtrl',
                 controllerAs:'vm',

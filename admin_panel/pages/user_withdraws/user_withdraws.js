@@ -1,4 +1,4 @@
-angular.module('admin_panel').controller('userWithdrawsCtrl',function(userService) {
+angular.module('admin_panel').controller('userWithdrawsCtrl',function(userService,$stateParams) {
 	
 	var vm = this;
 
@@ -10,6 +10,7 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	vm.filters = {};
 	vm.allSelected = false;
 	vm.searchText = "";
+	vm.user_id = $stateParams.id;
 	var timeout;
 
 	getWithdraws();
@@ -19,11 +20,19 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	})
 	
 	function getWithdraws(){
-		userService.getWithdraws({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-			if(vm.beginIndex==0) vm.withdraws = [];
-			vm.withdraws = vm.withdraws.concat(data.withdraws);
-			vm.amount = data.amount;
-		});	
+		if(vm.user_id){
+			userService.getUserWithdraws({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
+				if(vm.beginIndex==0) vm.withdraws = [];
+				vm.withdraws = vm.withdraws.concat(data.withdraws);
+				vm.amount = data.amount;
+			});	
+		}else{
+			userService.getWithdraws({filters:vm.filters,from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
+				if(vm.beginIndex==0) vm.withdraws = [];
+				vm.withdraws = vm.withdraws.concat(data.withdraws);
+				vm.amount = data.amount;
+			});	
+		}		
 	}
 
 	vm.selectAll = function(){
@@ -63,12 +72,12 @@ angular.module('admin_panel').controller('userWithdrawsCtrl',function(userServic
 	}
 
 	vm.search = function(){
-		 if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		    filter();
-		  }, 200);
+		if (timeout) {  
+			clearTimeout(timeout);
+		}
+		timeout = setTimeout(function() {
+			vm.filter();
+		}, 200);
 	}	
 
 	vm.getNewData = function(){

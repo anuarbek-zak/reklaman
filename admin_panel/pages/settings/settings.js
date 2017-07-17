@@ -1,7 +1,6 @@
-angular.module('admin_panel').controller('settingsCtrl',function(countriesService,settingsService) {
+angular.module('admin_panel').controller('settingsCtrl',function(myService,countriesService,settingsService) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 	
 	vm.modal_limit = 5;
 	vm.modal_beginIndex =0;
@@ -37,30 +36,24 @@ angular.module('admin_panel').controller('settingsCtrl',function(countriesServic
 
 	function getSettings(){
 		settingsService.getSettings({from:vm.beginIndex,limit:vm.limit,search:vm.searchText},function(data){
-         if(vm.beginIndex==0) vm.settings = [];
+			if(vm.beginIndex==0) vm.settings = [];
 			vm.settings = vm.settings.concat(data.settings);					
 			vm.amount = data.amount;
 		});
 	}
 
 	vm.searchCountry = function() {
-		if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		    vm.modal_beginIndex=0;
+		myService.search(function() {
+			vm.modal_beginIndex=0;
 			getCountries();
-		  }, 200);
+		});
 	}
 
 	vm.search = function() {
-		if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		    vm.beginIndex=0;
+		myService.search(function() {
+			vm.beginIndex=0;
 			getSettings();
-		  }, 200);
+		});
 	}
 
 	vm.showUpdatingModal = function(setting){

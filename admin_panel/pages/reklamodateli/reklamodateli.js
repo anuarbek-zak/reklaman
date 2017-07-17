@@ -1,7 +1,6 @@
-angular.module('admin_panel').controller('reklamodateliCtrl',function(reklamodatelService) {
+angular.module('admin_panel').controller('reklamodateliCtrl',function(myService,reklamodatelService) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 
 	vm.limit = 25;
 	vm.beginIndex =0;
@@ -31,14 +30,10 @@ angular.module('admin_panel').controller('reklamodateliCtrl',function(reklamodat
 	}
 
 	vm.search = function(){
-		
-		if (timeout) {  
-			clearTimeout(timeout);
-		}
-		timeout = setTimeout(function() {
+		myService.search(function() {
 			vm.beginIndex = 0;
 			getCompanies();
-		}, 200);
+		})
 	}
 	
 	vm.changeLimit = function(newLimit){

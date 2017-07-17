@@ -1,8 +1,6 @@
-angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelService) {
+angular.module('admin_panel').controller('paymentsCtrl',function(myService,reklamodatelService) {
 	
-	var vm = this,
-	timeout;
-
+	var vm = this;
 	vm.limit = 25;
 	vm.beginIndex = 0;
 	vm.searchText = "";
@@ -49,12 +47,7 @@ angular.module('admin_panel').controller('paymentsCtrl',function(reklamodatelSer
 	}
 
 	vm.search = function () {
-		 if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		     vm.filter();
-		  }, 200);
+		 myService.search(vm.filter)
 		
 	}
 

@@ -1,7 +1,6 @@
-angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bannerService,$stateParams) {
+angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(myService,bannerService,$stateParams) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 
 	vm.limit = 5;
 	vm.beginIndex =0;
@@ -76,7 +75,7 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bann
 	}
 
 	vm.stop = function(){
-				if(vm.isButtonsActive==0) return;
+		if(vm.isButtonsActive==0) return;
 
 		var bannersToUpdate = [];
 		for(var i=0;i<vm.banners.length;i++){
@@ -89,14 +88,10 @@ angular.module('admin_panel').controller('reklamodatelBannersCtrl',function(bann
 	}
 
 	vm.search = function () {
-		 if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		     vm.beginIndex = 0;
+		myService.search(function() {
+			vm.beginIndex = 0;
 			getBannersOfCompany();
-		  }, 200);
-		
+		});		
 	}
 
 	vm.getNewData = function(){

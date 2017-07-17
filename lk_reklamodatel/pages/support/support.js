@@ -1,7 +1,6 @@
-angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStorage,ticketService) {
+angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStorage,ticketService,myService) {
 	
-	var vm = this,
-	timeout;
+	var vm = this;
 	vm.showModal = false;
 	vm.company = $localStorage.company;
 	vm.newTicket = {};
@@ -25,13 +24,10 @@ angular.module('lk_reklamodatel').controller('lkSupportCtrl',function($localStor
 	}
 
 	vm.search = function() {
-		if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		     vm.tickets = [];
-			 getTickets();
-		  }, 200);
+		myService.search(function() {
+			vm.tickets = [];
+			getTickets();
+		});
 	}
 
 	vm.createTicket = function() {

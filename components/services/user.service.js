@@ -81,6 +81,19 @@ angular.module('app').factory("userService", function($http) {
             })
     }
 
+    service.getUserWithdraws = function(data,cb){
+        //method - (post)
+        //api - '/api/withdraws/:id
+        //data -  {filters:filters,from:number,limit:number,search:string}
+        $http.get('jsons/user_withdraws.json')
+            .success(function(data){
+                    cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
     service.changeWithdraw = function(withdraw){
         //method - (put)
         //api - '/api/withdraws

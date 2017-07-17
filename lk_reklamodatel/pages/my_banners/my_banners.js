@@ -1,7 +1,6 @@
-angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerService,$localStorage,$stateParams) {
+angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerService,$localStorage,myService) {
 	
 	var vm = this,
-	timeout,
 	bannerToCopy;
 
 	vm.limit = 5;
@@ -90,13 +89,10 @@ angular.module('lk_reklamodatel').controller('myBannersCtrl',function(bannerServ
 	}
 
 	vm.search = function () {
-	if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		     vm.beginIndex = 0;
-			 getBannersOfCompany();
-		  }, 200);
+		myService.search(function() {
+			vm.beginIndex = 0;
+			getBannersOfCompany();
+		});
 	}
 
 	vm.getNewData = function(){

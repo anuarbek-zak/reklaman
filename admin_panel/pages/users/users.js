@@ -1,7 +1,6 @@
 angular.module('admin_panel').controller('usersCtrl',function(userService,myService,countriesService) {
 	
 	var vm = this;
-
 	vm.isVisible = true;	
 	vm.limit = 25;
 	vm.beginIndex =0;
@@ -10,7 +9,6 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	vm.selectedCountryCount=0;
 	vm.countries=[];
 	vm.users=[];
-	var timeout;
 
 	getUsers();
 
@@ -80,13 +78,7 @@ angular.module('admin_panel').controller('usersCtrl',function(userService,myServ
 	}
 
 	vm.search = function() {
-		if (timeout) {  
-		    clearTimeout(timeout);
-		  }
-		  timeout = setTimeout(function() {
-		    vm.beginIndex = 0;
-			getUsers();
-		  }, 200);
+		myService.search(vm.filter);
 	}	
 
 	

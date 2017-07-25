@@ -28,8 +28,8 @@
 				<h2 class="title-text">управление странами</h2>
 			</div>
 			<div class="buttons">
-				<button ng-class="{'btn-blue':vm.activeButton=='block','btn-gray':vm.activeButton!='block'}" ng-click="vm.changeCountryStatus('block')" ><i class="fa fa-pause"></i>Заблокировать все</button>
-				<button ng-class="{'btn-blue':vm.activeButton=='unblock','btn-gray':vm.activeButton!='unblock'}" ng-click="vm.changeCountryStatus('unblock')" ><i class="fa fa-play"></i>Разблокировать все</button>
+				<button ng-class="{'btn-blue':vm.activeButton=='block','btn-gray':vm.activeButton!='block'}" ng-click="vm.changeZoneStatus('block')" ><i class="fa fa-pause"></i>Заблокировать все</button>
+				<button ng-class="{'btn-blue':vm.activeButton=='unblock','btn-gray':vm.activeButton!='unblock'}" ng-click="vm.changeZoneStatus('unblock')" ><i class="fa fa-play"></i>Разблокировать все</button>
 				<button ng-click="vm.showCountryModal=true" class="btn-gray"><i class="fa fa-plus"></i>Добавить страну</button>
 			</div>
 			<table>

@@ -16,28 +16,28 @@
 				 		"id":"xxc3ar23f23fdd501e71fa2",
 					 	"name":"Москва",
 					 	"isManaging":true,
-					 	"vk_id":1,					 	
+					 	"vk_id":1					 	
 				 	},
 
 				 	{
 				 		"id":"yyc3e9a494d23fdd501e71fa2",
 					 	"name":"Санкт-Петербург",
 					 	"isManaging":true,
-					 	"vk_id":1,					 	
+					 	"vk_id":1					 	
 				 	},
 
 				 	{
 				 		"id":"zzc3e9a494d23fdd501e71fa2",
 					 	"name":"Казань",
 					 	"isManaging":false,
-					 	"vk_id":1,			 	
+					 	"vk_id":1			 	
 				 	}
 
 			 	]
 		 	},
 		 	{"id":"13c3e9a494d23fdd501e71fa2",
 		 	"name":"Юг",
-		 	"isManaging":false,
+		 	"isManaging":false
 		 	}
 		 ]
 	 },

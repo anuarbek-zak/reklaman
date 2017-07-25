@@ -67,4 +67,23 @@ angular.module('app')
     }
 		
     return service;
-  })    
+  })
+
+  // <div class="dropdown">		
+		// 								<button ng-click="country.checked=!country.checked" class="country_name" >
+		// 									{{country.name}}
+		// 									<img ng-if="country.regions.length>0" src="assets/images/angle-bottom.png" alt="v">
+		// 								</button>
+		// 								<ul   class="dropdown-menu" style="display:{{country.checked?'block':'none'}}">
+		// 									<li  ng-repeat="region in country.regions">
+		// 										<input class="checkbox-custom" ng-class="{'active':region.checked}" type="checkbox">
+		// 										<label ng-click="vm.addCountry(region)" >{{region.name}}</label>
+		// 										<ul ng-show="region.checked">
+		// 											<li ng-repeat="city in region.cities" >
+		// 												<input class="checkbox-custom" ng-class="{'active':city.checked}" type="checkbox">
+		// 												<label ng-click="vm.addCountry(city)" >{{city.name}}</label>
+		// 											</li>
+		// 										</ul>
+		// 									</li>
+		// 								</ul>
+		// 							</div>	    

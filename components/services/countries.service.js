@@ -31,7 +31,7 @@ angular.module('app')
     	}
     
     
-    service.getManagingCountries = function(cb){
+    service.getManagingZones = function(cb){
     	//(get)'/api/managing_countries
     	 $http.get('jsons/managing_countries.json')
 				.success(function(data){

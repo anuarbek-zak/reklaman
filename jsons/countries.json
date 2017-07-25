@@ -8,27 +8,36 @@
 		 [
 		 	{"id":"12c3e9a49qwedd501e71fa2",
 		 	"name":"Центр",
+		 	"isManaging":true,
+		 	"vk_id":1,
 		 	"cities":
 			 	[
 				 	{
 				 		"id":"xxc3ar23f23fdd501e71fa2",
-					 	"name":"Москва"					 	
+					 	"name":"Москва",
+					 	"isManaging":true,
+					 	"vk_id":1,					 	
 				 	},
 
 				 	{
 				 		"id":"yyc3e9a494d23fdd501e71fa2",
-					 	"name":"Санкт-Петербург"					 	
+					 	"name":"Санкт-Петербург",
+					 	"isManaging":true,
+					 	"vk_id":1,					 	
 				 	},
 
 				 	{
 				 		"id":"zzc3e9a494d23fdd501e71fa2",
-					 	"name":"Казань"					 	
+					 	"name":"Казань",
+					 	"isManaging":false,
+					 	"vk_id":1,			 	
 				 	}
 
 			 	]
 		 	},
 		 	{"id":"13c3e9a494d23fdd501e71fa2",
-		 	"name":"Юг"
+		 	"name":"Юг",
+		 	"isManaging":false,
 		 	}
 		 ]
 	 },
@@ -41,27 +50,37 @@
 		 [
 		 	{"id":"23c3e9a494d23fdd501e71fa11",
 		 	"name":"Центр",
+		 	"isManaging":false,
+		 	"vk_id":1,
 		 	"cities":
 			 	[
 				 	{
 				 		"id":"5711234d23fdd501e71fa11",
+				 		"isManaging":false,
+				 		"vk_id":1,
 					 	"name":"Астана"					 	
 				 	},
 
 				 	{
 				 		"id":"77c3e9a494d23fdd501e71fa22",
+				 		"isManaging":false,
+				 		"vk_id":1,
 					 	"name":"Алматы"					 	
 				 	},
 
 				 	{
 				 		"id":"87c3e9a494d23fdd501e71fa33",
-					 	"name":"Костанай"					 	
+					 	"name":"Костанай",
+					 	"isManaging":false,
+					 	"vk_id":1				 	
 				 	}
 
 			 	]
 		 	},
 		 	{"id":"24c3e9a494d23fdd501e71fa2",
-		 	"name":"Север"
+		 	"name":"Север",
+		 	"vk_id":1,
+		 	"isManaging":true
 		 	}
 		 ]
 	 },

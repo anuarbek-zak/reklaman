@@ -40,7 +40,7 @@
 					<th>Статус</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="country in vm.managing_countries">
+					<tr ng-repeat="country in vm.managing_zones">
 						<td class="bold">{{country.name}}</td>
 						<td>{{country.id}}</td>
 						<td>{{country.regions.length||0}}</td>
@@ -128,79 +128,89 @@
 							<th>vk_id</th>
 							<th>Добавление</th>
 						</thead>
-						<tbody>
-							<tr ng-repeat="country in vm.countries">
-								<td class="bold">
-									<div class="dropdown" ng-init="country.checked=false">		
-										<!-- просто ад -->
-										<button ng-click="country.checked=!country.checked" >
-											{{country.name}}
-										</button>
-										<ul class="dropdown-menu"   ng-show="country.checked">
-											<li ng-repeat="region in country.regions">
-												<input class="checkbox-custom" ng-class="{'active':region.checked}" type="checkbox">
-												<label ng-click="vm.addCountry(region)" >{{region.name}}</label>
-												<ul ng-show="region.checked">
-													<li ng-repeat="city in region.cities" >
-														<input class="checkbox-custom" ng-class="{'active':city.checked}" type="checkbox">
-														<label ng-click="vm.addCountry(city)" >{{city.name}}</label>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-								<!-- просто ад -->
-							</div>		
-						</td>
-						<td>
-							{{country.vk_id}}
-						</td>
-						<td>
-							<div ng-if="country.isManaging">
-								<span class="added green">Добавлена</span>
-								<button ng-click="vm.removeFromManaging(country)" class="btn-gray"><i class="fa fa-close"></i></button>
-							</div>
-							<button ng-click="vm.addToManaging(country)" ng-if="!country.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+						<tbody ng-repeat="country in vm.countries" ng-init="country.checked=false">
+							<tr class="country-info">
+								<td class="bold" ng-click="country.checked=!country.checked">
+									{{country.name}}
+									<img ng-if="country.regions.length>0" src="assets/images/angle-bottom.png" alt="v">
 
-		<div ng-click="vm.getNewDataModal()" class="show-more btn-gray">
-			<span><<</span>  <span >Показать еще</span> <span>>></span>
-		</div>
-	</div>				
-</div>
-</div>
+								</td>
+								<td>
+									{{country.vk_id}}
+								</td>
+								<td>
+									<div ng-if="country.isManaging">
+										<span class="added green">Добавлена</span>
+										<button ng-click="vm.removeFromManaging(country)" class="btn-gray"><i class="fa fa-close"></i></button>
+									</div>
+									<button ng-click="vm.addToManaging(country)" ng-if="!country.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+								</td>
+							</tr>
+							<tr class="region-info" ng-repeat-start="region in country.regions" ng-show="country.checked" ng-init="region.checked=false">
+								<td class="bold" ng-click="region.checked=!region.checked">
+									{{region.name}}
+									<img ng-if="region.cities.length>0" src="assets/images/angle-bottom.png" alt="v">
+								</td>
+								<td>
+									{{region.vk_id}}
+								</td>
+								<td>
+									<div ng-if="region.isManaging">
+										<span class="added green">Добавлена</span>
+										<button ng-click="vm.removeFromManaging(region)" class="btn-gray"><i class="fa fa-close"></i></button>
+									</div>
+									<button ng-click="vm.addToManaging(region)" ng-if="!region.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+								</td>
+							</tr >
+							<tr class="city-info" ng-repeat-end ng-show="region.checked" ng-repeat="city in region.cities" >
+								<td class="bold">{{city.name}}</td>
+								<td>
+									{{city.vk_id}}
+								</td>
+								<td>
+									<div ng-if="city.isManaging">
+										<span class="added green">Добавлена</span>
+										<button ng-click="vm.removeFromManaging(city)" class="btn-gray"><i class="fa fa-close"></i></button>
+									</div>
+									<button ng-click="vm.addToManaging(city)" ng-if="!city.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-<!-- MODAL  END -->
-
-<!-- MODAL 2 -->
-<div ng-click="vm.showSettingsModal=false" ng-show="vm.showSettingsModal" class="my-modal flex">
-	<div class="my-modal-content ap_settings-modal white-div" ng-click="$event.stopPropagation()">
-		<div class="my-modal-header flex">
-			<div class="title-div">
-				<img src="assets/images/settings-gray.png" class="title-icon">
-				<h2 class="title-text">Редактировать настройку</h2>
-			</div>
-			<button ng-click="vm.showSettingsModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
+				<div ng-click="vm.getNewDataModal()" class="show-more btn-gray">
+					<span><<</span>  <span >Показать еще</span> <span>>></span>
+				</div>
+			</div>				
 		</div>
-		<div class="my-modal-body">
-			<label>Ключ</label>
-			<input type="text" ng-model="vm.currentSetting.key" class="input">
-			<label>Описание</label>
-			<textarea type="text"  ng-model="vm.currentSetting.description" class="input"></textarea> 
-			<label>Значение</label>
-			<input type="text"  ng-model="vm.currentSetting.value" class="input">
-			<button ng-click="vm.updateSetting()" class="btn-blue"><img src="assets/images/megaphone-(1).png" alt="">Создать тикет</button>
-		</div>				
 	</div>
+
+	<!-- MODAL  END -->
+
+	<!-- MODAL 2 -->
+	<div ng-click="vm.showSettingsModal=false" ng-show="vm.showSettingsModal" class="my-modal flex">
+		<div class="my-modal-content ap_settings-modal white-div" ng-click="$event.stopPropagation()">
+			<div class="my-modal-header flex">
+				<div class="title-div">
+					<img src="assets/images/settings-gray.png" class="title-icon">
+					<h2 class="title-text">Редактировать настройку</h2>
+				</div>
+				<button ng-click="vm.showSettingsModal=false" class="btn-gray"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="my-modal-body">
+				<label>Ключ</label>
+				<input type="text" ng-model="vm.currentSetting.key" class="input">
+				<label>Описание</label>
+				<textarea type="text"  ng-model="vm.currentSetting.description" class="input"></textarea> 
+				<label>Значение</label>
+				<input type="text"  ng-model="vm.currentSetting.value" class="input">
+				<button ng-click="vm.updateSetting()" class="btn-blue"><img src="assets/images/megaphone-(1).png" alt="">Создать тикет</button>
+			</div>				
+		</div>
+	</div>
+
+	<!-- MODAL 2 END -->
+
+
 </div>
-
-<!-- MODAL 2 END -->
-
-
-</div>
-

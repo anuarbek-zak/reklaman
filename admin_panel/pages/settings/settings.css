@@ -153,3 +153,15 @@
 	width: 250px;
 	margin: 0 auto;
 }
+
+.ap_settings .my-modal-body .table-container .bold{
+	cursor: pointer;
+}
+
+.ap_settings .my-modal-body .table-container .region-info .bold{
+	padding-left: 20px;
+}
+
+.ap_settings .my-modal-body .table-container .city-info .bold{
+	padding-left: 40px;
+}

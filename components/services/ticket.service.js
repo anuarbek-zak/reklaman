@@ -105,6 +105,20 @@ angular.module('app')
 			})
     }
 
+    service.getNotifications = function(data,cb) {
+        //method - (post)
+        //api - /api/notifications
+        //data - {from:number,limit:number,search:string,which:string}
+        //which can be 'company' or 'user'
+        $http.get('jsons/mass_notifications_company.json')
+            .success(function(data){
+                cb(data);
+                })
+            .error(function(err){
+                console.log(err);
+            })
+    }
+
 
     return service;
   })    

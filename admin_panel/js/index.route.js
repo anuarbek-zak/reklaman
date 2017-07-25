@@ -105,5 +105,12 @@ angular.module('admin_panel')
                 controller:'ticketCtrl',
                 controllerAs:'vm',
                 parent:'admin_panel'
+            })
+            .state('mass_notifications', {
+                url: '/mass_notifications/:which',
+                templateUrl: 'admin_panel/pages/mass_notifications/mass_notifications.html',
+                controller:'massNotificationsCtrl',
+                controllerAs:'vm',
+                parent:'admin_panel'
             });
     });

@@ -1,38 +1,26 @@
-<div class="ap_users_questions white-div">
+<div class="ap_mass_notifications white-div">
 		<div class="row-1 flex">
 				<div class="title-div">
-					<img src="assets/images/message-gray.png" class="title-icon">
-					<h2 class="title-text">вопросы пользователей</h2>
+					<img src="assets/images/megaphone-(2).png" class="title-icon">
+					<h2 class="title-text">массовые уведомления {{vm.which=='company'?'рекламодателей':'пользователей'}}</h2>
 				</div>
-				<button ui-sref="mass_notifications({which:'user'})" class="btn-blue"><img src="assets/images/megaphone-(1).png" alt="">Массовые уведомления</button>
 				<input  type="text" ng-model="vm.searchText" ng-change="vm.search()" placeholder="Поиск" class="input input-search">
 		</div>
 		<table>
 				<thead>
-					<th>Пользователь</th>
 					<th>Тема</th>
 					<th>Собщение</th>
-					<th>Кто создал</th>
-					<th>Статус</th>
-					<th>Дата создания</th>
-					<th>Дата обновления</th>
-					<th>Операции</th>
+					<th>Дата отправки</th>
+					<th>Кол-во получателей</th>
+					<th>Фильтры</th>
 				</thead>
 				<tbody>
 				<tr ng-repeat="question in vm.questions">
-					<td>{{question.creator.name+" "+question.creator.surname}}</td>
 					<td>{{question.theme}}</td>
 					<td>{{question.message}}</td>
-					<td>{{question.creator.status.name}}</td>
-					<td ng-class="{'blue':question.status.id==2,'green':question.status.id==1}">{{question.status.name}}</td>
-					<td>{{question.created_at | date:'yyyy-MM-dd HH:mm'}}</td>
-					<td>{{question.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
-					<td class="operations">
-						<div ui-sref="ticket({id:question.creator.id})" class="btn-gray">
-						<i class="fa fa-paint-brush"></i>
-						<span class="my-tooltip">Подробнее</span>
-					</div>	
-					</td>
+					<td>{{question.sended_at}}</td>
+					<td >{{question.recieved_count}}</td>
+					<td>{{question.filters}}</td>
 				</tr>					
 				</tbody>
 			</table>

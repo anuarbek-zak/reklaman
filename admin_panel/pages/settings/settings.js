@@ -100,7 +100,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 			case 'country':
 				vm.managing_countries.forEach(function(country,i) {
 					if(country.id==zone.id) {
-						if(country.regions.length>0){
+						if(country.regions){
 							country.regions.forEach(function(region) {
 								region.isManaging=false;
 			    				countriesService.removeFromManaging(region.id,'region');

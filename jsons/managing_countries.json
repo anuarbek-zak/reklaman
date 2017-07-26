@@ -17,7 +17,7 @@
 	 "vk_id":12,
 	 "name":"Беларусь",
 	 "isManaging":false,
-	 "status":{"id":"1","name":"Заблокирована"},
+	 "status":{"id":"2","name":"Разблокирована"},
 	 "regions":0
 	 }	
 ]

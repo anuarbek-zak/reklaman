@@ -80,7 +80,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 		switch(which){
 			case 'country':
 			console.log('countr!');
-			    var copy = angular.copy(vm.zone);
+			    var copy = angular.copy(zone);
 			    copy.regions = 0;
 				vm.managing_countries.push(zone);
 				break;

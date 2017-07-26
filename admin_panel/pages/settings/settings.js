@@ -85,7 +85,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 			case 'region':
 				vm.managing_countries.forEach(function(country) {
 					if(country.id==country_id){
-						country.regions++;
+						country.regions.push(zone);
 						return;
 					} 
 				})
@@ -100,6 +100,10 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 			case 'country':
 				vm.managing_countries.forEach(function(country,i) {
 					if(country.id==zone.id) {
+						country.regions.forEach(function(region) {
+							region.isManaging=false;
+		    				countriesService.removeFromManaging(region.id,'region');
+						})
 						vm.managing_countries.splice(i,1);
 						return;
 					}
@@ -108,7 +112,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 			case 'region':
 				vm.managing_countries.forEach(function(country) {
 					if(country.id==country_id){
-						country.regions--;
+						country.regions.splice(country.regions.indexOf(zone),1);
 						return;
 					} 
 				})

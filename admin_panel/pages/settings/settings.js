@@ -76,31 +76,45 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 	}
 
 	vm.addToManaging = function(zone,which,country_id){
-
 		switch(which){
 			case 'country':
-			console.log('countr!');
-			    var copy = angular.copy(zone);
-			    copy.regions = 0;	
+				var copy = angular.copy(zone);
+				copy.regions = 0;	
 				vm.managing_countries.push(zone);
 				break;
 			case 'region':
-			console.log('region!');
 				vm.managing_countries.forEach(function(country) {
 					if(country.id==country_id){
-						console.log('country',country);
 						country.regions++;
+						return;
 					} 
 				})
 				break;						
 		}
-		zone.isManaging=true;
-		// countriesService.addToManaging(zone.id,which);
+		zone.isManaging = true;
+		countriesService.addToManaging(zone.id,which);
 	}
 
-	vm.removeFromManaging = function(zone,index){
+	vm.removeFromManaging = function(zone,which,country_id){
+		switch(which){
+			case 'country':
+				vm.managing_countries.forEach(function(country,i) {
+					if(country.id==zone.id) {
+						vm.managing_countries.splice(i,1);
+						return;
+					}
+				})
+				break;
+			case 'region':
+				vm.managing_countries.forEach(function(country) {
+					if(country.id==country_id){
+						country.regions--;
+						return;
+					} 
+				})
+				break;						
+		}
 		zone.isManaging=false;
-		vm.managing_countries.splice(vm.managing_countries.indexOf(zone),1);
 		countriesService.removeFromManaging(zone.id,which);
 	}
 	

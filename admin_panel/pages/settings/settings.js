@@ -81,7 +81,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 			case 'country':
 			console.log('countr!');
 			    var copy = angular.copy(zone);
-			    copy.regions = 0;
+			    copy.regions = 0;	
 				vm.managing_countries.push(zone);
 				break;
 			case 'region':
@@ -89,7 +89,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 				vm.managing_countries.forEach(function(country) {
 					if(country.id==country_id){
 						console.log('country',country);
-						country.region++;
+						country.regions++;
 					} 
 				})
 				break;						

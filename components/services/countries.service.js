@@ -32,7 +32,7 @@ angular.module('app')
     
     
     service.getManagingZones = function(cb){
-    	//(get)'/api/managing_countries
+    	//(get)'/api/managing_zones
     	 $http.get('jsons/managing_countries.json')
 				.success(function(data){
 					cb(data);
@@ -42,10 +42,12 @@ angular.module('app')
 				})
     }
 
-    service.addToManaging = function(id){
-    	//(post)'/api/managing_countries/:id
-    	//params - country id	
-    	 $http.post('/api/managing_countries/'+id)
+    service.addToManaging = function(id,which){
+    	//change 'isManaging' status to 'true'
+    	//(post)'/api/managing_zones/:id/:which
+    	//params - country id, which
+    	//which can be 'country', 'region' or 'city'	
+    	 $http.post('/api/managing_zones/'+id+"/"+which)
 				.success(function(data){
 					cb(data);
 				})
@@ -54,10 +56,12 @@ angular.module('app')
 				})
     }
 
-    service.removeFromManaging = function(id){
-    	//(delete)'/api/managing_countries/:id
-    	//params - country id	
-    	 $http.delete('/api/managing_countries/'+id)
+    service.removeFromManaging = function(id,which){
+    	//change 'isManaging' status to 'false'
+    	//(post)'/api/managing_zones/:id/:which
+    	//params - country id, which
+    	//which can be 'country', 'region' or 'city'	
+    	 $http.post('/api/managing_zones/'+id+"/"+which)
 				.success(function(data){
 					cb(data);
 				})

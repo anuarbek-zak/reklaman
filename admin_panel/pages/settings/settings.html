@@ -40,10 +40,10 @@
 					<th>Статус</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="country in vm.managing_zones">
+					<tr ng-repeat="country in vm.managing_countries">
 						<td class="bold">{{country.name}}</td>
 						<td>{{country.id}}</td>
-						<td>{{country.regions.length||0}}</td>
+						<td>{{country.regions||0}}</td>
 						<td ng-class="{'blue':country.status.id==1,'green':country.status.id==2}">{{country.status.name}}</td>
 					</tr>						
 				</tbody>
@@ -141,9 +141,9 @@
 								<td>
 									<div ng-if="country.isManaging">
 										<span class="added green">Добавлена</span>
-										<button ng-click="vm.removeFromManaging(country)" class="btn-gray"><i class="fa fa-close"></i></button>
+										<button ng-click="vm.removeFromManaging(country,'country')" class="btn-gray"><i class="fa fa-close"></i></button>
 									</div>
-									<button ng-click="vm.addToManaging(country)" ng-if="!country.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+									<button ng-click="vm.addToManaging(country,'country')" ng-if="!country.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
 								</td>
 							</tr>
 							<tr class="region-info" ng-repeat-start="region in country.regions" ng-show="country.checked" ng-init="region.checked=false">
@@ -157,12 +157,12 @@
 								<td>
 									<div ng-if="region.isManaging">
 										<span class="added green">Добавлена</span>
-										<button ng-click="vm.removeFromManaging(region)" class="btn-gray"><i class="fa fa-close"></i></button>
+										<button ng-click="vm.removeFromManaging(region,'region',country.id)" class="btn-gray"><i class="fa fa-close"></i></button>
 									</div>
-									<button ng-click="vm.addToManaging(region)" ng-if="!region.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+									<button ng-click="vm.addToManaging(region,'region',country.id)" ng-if="!region.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
 								</td>
 							</tr >
-							<tr class="city-info" ng-repeat-end ng-show="region.checked" ng-repeat="city in region.cities" >
+							<tr class="city-info" ng-repeat-end ng-show="region.checked&&country.checked" ng-repeat="city in region.cities" >
 								<td class="bold">{{city.name}}</td>
 								<td>
 									{{city.vk_id}}
@@ -170,9 +170,9 @@
 								<td>
 									<div ng-if="city.isManaging">
 										<span class="added green">Добавлена</span>
-										<button ng-click="vm.removeFromManaging(city)" class="btn-gray"><i class="fa fa-close"></i></button>
+										<button ng-click="vm.removeFromManaging(city,'city')" class="btn-gray"><i class="fa fa-close"></i></button>
 									</div>
-									<button ng-click="vm.addToManaging(city)" ng-if="!city.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+									<button ng-click="vm.addToManaging(city,'city')" ng-if="!city.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
 								</td>
 							</tr>
 						</tbody>

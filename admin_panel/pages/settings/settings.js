@@ -23,7 +23,7 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 	getSettings();
 
 	countriesService.getManagingZones(function(data){
-		vm.managing_zones = data;		
+		vm.managing_countries = data;		
 	});
 
 	function getCountries(){
@@ -69,22 +69,39 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 
 	vm.changeZoneStatus = function(which){
 		vm.activeButton = which;
-		vm.managing_zones.forEach(function(zone){
+		vm.managing_countries.forEach(function(zone){
 			zone.status = (which=='block') ? {id:1,name:"Заблокирована"} : {id:2,name:"Разблокирована"};
 		});
 		countriesService.changeStatus(which);
 	}
 
-	vm.addToManaging = function(zone){
+	vm.addToManaging = function(zone,which,country_id){
+
+		switch(which){
+			case 'country':
+			console.log('countr!');
+			    var copy = angular.copy(vm.zone);
+			    copy.regions = 0;
+				vm.managing_countries.push(zone);
+				break;
+			case 'region':
+			console.log('region!');
+				vm.managing_countries.forEach(function(country) {
+					if(country.id==country_id){
+						console.log('country',country);
+						country.region++;
+					} 
+				})
+				break;						
+		}
 		zone.isManaging=true;
-		vm.managing_zones.push(zone);
-		countriesService.addToManaging(zone.id);
+		// countriesService.addToManaging(zone.id,which);
 	}
 
 	vm.removeFromManaging = function(zone,index){
 		zone.isManaging=false;
-		vm.managing_zones.splice(vm.managing_zones.indexOf(zone),1);
-		countriesService.removeFromManaging(zone.id);
+		vm.managing_countries.splice(vm.managing_countries.indexOf(zone),1);
+		countriesService.removeFromManaging(zone.id,which);
 	}
 	
 	

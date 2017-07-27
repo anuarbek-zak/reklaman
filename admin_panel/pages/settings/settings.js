@@ -104,6 +104,12 @@ angular.module('admin_panel').controller('settingsCtrl',function(myService,count
 							country.regions.forEach(function(region) {
 								region.isManaging=false;
 			    				countriesService.removeFromManaging(region.id,'region');
+			    				if(region.cities){
+			    					region.cities.forEach(function(city,i) {
+			    						city.isManaging=false;
+			    						countriesService.removeFromManaging(city.id,'city');
+			    					})
+			    				}
 							})
 						}						
 						vm.managing_countries.splice(i,1);

@@ -1,15 +1,15 @@
 <div class="admin_panel" ng-controller="mainAdminCtrl as vm">
 
   <header>
-    <img class="logo" src="assets/images/logo.png" alt="reklaman">
+    <img class="logo" src="assets/images/logo.jpeg" alt="reklaman">
     <div class="right-div flex">
-      <a ui-sref="reklamodateli_questions" >Впоросы рекламодателей</a>
+      <a ui-sref="reklamodateli_questions" >Balance</a>
       <span ui-sref="reklamodateli_questions" class="counter"> {{vm.questionsCounter.advertisers}}
       </span>
-      <a ui-sref="users_questions">Впоросы Пользователей</a>
+      <a ui-sref="users_questions">Messages</a>
       <span ui-sref="users_questions" class="counter">{{vm.questionsCounter.users}}</span>
       <div set-background-img src="{{vm.admin.photo}}" class="user-photo"></div>
-      <span class="user-name">{{vm.admin.name}}</span>
+      <span class="user-name">Anuarbek Zakiryanov</span>
       <div class="logout">
       </div>
     </div>
@@ -21,24 +21,72 @@
           <img src="assets/images/double-angle-pointing-to-right.png" alt="">
         </div>
         <div ng-click="vm.activeItem=1" ng-class="{'active-item':vm.activeItem==1}" ui-sref="reklamodateli" class="item flex">
-          <img src="assets/images/megaphone-(1).png" alt="megaphone">
+          <i class="fa fa-list"></i>
           <div class="item-name" >
-            <span >Рекламодатели</span>
+            <span >Program Structure</span>
 
           </div>
         </div>
-        <div ng-click="vm.activeItem=2" ng-class="{'active-item':vm.activeItem==2}" class="item flex" ui-sref="users" >
-          <img src="assets/images/user.png" alt="megaphone">
+        <div ng-click="vm.activeItem=2" ng-class="{'active-item':vm.activeItem==2}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-registered"></i>
           <div class="item-name">
-            <span>Пользователи</span>
+            <span>Course registration</span>
 
           </div>
         </div>
-        <div class="divider"><p>| | |</p></div>
-        <div ng-click="vm.activeItem=3" ng-class="{'active-item':vm.activeItem==3}"  ui-sref="settings" class="item flex">
-          <img src="assets/images/settings2.png" alt="megaphone">
+        <div ng-click="vm.activeItem=3" ng-class="{'active-item':vm.activeItem==3}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-graduation-cap"></i>
           <div class="item-name">
-            <span>Настройки</span>
+            <span>Grades List</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=4" ng-class="{'active-item':vm.activeItem==4}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-list"></i>
+          <div class="item-name">
+            <span>Transcript</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=5" ng-class="{'active-item':vm.activeItem==5}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-calendar-check-o"></i>
+          <div class="item-name">
+            <span>Electronic Attendance</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=6" ng-class="{'active-item':vm.activeItem==6}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-pie-chart"></i>
+          <div class="item-name">
+            <span>Questionnaire</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=6" ng-class="{'active-item':vm.activeItem==6}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-list-ul"></i>
+          <div class="item-name">
+            <span>Rules and Regulations</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=6" ng-class="{'active-item':vm.activeItem==6}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-envelope-o"></i>
+          <div class="item-name">
+            <span>SduMail</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=6" ng-class="{'active-item':vm.activeItem==6}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-cogs"></i>
+          <div class="item-name">
+            <span>Settings</span>
+
+          </div>
+        </div>
+        <div ng-click="vm.activeItem=6" ng-class="{'active-item':vm.activeItem==6}" class="item flex"  ui-sref="reklamodateli" >
+          <i class="fa fa-question-circle"></i>
+          <div class="item-name">
+            <span>Contact us</span>
 
           </div>
         </div>
@@ -50,20 +98,13 @@
           <div class="circle"></div>
         </div>
         <div class="copy flex">
-          <img class="logo" src="assets/images/logo-white.png" alt="reklaman">
-          <span> &copy; Рекламан, 2017 г</span>
+          <span> &copy; SDU 2017 г</span>
         </div>            
       </div>  
     </div>
 
     <div class="main-content-footer">
       <div class="main-content" ui-view>    </div>  
-
-      <footer>
-        <a href="">Пользовательское соглашение</a>
-        <a href="">Конфиденциальность</a>
-        <a href="">Оферта</a>
-      </footer>
     </div>
 
     </div>  

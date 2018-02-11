@@ -12,7 +12,7 @@ angular.module('admin_panel')
 	vm.admin = {
 		"id":1,
 		"name":"Admin",
-		"photo":"assets/images/zhdun_136443469_orig_.jpg",
+		"photo":"assets/images/stud_photo.jpg",
 		"email":"anuarbekzakirianov97@gmail.com",
 		"status":{id:1,name:"Админ"}
 	};

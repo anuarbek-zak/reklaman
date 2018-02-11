@@ -87,3 +87,19 @@ angular.module('app')
 		// 									</li>
 		// 								</ul>
 		// 							</div>	    
+
+	// <ul ng-show="country.checked" ng-repeat="region in country.regions" ng-init="region.checked=false">
+	// 									<li class="bold" ng-click="region.checked=!region.checked">
+	// 										{{region.name}}	
+	// 									</li>
+	// 									<li>
+	// 										{{12}}
+	// 									</li>
+	// 									<li>
+	// 										<div ng-if="region.isManaging">
+	// 											<span class="added green">Добавлена</span>
+	// 											<button ng-click="vm.removeFromManaging(region)" class="btn-gray"><i class="fa fa-close"></i></button>
+	// 										</div>
+	// 										<button ng-click="vm.addToManaging(region)" ng-if="!region.isManaging" class="btn-gray add"><i class="fa fa-plus"></i></button>
+	// 									</li>
+	// 								</ul>
